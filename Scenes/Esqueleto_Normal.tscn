@@ -91,7 +91,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewek6"]
 size = Vector2(26, 30)
 
-[node name="Esqueleto_Normal" type="CharacterBody2D"]
+[node name="Esqueleto_Normal" type="Area2D"]
 script = ExtResource("1_uvnig")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -107,3 +107,5 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_ewek6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
