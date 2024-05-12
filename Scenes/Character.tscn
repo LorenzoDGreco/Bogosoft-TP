@@ -40,7 +40,8 @@ _data = {
 "RESET": SubResource("Animation_8ptl6")
 }
 
-[node name="Personaje" type="Node2D"]
+[node name="Character" type="Node2D"]
+visibility_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.2, 1.2)

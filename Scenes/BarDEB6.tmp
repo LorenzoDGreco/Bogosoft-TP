@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3kno22nm8blp"]
+
+[ext_resource type="Script" path="res://Scripts/Barra_Vida.gd" id="1_djtfo"]
+[ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="2_l4dv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nhoi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rij74"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpwko"]
+bg_color = Color(0.0117647, 0, 0, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3g3nu"]
+line_spacing = 0.0
+font = ExtResource("2_l4dv0")
+font_size = 8
+shadow_size = 0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_djtfo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 26.0
+offset_bottom = 7.0
+
+[node name="Background" type="Panel" parent="TextureRect"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+offset_right = 26.0
+offset_bottom = 7.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nhoi")
+
+[node name="PercentLife" type="Panel" parent="TextureRect"]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rij74")
+
+[node name="Border" type="Panel" parent="TextureRect"]
+offset_right = 26.0
+offset_bottom = 7.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpwko")
+
+[node name="Life" type="Label" parent="TextureRect"]
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 26.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 5
+label_settings = SubResource("LabelSettings_3g3nu")
+horizontal_alignment = 1
