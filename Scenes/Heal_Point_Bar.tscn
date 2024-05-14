@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3kno22nm8blp"]
 
-[ext_resource type="Script" path="res://Scripts/Heal_Point_Bar.gd" id="1_kxl2k"]
+[ext_resource type="Script" path="res://Scripts/Heal_Point_Bar_Enemy.gd" id="1_kxl2k"]
 [ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="2_kcdwc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nhoi"]
@@ -19,7 +19,6 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_3g3nu"]
 line_spacing = 0.0
 font = ExtResource("2_kcdwc")
-font_size = 8
 shadow_size = 0
 
 [node name="Barra_Vida" type="Node2D"]
@@ -55,9 +54,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vpwko")
 [node name="Life" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -2.0
-offset_right = 26.0
-offset_bottom = 8.0
+offset_top = -1.0
+offset_right = 61.0
+offset_bottom = 19.0
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 5
 label_settings = SubResource("LabelSettings_3g3nu")
 horizontal_alignment = 1

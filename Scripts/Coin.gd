@@ -3,6 +3,9 @@ extends Area2D
 signal coin_pickUp
 var value: int
 
+func _process(_delta):
+	pass
+
 func _on_mouse_entered():
 	# hacer una pequeña animacion u remarcarla más
 	pass 
