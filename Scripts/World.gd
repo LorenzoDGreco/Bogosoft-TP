@@ -3,9 +3,16 @@ class_name Mundo extends Node
 const offset_coin = 15
 
 var normal_skeleton : PackedScene = preload("res://Scenes/Normal_Skeleton.tscn")
+var warrior_skeleton : PackedScene = preload("res://Scenes/Esqueleto_Guerrero.tscn")
+
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
+@onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
+
 var total_coins : int
+
+func _ready():
+	hp_bar_ui.set_max_life(100)
 
 #posibilidad spawn del 30% de la oleada
 func _on_timer_timeout():
@@ -42,3 +49,7 @@ func spawn_coins(position, amount):
 		coin_instance.value = 10
 		coin_instance.global_position = position
 		add_child(coin_instance)
+
+
+func _on_hp_bar_ui_collapsed_castle():
+	print("You lose.")

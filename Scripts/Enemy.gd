@@ -11,7 +11,6 @@ signal enemy_death
 
 func _ready():
 	set_monitorable(true)
-	get_node("AnimatedSprite2D").play("walk")
 	
 	hp_bar_instance.position = Vector2(-13, 13)
 	hp_bar_instance.set_life(life)
