@@ -1615,7 +1615,6 @@ animations = [{
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]

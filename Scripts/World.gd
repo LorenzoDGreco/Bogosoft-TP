@@ -8,17 +8,19 @@ var warrior_skeleton : PackedScene = preload("res://Scenes/Esqueleto_Guerrero.ts
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 @onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
+@onready var Mouse = get_node("Mouse")
 
 var total_coins : int
 
 func _ready():
 	hp_bar_ui.set_max_life(100)
+	
 
 #posibilidad spawn del 30% de la oleada
 func _on_timer_timeout():
 	var n_s = normal_skeleton.instantiate()
 	n_s.global_position = Vector2(-10, randf_range(55,180))
-	n_s.life = 4
+	n_s.life = 2
 	n_s.connect("enemy_death", spawn_coins)
 	add_child(n_s)
 	
@@ -37,7 +39,7 @@ func _on_timer_timeout():
 
 func _on_coin_pick_up(coins):
 	total_coins += coins
-	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(total_coins) + " G"
+	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(total_coins)
 
 func spawn_coins(position, amount):
 	position.y += offset_coin

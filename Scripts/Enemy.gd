@@ -26,9 +26,12 @@ func _on_body_entered(body):
 	if body.name == "TileMap":
 		get_node("AnimatedSprite2D").play("default")
 		speed=0
+		set_deferred("monitorable", false) #Soluciona el lag en gran medida (100 enemigos up) pero cuidado con las hitbox de las flechas
 
 func _on_input_event(_viewport, event, _shape_idx):
-	if life == 0:
+	if life <= 0:
+		if get_node("AnimatedSprite2D").get_animation() == "default":
+			_on_animated_sprite_2d_animation_finished()
 		return
 	
 	if (event is InputEventMouseButton && event.pressed):

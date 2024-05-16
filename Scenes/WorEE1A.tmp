@@ -1608,14 +1608,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"on_click",
-"speed": 20.0
+"speed": 5.0
 }]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1782,11 +1781,10 @@ text = ">"
 
 [node name="Mouse" type="AnimatedSprite2D" parent="."]
 visibility_layer = 17
-position = Vector2(366, 121)
-rotation = -1.85354
-scale = Vector2(0.204364, 0.233285)
+position = Vector2(14, -12)
+scale = Vector2(0.375, 0.375)
 sprite_frames = SubResource("SpriteFrames_2mo6i")
-animation = &"click"
+animation = &"on_click"
 autoplay = "click"
 script = ExtResource("19_csb5a")
 

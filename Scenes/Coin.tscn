@@ -68,11 +68,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr0po"]
-radius = 14.0
+radius = 15.0
 
 [node name="Coin" type="Area2D"]
-top_level = true
-visibility_layer = 4
+z_index = 5
+z_as_relative = false
 script = ExtResource("1_vpsgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -81,6 +81,3 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kr0po")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

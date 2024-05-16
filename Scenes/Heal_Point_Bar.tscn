@@ -21,21 +21,17 @@ line_spacing = 0.0
 font = ExtResource("2_kcdwc")
 shadow_size = 0
 
-[node name="Barra_Vida" type="Node2D"]
+[node name="Barra_Vida" type="TextureRect"]
 script = ExtResource("1_kxl2k")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 26.0
-offset_bottom = 7.0
-
-[node name="Background" type="Panel" parent="TextureRect"]
+[node name="Background" type="Panel" parent="."]
 modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 0
 offset_right = 26.0
 offset_bottom = 7.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4nhoi")
 
-[node name="PercentLife" type="Panel" parent="TextureRect"]
+[node name="PercentLife" type="Panel" parent="."]
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
@@ -45,13 +41,13 @@ offset_right = 25.0
 offset_bottom = 6.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rij74")
 
-[node name="Border" type="Panel" parent="TextureRect"]
+[node name="Border" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 26.0
 offset_bottom = 7.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vpwko")
 
-[node name="Life" type="Label" parent="TextureRect"]
+[node name="Life" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -1.0
