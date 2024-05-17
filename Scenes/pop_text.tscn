@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3b8aga3tyfur"]
+
+[ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="1_gcujo"]
+[ext_resource type="Script" path="res://Scripts/pop_text.gd" id="1_tugd7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwigk"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.537255)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_70qc1"]
+font = ExtResource("1_gcujo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtywc"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 110
+corner_radius_top_right = 110
+corner_radius_bottom_right = 110
+corner_radius_bottom_left = 110
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1arfp"]
+bg_color = Color(0.533037, 0.533037, 0.533036, 0.709804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 110
+corner_radius_top_right = 110
+corner_radius_bottom_right = 110
+corner_radius_bottom_left = 110
+
+[node name="TextureRect" type="TextureRect"]
+z_index = 5
+offset_right = 74.0
+offset_bottom = 91.0
+script = ExtResource("1_tugd7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 53.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwigk")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 196.0
+offset_bottom = 30.0
+scale = Vector2(0.3, 0.3)
+label_settings = SubResource("LabelSettings_70qc1")
+text_overrun_behavior = 1
+
+[node name="Details" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 233.0
+offset_bottom = 127.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/normal_font = ExtResource("1_gcujo")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 3.0
+offset_right = 91.0
+offset_bottom = 28.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtywc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1arfp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1arfp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1arfp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1arfp")
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

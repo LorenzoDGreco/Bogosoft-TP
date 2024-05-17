@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=65 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Texture/TX Tileset Grass.png" id="2_t5rep"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Upgrades.gd" id="13_71q66"]
 [ext_resource type="Texture2D" uid="uid://dj7s83kgyv730" path="res://Resources/Texture/mejoraspad.png" id="15_dkwi6"]
 [ext_resource type="Texture2D" uid="uid://d3yi7hv2pl0lp" path="res://Resources/Texture/Mejoras.png" id="16_qidtu"]
+[ext_resource type="Texture2D" uid="uid://cpa2d7qwn3a1f" path="res://Resources/RPG Cursors/Cursor Pointer Big.png" id="17_74s32"]
 [ext_resource type="Texture2D" uid="uid://dhoq7o4q1k1xr" path="res://Resources/RPG Cursors/Cursor Pointer.png" id="17_s3pqc"]
 [ext_resource type="Texture2D" uid="uid://iglaymm0ig7l" path="res://Resources/RPG Cursors/Cursor Move.png" id="18_2cw6q"]
 [ext_resource type="Script" path="res://Scripts/Mouse.gd" id="19_csb5a"]
@@ -1566,6 +1567,7 @@ font = ExtResource("7_5g5nk")
 
 [sub_resource type="Theme" id="Theme_gbpt6"]
 default_font = ExtResource("7_5g5nk")
+default_font_size = 16
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_to786"]
 texture = ExtResource("15_dkwi6")
@@ -1579,6 +1581,62 @@ texture = ExtResource("15_dkwi6")
 texture = ExtResource("16_qidtu")
 
 [sub_resource type="Theme" id="Theme_rqtsj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr8a7"]
+bg_color = Color(0.305882, 0.305882, 0.305882, 0.643137)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_miore"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2stkr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq5u7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq5fo"]
+bg_color = Color(0.672118, 0.608645, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2dc8"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5pus"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyq1o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trag5"]
 
 [sub_resource type="Theme" id="Theme_s3h3u"]
 
@@ -1615,7 +1673,6 @@ animations = [{
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1715,17 +1772,23 @@ label_settings = SubResource("LabelSettings_ieii3")
 [node name="Upgrades" type="TextureRect" parent="CanvasLayer"]
 offset_left = 375.0
 offset_top = 175.0
-offset_right = 535.0
+offset_right = 503.0
 offset_bottom = 223.0
 script = ExtResource("13_71q66")
 
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer/Upgrades"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = 1.0
-offset_right = 240.0
-offset_bottom = 95.0
+offset_right = 118.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+auto_translate = false
+localize_numeral_system = false
 mouse_filter = 2
 theme = SubResource("Theme_gbpt6")
 theme_override_constants/side_margin = 0
@@ -1741,21 +1804,46 @@ layout_mode = 2
 theme = SubResource("Theme_rqtsj")
 theme_override_fonts/font = ExtResource("7_5g5nk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrades/TabContainer/Clicks"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Clicks"]
+y_sort_enabled = true
+clip_contents = true
 layout_mode = 0
-offset_right = 230.0
-offset_bottom = 64.0
-mouse_filter = 0
-alignment = 1
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 64.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
 
-[node name="Button" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
+[node name="text_label" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/Panel"]
+y_sort_enabled = true
 layout_mode = 2
+offset_left = 2.0
+offset_right = 110.0
+offset_bottom = 44.0
+scale = Vector2(0.5, 0.5)
+focus_neighbor_bottom = NodePath("../upgrade_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
+icon = ExtResource("17_74s32")
+flat = true
+icon_alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
+[node name="upgrade_click" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/Panel"]
 layout_mode = 2
-
-[node name="Button3" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
-layout_mode = 2
+offset_left = 4.0
+offset_top = 22.0
+offset_right = 104.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
+vertical_icon_alignment = 2
 
 [node name="Defensas" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
 visible = false
@@ -1769,7 +1857,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("7_5g5nk")
 
-[node name="Button" type="Button" parent="CanvasLayer/Upgrades"]
+[node name="slide" type="Button" parent="CanvasLayer/Upgrades"]
 layout_mode = 0
 offset_top = 24.0
 offset_right = 20.0
@@ -1792,4 +1880,8 @@ script = ExtResource("19_csb5a")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]
-[connection signal="pressed" from="CanvasLayer/Upgrades/Button" to="CanvasLayer/Upgrades" method="_on_button_pressed"]
+[connection signal="tab_changed" from="CanvasLayer/Upgrades/TabContainer" to="CanvasLayer/Upgrades" method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/Panel/text_label" to="CanvasLayer/Upgrades" method="_on_text_label_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/Panel/text_label" to="CanvasLayer/Upgrades" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_slide_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_button_pressed"]

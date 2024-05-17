@@ -8,6 +8,7 @@ func _on_mouse_exited():
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
+		print("CLICK-MONEDA")
 		on_coin_pickUp()
 
 func on_coin_pickUp():
