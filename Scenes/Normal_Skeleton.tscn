@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dslu4bkpcxxrc"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_6eh46"]
+[ext_resource type="Script" path="res://Scripts/Normal_Skeleton.gd" id="1_tj1bc"]
 [ext_resource type="Texture2D" uid="uid://cfnv65irsdf0q" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="2_w8h1v"]
 [ext_resource type="Texture2D" uid="uid://butl2fo6y82qy" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="3_epdts"]
 [ext_resource type="Texture2D" uid="uid://cm8r1js63ymxt" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="4_7bi8x"]
@@ -156,7 +156,7 @@ radius = 16.0
 [node name="Esqueleto_Normal" type="Area2D"]
 z_index = 2
 position = Vector2(14, -14)
-script = ExtResource("1_6eh46")
+script = ExtResource("1_tj1bc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)

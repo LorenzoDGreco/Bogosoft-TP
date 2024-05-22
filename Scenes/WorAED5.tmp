@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=65 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Texture/TX Tileset Grass.png" id="2_t5rep"]
@@ -19,11 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cpa2d7qwn3a1f" path="res://Resources/RPG Cursors/Cursor Pointer Big.png" id="17_74s32"]
 [ext_resource type="Texture2D" uid="uid://dhoq7o4q1k1xr" path="res://Resources/RPG Cursors/Cursor Pointer.png" id="17_s3pqc"]
 [ext_resource type="Texture2D" uid="uid://iglaymm0ig7l" path="res://Resources/RPG Cursors/Cursor Move.png" id="18_2cw6q"]
-[ext_resource type="Texture2D" uid="uid://d1v6dbvd6port" path="res://Resources/ArcherIcon.png" id="18_ctr5m"]
 [ext_resource type="Script" path="res://Scripts/Mouse.gd" id="19_csb5a"]
-[ext_resource type="Texture2D" uid="uid://b8mmka6fyer1q" path="res://Resources/ArrowWood.png" id="19_va5vu"]
-[ext_resource type="Texture2D" uid="uid://67m5xg8sqnxe" path="res://Resources/ArrowSpeedWood.png" id="20_md8tt"]
-[ext_resource type="Texture2D" uid="uid://bn6cldmygfc7y" path="res://Resources/ArrowMultishootWood.png" id="20_qf2ow"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r0yjv"]
 tile_data = PackedInt32Array(0, 4, 0, 65536, 4, 1, 1, 65540, 0, 65537, 65540, 1)
@@ -1774,11 +1770,9 @@ text = "0"
 label_settings = SubResource("LabelSettings_ieii3")
 
 [node name="Upgrades" type="TextureRect" parent="CanvasLayer"]
-z_index = 3
-z_as_relative = false
 offset_left = 375.0
 offset_top = 175.0
-offset_right = 528.0
+offset_right = 503.0
 offset_bottom = 223.0
 script = ExtResource("13_71q66")
 
@@ -1788,7 +1782,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_right = 143.0
+offset_right = 118.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1804,304 +1798,38 @@ theme_override_styles/tab_selected = SubResource("StyleBoxTexture_to786")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_wdbi2")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_2aqse")
 theme_override_styles/panel = SubResource("StyleBoxTexture_dn0vd")
-current_tab = 2
 
 [node name="Clicks" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_rqtsj")
 theme_override_fonts/font = ExtResource("7_5g5nk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrades/TabContainer/Clicks" node_paths=PackedStringArray("shortcut_context")]
+[node name="Panel" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Clicks"]
+y_sort_enabled = true
+clip_contents = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 4.0
-offset_right = 286.0
-offset_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-shortcut_context = NodePath("../../Unidades/ScrollContainer")
-theme_override_constants/separation = 45
-
-[node name="ClickDamage" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
+offset_right = 64.0
+offset_bottom = 52.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
 
-[node name="TextClickDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage"]
+[node name="text_label" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/Panel"]
 y_sort_enabled = true
-layout_mode = 0
-offset_left = 3.0
-offset_right = 111.0
+layout_mode = 2
+offset_left = 2.0
+offset_right = 110.0
 offset_bottom = 44.0
 scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonClickDamage")
+focus_neighbor_bottom = NodePath("../upgrade_click")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
 icon = ExtResource("17_74s32")
 flat = true
 icon_alignment = 1
-expand_icon = true
 
-[node name="ButtonClickDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="ClickArea" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextClickArea" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickArea"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonClickArea")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-flat = true
-icon_alignment = 1
-
-[node name="ButtonClickArea" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickArea"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="ClickAreaDamage" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextClickAreaDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickAreaDamage"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonClickAreaDamage")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-flat = true
-icon_alignment = 1
-
-[node name="ButtonClickAreaDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickAreaDamage"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="Unidades" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/font = ExtResource("7_5g5nk")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Upgrades/TabContainer/Unidades"]
-layout_mode = 1
-offset_left = 6.0
-offset_right = 284.0
-offset_bottom = 58.0
-follow_focus = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer" node_paths=PackedStringArray("shortcut_context")]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-shortcut_context = NodePath("..")
-theme_override_constants/separation = 12
-
-[node name="UnlockArcher" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextUnlockArcher" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonUnlockArcher")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-icon = ExtResource("18_ctr5m")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonUnlockArcher" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="ArcherDamage" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextArcherDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherDamage"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonArcherDamage")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-icon = ExtResource("19_va5vu")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonArcherDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherDamage"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="ArcherAttackSpeed2" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextArcherAttackSpeed" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherAttackSpeed2"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonArcherAttackSpeed")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-icon = ExtResource("20_md8tt")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonArcherAttackSpeed" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherAttackSpeed2"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
-
-[node name="ArcherMultiShoot" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextArcherMultiShoot" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherMultiShoot"]
-y_sort_enabled = true
-layout_mode = 2
-offset_left = 2.0
-offset_right = 110.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonArcherMultiShoot")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-icon = ExtResource("20_qf2ow")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonArcherMultiShoot" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherMultiShoot"]
+[node name="upgrade_click" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/Panel"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 22.0
@@ -2118,59 +1846,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
 vertical_icon_alignment = 2
 
 [node name="Defensas" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("7_5g5nk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrades/TabContainer/Defensas" node_paths=PackedStringArray("shortcut_context")]
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 286.0
-offset_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-shortcut_context = NodePath("../../Unidades/ScrollContainer")
-theme_override_constants/separation = 45
-
-[node name="MaxLife" type="Panel" parent="CanvasLayer/Upgrades/TabContainer/Defensas/HBoxContainer"]
-y_sort_enabled = true
-custom_minimum_size = Vector2(58, 48)
+[node name="Buffos" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lr8a7")
-
-[node name="TextMaxLife" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Defensas/HBoxContainer/MaxLife"]
-y_sort_enabled = true
-layout_mode = 0
-offset_left = 3.0
-offset_right = 111.0
-offset_bottom = 44.0
-scale = Vector2(0.5, 0.5)
-focus_neighbor_bottom = NodePath("../ButtonMaxLife")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonMaxLife" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Defensas/HBoxContainer/MaxLife"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 22.0
-offset_right = 104.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uyq1o")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
-vertical_icon_alignment = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("7_5g5nk")
 
 [node name="slide" type="Button" parent="CanvasLayer/Upgrades"]
 layout_mode = 0
@@ -2196,7 +1881,7 @@ script = ExtResource("19_csb5a")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]
 [connection signal="tab_changed" from="CanvasLayer/Upgrades/TabContainer" to="CanvasLayer/Upgrades" method="_on_tab_container_tab_changed"]
-[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/TextClickDamage" to="CanvasLayer/Upgrades" method="_on_text_click_damage_pressed"]
-[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/ButtonClickDamage" to="CanvasLayer/Upgrades" method="_on_button_click_damage_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/Panel/text_label" to="CanvasLayer/Upgrades" method="_on_text_label_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/Panel/text_label" to="CanvasLayer/Upgrades" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_slide_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_button_pressed"]

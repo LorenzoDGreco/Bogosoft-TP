@@ -1,6 +1,7 @@
 class_name Enemy extends Area2D
 
 var screensize = DisplayServer.window_get_size()
+var upgrades : Upgrades
 var speed:int = 50
 var life:int
 
@@ -36,7 +37,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 	
 	if (event is InputEventMouseButton && event.pressed):
 		hp_bar_instance.visible = true
-		recibe_damage(1)
+		recibe_damage(upgrades.damage_click)
 
 func recibe_damage(damage:int):
 	life -= damage 

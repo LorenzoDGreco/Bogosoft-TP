@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3b8aga3tyfur"]
 
 [ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="1_gcujo"]
-[ext_resource type="Script" path="res://Scripts/pop_text.gd" id="1_tugd7"]
+[ext_resource type="Script" path="res://Scripts/popText.gd" id="1_tugd7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwigk"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.537255)

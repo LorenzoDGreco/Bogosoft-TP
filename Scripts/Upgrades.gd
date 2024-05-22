@@ -1,38 +1,41 @@
-extends TextureRect
+class_name Upgrades extends Node
 
-@onready var _pop_text = preload("res://Scenes/pop_text.tscn")
-var pop_text_instance
-var menu_extended = false
+var damage_multiplier = 2  # Factor de multiplicación para el crecimiento exponencial reducido
+var max_increment = 100  # Valor máximo de incremento del daño
 
-func _on_slide_pressed():
-	if menu_extended: slide_out()
-	else: slide_in()
-	menu_extended = not menu_extended
+var damage_click : int = 1
+var area_click : float = 0
+var area_damage : int = 0
 
-func slide_in():
-	var slide_tween = get_tree().create_tween()
-	slide_tween.tween_property(self, "position", Vector2(255, 175), 0.5)
+var archer : int = 0
+var archer_damage : int = 1
+var archer_speed : float = 3
+var archer_multishoot : int = 1
 
-func slide_out():
-	if pop_text_instance != null:
-		pop_text_instance.close()
-		
-	var slide_tween = get_tree().create_tween()
-	slide_tween.tween_property(self, "position", Vector2(375, 175), 0.5)
+var max_hp_castle : int = 100
 
-func _on_text_label_pressed():
-	if pop_text_instance != null:
-		pop_text_instance.close()
-		return
+func generic_update(var_to_update): #Buscar un mejor escalado
+	if var_to_update < max_increment: var_to_update = int(var_to_update * damage_multiplier)
+	else: var_to_update += max_increment
+	return var_to_update
+
+func upgrade_damage_click():
+	damage_click = generic_update(damage_click)
+
+func upgrade_area_click():
+	pass
 	
-	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
-	pop_text_instance.set_text(
-		"Damage Increase", 
-		"This upgrade increases the damage dealt by the player's active clicks.\n\nCurrent damage:\nDamage Next level:")
-	add_child(pop_text_instance)
-
-
-func _on_tab_container_tab_changed(tab):
-	if pop_text_instance != null:
-		pop_text_instance.close()
+func upgrade_area_damage():
+	pass
+	
+func unlock_archer():
+	pass
+	
+func upgrade_archer_damage():
+	pass
+	
+func upgrade_archer_speed():
+	pass
+	
+func upgrade_archer_multishoot():
+	pass
