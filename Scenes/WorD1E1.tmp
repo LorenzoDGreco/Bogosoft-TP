@@ -1496,33 +1496,6 @@ pattern_5 = SubResource("TileMapPattern_yqw7m")
 pattern_6 = SubResource("TileMapPattern_8qn1f")
 pattern_7 = SubResource("TileMapPattern_3nd7s")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gex4n"]
-atlas = ExtResource("17_s3pqc")
-region = Rect2(0, 0, 58, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpv6v"]
-atlas = ExtResource("18_2cw6q")
-region = Rect2(0, 0, 58, 55)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2mo6i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gex4n")
-}],
-"loop": false,
-"name": &"click",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpv6v")
-}],
-"loop": false,
-"name": &"on_click",
-"speed": 20.0
-}]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhrsq"]
 texture = ExtResource("9_7b5i4")
 
@@ -1642,7 +1615,6 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
-corner_detail = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2dc8"]
 border_width_left = 1
@@ -1674,11 +1646,37 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g61qw"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gex4n"]
+atlas = ExtResource("17_s3pqc")
+region = Rect2(0, 0, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpv6v"]
+atlas = ExtResource("18_2cw6q")
+region = Rect2(0, 0, 58, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mo6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gex4n")
+}],
+"loop": false,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpv6v")
+}],
+"loop": false,
+"name": &"on_click",
+"speed": 20.0
+}]
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1696,16 +1694,6 @@ script = ExtResource("5_0cbsh")
 
 [node name="Character" parent="." instance=ExtResource("6_p6uki")]
 position = Vector2(375, 110)
-
-[node name="Mouse" type="AnimatedSprite2D" parent="."]
-visibility_layer = 17
-position = Vector2(366, 120)
-rotation = -1.85354
-scale = Vector2(0.204364, 0.233285)
-sprite_frames = SubResource("SpriteFrames_2mo6i")
-animation = &"click"
-autoplay = "click"
-script = ExtResource("19_csb5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(192, 112)
@@ -1865,9 +1853,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -1903,10 +1890,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -1942,9 +1927,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2005,11 +1989,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2047,11 +2028,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2089,11 +2067,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2131,11 +2106,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2150,7 +2122,6 @@ mouse_filter = 2
 theme_override_fonts/font = ExtResource("7_5g5nk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrades/TabContainer/Defensas" node_paths=PackedStringArray("shortcut_context")]
-layout_mode = 0
 offset_left = 6.0
 offset_top = 4.0
 offset_right = 286.0
@@ -2191,11 +2162,8 @@ offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_5g5nk")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq5fo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h2dc8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y5pus")
@@ -2214,11 +2182,20 @@ theme_override_fonts/font = ExtResource("7_5g5nk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g61qw")
 text = ">"
 
+[node name="Mouse" type="AnimatedSprite2D" parent="."]
+visibility_layer = 17
+position = Vector2(366, 120)
+rotation = -1.85354
+scale = Vector2(0.204364, 0.233285)
+sprite_frames = SubResource("SpriteFrames_2mo6i")
+animation = &"click"
+autoplay = "click"
+script = ExtResource("19_csb5a")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]
 [connection signal="tab_changed" from="CanvasLayer/Upgrades/TabContainer" to="CanvasLayer/Upgrades" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/TextClickDamage" to="CanvasLayer/Upgrades" method="_on_text_click_damage_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/ButtonClickDamage" to="CanvasLayer/Upgrades" method="_on_button_click_damage_pressed"]
-[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher/ButtonUnlockArcher" to="CanvasLayer/Upgrades" method="_on_button_unlock_archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_slide_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_button_pressed"]

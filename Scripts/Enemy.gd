@@ -1,7 +1,7 @@
 class_name Enemy extends Area2D
 
 var screensize = DisplayServer.window_get_size()
-var upgrades : Upgrades
+var stats : Stats
 var speed:int = 50
 var life:int
 
@@ -28,6 +28,9 @@ func _on_body_entered(body):
 		get_node("AnimatedSprite2D").play("default")
 		speed=0
 		set_deferred("monitorable", false) #Soluciona el lag en gran medida (100 enemigos up) pero cuidado con las hitbox de las flechas
+	if body.name == "Arrow":
+		#recibi el daño de la flecha
+		pass
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if life <= 0:
@@ -37,12 +40,15 @@ func _on_input_event(_viewport, event, _shape_idx):
 	
 	if (event is InputEventMouseButton && event.pressed):
 		hp_bar_instance.visible = true
-		recibe_damage(upgrades.damage_click)
+		recibe_damage(stats.click_damage)
 
 func recibe_damage(damage:int):
 	life -= damage 
 	
 	if life <= 0:
+		var pos = stats.target.rfind(self)
+		stats.target.pop_at(pos)
+		print(stats.target)
 		get_node("AnimatedSprite2D").play("death")
 		get_node("Manos").queue_free()
 		hp_bar_instance.queue_free()

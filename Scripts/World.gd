@@ -7,28 +7,34 @@ var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 @onready var upgrades = Upgrades.new()
+@onready var stats = Stats.new()
 @onready var upgrades_menu = get_node("CanvasLayer/Upgrades")
 @onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
 @onready var Mouse = get_node("Mouse")
 
-var total_coins : int
-
 func _ready():
-	hp_bar_ui.set_max_life(upgrades.max_hp_castle)
+	hp_bar_ui.set_max_life(stats.max_life)
 	upgrades_menu.upgrades = upgrades
+	upgrades_menu.stats = stats
 
 #posibilidad spawn del 30% de la oleada
 func _on_timer_timeout():
 	var n_s = normal_skeleton.instantiate()
 	n_s.global_position = Vector2(-10, randf_range(55,180))
 	n_s.connect("enemy_death", spawn_coins)
-	n_s.upgrades = upgrades
+	n_s.stats = stats
+	
+	stats.target.push_front(n_s)
+	
 	add_child(n_s)
 	
 	var w_s = warrior_skeleton.instantiate()
 	w_s.global_position = Vector2(-10, randf_range(55,180))
 	w_s.connect("enemy_death", spawn_coins)
-	w_s.upgrades = upgrades
+	w_s.stats = stats
+	
+	stats.target.push_front(n_s)
+	
 	add_child(w_s)
 	
 	#dificultad = new 
@@ -44,10 +50,11 @@ func _on_timer_timeout():
 	#daño += dificultad
 
 func _on_coin_pick_up(coins):
-	total_coins += coins
-	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(total_coins)
+	stats.total_Coins += coins
+	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(stats.total_Coins)
 
 func spawn_coins(position, _amount):
+	
 	position.y += offset_coin
 	
 	#for i in range(0, _amount):

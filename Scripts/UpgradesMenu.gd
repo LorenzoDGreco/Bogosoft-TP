@@ -4,8 +4,24 @@ extends TextureRect
 var pop_text_instance
 
 var upgrades : Upgrades
+var stats : Stats
 var menu_extended = false
 
+func _ready():
+	set_initial_gold()
+	
+func set_initial_gold():
+	$TabContainer/Clicks/HBoxContainer/ClickDamage/ButtonClickDamage.text = "100"
+	$TabContainer/Clicks/HBoxContainer/ClickArea/ButtonClickArea.text = "10000"
+	$TabContainer/Clicks/HBoxContainer/ClickAreaDamage/ButtonClickAreaDamage.text =  "15000"
+	
+	$TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher/ButtonUnlockArcher.text = "2500"
+	$TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherDamage/ButtonArcherDamage.text = "500"
+	$TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherAttackSpeed2/ButtonArcherAttackSpeed.text = "5000"
+	$TabContainer/Unidades/ScrollContainer/HBoxContainer/ArcherMultiShoot/ButtonArcherMultiShoot.text = "20000"
+	
+	$TabContainer/Defensas/HBoxContainer/MaxLife/ButtonMaxLife.text = "100"
+	
 func _on_slide_pressed():
 	if menu_extended: slide_out()
 	else: slide_in()
@@ -39,4 +55,10 @@ func _on_text_click_damage_pressed():
 	add_child(pop_text_instance)
 
 func _on_button_click_damage_pressed():
-	upgrades.upgrade_damage_click()
+	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
+
+
+func _on_button_unlock_archer_pressed():
+	#SPAWN ARCHER ON 
+	
+	pass # Replace with function body.

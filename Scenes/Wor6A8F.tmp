@@ -1678,7 +1678,6 @@ corner_radius_bottom_left = 50
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2219,6 +2218,5 @@ text = ">"
 [connection signal="tab_changed" from="CanvasLayer/Upgrades/TabContainer" to="CanvasLayer/Upgrades" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/TextClickDamage" to="CanvasLayer/Upgrades" method="_on_text_click_damage_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/ButtonClickDamage" to="CanvasLayer/Upgrades" method="_on_button_click_damage_pressed"]
-[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher/ButtonUnlockArcher" to="CanvasLayer/Upgrades" method="_on_button_unlock_archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_slide_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_button_pressed"]
