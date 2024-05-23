@@ -155,6 +155,7 @@ radius = 16.0
 
 [node name="Esqueleto_Normal" type="Area2D"]
 z_index = 2
+z_as_relative = false
 position = Vector2(14, -14)
 script = ExtResource("1_tj1bc")
 

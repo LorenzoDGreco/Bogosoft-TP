@@ -6,6 +6,8 @@ var normal_skeleton : PackedScene = preload("res://Scenes/Normal_Skeleton.tscn")
 var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
+var arrow:PackedScene = preload("res://Scenes/Arrow.tscn")
+
 @onready var upgrades = Upgrades.new()
 @onready var stats = Stats.new()
 @onready var upgrades_menu = get_node("CanvasLayer/Upgrades")
@@ -24,7 +26,7 @@ func _on_timer_timeout():
 	n_s.connect("enemy_death", spawn_coins)
 	n_s.stats = stats
 	
-	stats.target.push_front(n_s)
+	stats.target.append(n_s)
 	
 	add_child(n_s)
 	
@@ -33,7 +35,7 @@ func _on_timer_timeout():
 	w_s.connect("enemy_death", spawn_coins)
 	w_s.stats = stats
 	
-	stats.target.push_front(n_s)
+	stats.target.append(n_s)
 	
 	add_child(w_s)
 	
@@ -67,3 +69,24 @@ func spawn_coins(position, _amount):
 
 func _on_hp_bar_ui_collapsed_castle():
 	print("You lose.")
+
+
+
+func _on_arrow_timer_timeout():
+	# Hay blancos para disparar?
+	if (stats.target.is_empty()): pass
+	
+	# Creo flecha, paso dirección del blanco más cercano
+	var new_arrow = arrow.instantiate()
+	#new_arrow.target = stats.target[0]
+	#add_child(new_arrow)
+	new_arrow.shoot_target(stats.target[0])
+	
+	# Paso velocidad y daño
+	new_arrow.stats = stats
+	
+	# Agrego flecha al CanvasLayer?
+	add_child(new_arrow)
+	#print(stats.target)
+	
+

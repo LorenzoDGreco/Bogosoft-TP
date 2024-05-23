@@ -24,6 +24,7 @@ func _process(delta):
 		queue_free()
 
 func _on_body_entered(body):
+	print("enemigo entro en " + body.name)
 	if body.name == "TileMap":
 		get_node("AnimatedSprite2D").play("default")
 		speed=0

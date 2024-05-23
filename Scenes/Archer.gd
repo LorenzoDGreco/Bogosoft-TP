@@ -1,5 +1,6 @@
-extends Node2D
+class_name Archer extends Node2D
 
+var stats: Stats
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

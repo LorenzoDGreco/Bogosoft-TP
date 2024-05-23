@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=70 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Texture/TX Tileset Grass.png" id="2_t5rep"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mmka6fyer1q" path="res://Resources/ArrowWood.png" id="19_va5vu"]
 [ext_resource type="Texture2D" uid="uid://67m5xg8sqnxe" path="res://Resources/ArrowSpeedWood.png" id="20_md8tt"]
 [ext_resource type="Texture2D" uid="uid://bn6cldmygfc7y" path="res://Resources/ArrowMultishootWood.png" id="20_qf2ow"]
+[ext_resource type="PackedScene" uid="uid://p6l5kyvu85sw" path="res://Scenes/Arrow.tscn" id="25_u22b2"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r0yjv"]
 tile_data = PackedInt32Array(0, 4, 0, 65536, 4, 1, 1, 65540, 0, 65537, 65540, 1)
@@ -1678,7 +1679,7 @@ corner_radius_bottom_left = 50
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.005
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2214,11 +2215,20 @@ theme_override_fonts/font = ExtResource("7_5g5nk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g61qw")
 text = ">"
 
+[node name="Arrow" parent="." instance=ExtResource("25_u22b2")]
+position = Vector2(344, 24)
+
+[node name="ArrowTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]
 [connection signal="tab_changed" from="CanvasLayer/Upgrades/TabContainer" to="CanvasLayer/Upgrades" method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/TextClickDamage" to="CanvasLayer/Upgrades" method="_on_text_click_damage_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickDamage/ButtonClickDamage" to="CanvasLayer/Upgrades" method="_on_button_click_damage_pressed"]
+[connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher/TextUnlockArcher" to="CanvasLayer/Upgrades" method="_on_text_unlock_archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/TabContainer/Unidades/ScrollContainer/HBoxContainer/UnlockArcher/ButtonUnlockArcher" to="CanvasLayer/Upgrades" method="_on_button_unlock_archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_slide_pressed"]
 [connection signal="pressed" from="CanvasLayer/Upgrades/slide" to="CanvasLayer/Upgrades" method="_on_button_pressed"]
+[connection signal="timeout" from="ArrowTimer" to="." method="_on_arrow_timer_timeout"]

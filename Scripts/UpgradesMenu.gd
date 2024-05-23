@@ -1,5 +1,7 @@
 extends TextureRect
 
+var archer : PackedScene = preload("res://Scenes/Archer.tscn")
+
 @onready var _pop_text = preload("res://Scenes/pop_text.tscn")
 var pop_text_instance
 
@@ -57,8 +59,29 @@ func _on_text_click_damage_pressed():
 func _on_button_click_damage_pressed():
 	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
 
+func _on_text_unlock_archer_pressed():
+	pass
 
 func _on_button_unlock_archer_pressed():
 	#SPAWN ARCHER ON 
-	
-	pass # Replace with function body.
+	#if HAY PLATA O NO HAY PLATAAAAA
+	var arch = archer.instantiate()
+	if stats.archer == 0:
+		arch.global_position = Vector2(361, 16)
+		arch.stats = stats
+		stats.archer += 1
+	elif stats.archer == 1:
+		arch.global_position = Vector2(361, 65)
+		arch.stats = stats
+		stats.archer += 1
+	elif stats.archer == 2:
+		arch.global_position = Vector2(361, 155)
+		arch.stats = stats
+		stats.archer += 1
+	elif stats.archer == 3:
+		arch.global_position = Vector2(361, 191)
+		arch.stats = stats
+		stats.archer += 1
+	else:
+		return
+	get_parent().get_parent().add_child(arch)
