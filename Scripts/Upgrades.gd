@@ -16,14 +16,14 @@ func upgrade_damage_click(damage_click):
 func upgrade_area_click():
 	pass
 	
-func upgrade_area_damage():
-	pass
+func upgrade_area_damage(area_damage):
+	return generic_update(area_damage)
 	
 func unlock_archer():
 	pass
 	
-func upgrade_archer_damage():
-	pass
+func upgrade_archer_damage(archer_damage):
+	return generic_update(archer_damage)
 	
 func upgrade_archer_speed():
 	pass
