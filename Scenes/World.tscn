@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=66 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Texture/TX Tileset Grass.png" id="2_t5rep"]
@@ -18,9 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://d3yi7hv2pl0lp" path="res://Resources/Texture/Mejoras.png" id="16_qidtu"]
 [ext_resource type="Texture2D" uid="uid://cpa2d7qwn3a1f" path="res://Resources/RPG Cursors/Cursor Pointer Big.png" id="17_74s32"]
 [ext_resource type="Texture2D" uid="uid://d1v6dbvd6port" path="res://Resources/ArcherIcon.png" id="18_ctr5m"]
+[ext_resource type="Texture2D" uid="uid://but0rxaumtio3" path="res://Resources/Cursor_Area_Pointer.png" id="18_xgb7x"]
+[ext_resource type="Texture2D" uid="uid://b8bmxe6bijq12" path="res://Resources/Click_Area_Damage.png" id="19_lck6e"]
 [ext_resource type="Texture2D" uid="uid://b8mmka6fyer1q" path="res://Resources/ArrowWood.png" id="19_va5vu"]
 [ext_resource type="Texture2D" uid="uid://67m5xg8sqnxe" path="res://Resources/ArrowSpeedWood.png" id="20_md8tt"]
 [ext_resource type="Texture2D" uid="uid://bn6cldmygfc7y" path="res://Resources/ArrowMultishootWood.png" id="20_qf2ow"]
+[ext_resource type="Texture2D" uid="uid://dpncrh5wcag77" path="res://Resources/CastleIcon.png" id="22_7p8kf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r0yjv"]
 tile_data = PackedInt32Array(0, 4, 0, 65536, 4, 1, 1, 65540, 0, 65537, 65540, 1)
@@ -1856,8 +1859,10 @@ focus_neighbor_bottom = NodePath("../ButtonClickArea")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
+icon = ExtResource("18_xgb7x")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="ButtonClickArea" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickArea"]
 layout_mode = 2
@@ -1895,8 +1900,10 @@ focus_neighbor_bottom = NodePath("../ButtonClickAreaDamage")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
+icon = ExtResource("19_lck6e")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="ButtonClickAreaDamage" type="Button" parent="CanvasLayer/Upgrades/TabContainer/Clicks/HBoxContainer/ClickAreaDamage"]
 layout_mode = 2
@@ -2143,6 +2150,7 @@ focus_neighbor_bottom = NodePath("../ButtonMaxLife")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_miore")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2stkr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq5u7")
+icon = ExtResource("22_7p8kf")
 flat = true
 icon_alignment = 1
 expand_icon = true
