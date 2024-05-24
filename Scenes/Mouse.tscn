@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://casi73p21g1cb"]
+
+[ext_resource type="Texture2D" uid="uid://dhoq7o4q1k1xr" path="res://Resources/RPG Cursors/Cursor Pointer.png" id="1_ldnmo"]
+[ext_resource type="Texture2D" uid="uid://iglaymm0ig7l" path="res://Resources/RPG Cursors/Cursor Move.png" id="2_wfwhy"]
+[ext_resource type="Script" path="res://Scripts/Mouse.gd" id="3_0pdsi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gex4n"]
+atlas = ExtResource("1_ldnmo")
+region = Rect2(0, 0, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpv6v"]
+atlas = ExtResource("2_wfwhy")
+region = Rect2(0, 0, 58, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rujxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gex4n")
+}],
+"loop": false,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpv6v")
+}],
+"loop": false,
+"name": &"on_click",
+"speed": 20.0
+}]
+
+[node name="Mouse" type="AnimatedSprite2D"]
+visibility_layer = 17
+position = Vector2(366, 120)
+rotation = -1.85354
+scale = Vector2(0.204364, 0.233285)
+sprite_frames = SubResource("SpriteFrames_rujxx")
+animation = &"click"
+autoplay = "click"
+script = ExtResource("3_0pdsi")

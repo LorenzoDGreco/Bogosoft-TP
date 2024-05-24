@@ -1,20 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3kno22nm8blp"]
 
 [ext_resource type="Script" path="res://Scripts/Heal_Point_Bar_Enemy.gd" id="1_kxl2k"]
+[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/hp_background.png" id="2_a0p6j"]
 [ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="2_kcdwc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nhoi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rij74"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpwko"]
-bg_color = Color(0.0117647, 0, 0, 1)
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/HpBar.png" id="3_w3xll"]
+[ext_resource type="Texture2D" uid="uid://4r2akl384aql" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/rpg (2).png" id="4_rncuf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3g3nu"]
 line_spacing = 0.0
@@ -22,37 +12,36 @@ font = ExtResource("2_kcdwc")
 shadow_size = 0
 
 [node name="Barra_Vida" type="TextureRect"]
+anchors_preset = -1
+anchor_right = 0.031
+anchor_bottom = 0.014
+offset_left = 13.0
+offset_top = -1.0
+offset_right = -22.712
+offset_bottom = -10.072
 script = ExtResource("1_kxl2k")
 
-[node name="Background" type="Panel" parent="."]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
-layout_mode = 0
-offset_right = 26.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4nhoi")
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0.5, 4)
+scale = Vector2(0.428571, 1.15)
+texture = ExtResource("2_a0p6j")
 
-[node name="PercentLife" type="Panel" parent="."]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 25.0
-offset_bottom = 6.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rij74")
+[node name="PercentLife" type="Sprite2D" parent="."]
+position = Vector2(-0.132813, 3.78125)
+scale = Vector2(0.4104, 0.8875)
+texture = ExtResource("3_w3xll")
 
-[node name="Border" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 26.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vpwko")
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 3.55271e-15)
+scale = Vector2(0.4, 0.845)
+texture = ExtResource("4_rncuf")
+vframes = 7
+frame = 5
 
 [node name="Life" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 61.0
-offset_bottom = 19.0
+offset_left = -13.0
+offset_right = 52.0
+offset_bottom = 20.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 5
 label_settings = SubResource("LabelSettings_3g3nu")

@@ -151,12 +151,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3u48"]
-radius = 16.0
+radius = 17.0
 
-[node name="Esqueleto_Normal" type="Area2D"]
+[node name="Normal_Skeleton" type="Area2D"]
 z_index = 2
 z_as_relative = false
-position = Vector2(14, -14)
+position = Vector2(1, 0)
 script = ExtResource("1_tj1bc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -176,5 +176,4 @@ position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_y3u48")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

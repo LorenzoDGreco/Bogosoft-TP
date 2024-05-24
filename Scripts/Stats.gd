@@ -1,9 +1,7 @@
 class_name Stats extends Node
 
-
-var target = []
-
-var total_Coins : int = 0
+var total_coins : int = 0
+var coin_value : int = 10
 
 var max_life : int = 100
 

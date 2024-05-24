@@ -40,7 +40,7 @@ func slide_out():
 	var slide_tween = get_tree().create_tween()
 	slide_tween.tween_property(self, "position", Vector2(375, 175), 0.5)
 
-func _on_tab_container_tab_changed(tab):
+func _on_tab_container_tab_changed(_tab):
 	if pop_text_instance != null:
 		pop_text_instance.close()
 
@@ -67,7 +67,7 @@ func _on_button_unlock_archer_pressed():
 		stats.archer += 1
 	else:
 		return
-	get_parent().get_parent().add_child(arch)
+	get_parent().get_parent().get_node("Defences").add_child(arch)
 
 
 func _pop_text_create():
