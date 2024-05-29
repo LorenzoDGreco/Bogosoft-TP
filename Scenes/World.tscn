@@ -1651,6 +1651,7 @@ corner_radius_bottom_left = 50
 script = ExtResource("1_g0f4n")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.39
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -32,8 +32,8 @@ func unlock_archer():
 func upgrade_archer_damage(archer_damage):
 	return generic_update(archer_damage)
 	
-func upgrade_archer_speed():
-	pass
+func upgrade_archer_speed(archer_speed):
+	return generic_update_float(archer_speed, 0.5)
 	
 func upgrade_archer_multishoot():
 	pass

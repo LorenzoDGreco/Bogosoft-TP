@@ -3,7 +3,12 @@ class_name Archer extends Node2D
 var arrow:PackedScene = preload("res://Scenes/Arrow.tscn")
 var stats: Stats
 
+func _ready():
+	$Timer.wait_time = stats.archer_speed
+
 func _on_timer_timeout():
+	$Timer.wait_time = stats.archer_speed
+
 	var enemigos = get_tree().get_nodes_in_group("enemy")
 	
 	if enemigos.size() > 0:
