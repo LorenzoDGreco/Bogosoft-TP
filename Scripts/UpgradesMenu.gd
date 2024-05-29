@@ -82,14 +82,12 @@ func _on_text_click_damage_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Damage Increase", 
+		"Clck Damage", 
 		"This upgrade increases the damage dealt by the player's active clicks.\n\nCurrent Click damage:\nDamage Next level:")
 	add_child(pop_text_instance)
 
 func _on_button_click_damage_pressed():
 	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
-
-
 
 func _on_text_click_area_pressed():
 	_pop_text_create()
@@ -97,10 +95,13 @@ func _on_text_click_area_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Increases the area of ​​click damage", 
+		"Click Area", 
 		"This upgrade increases the area of ​​click damage.")
 	add_child(pop_text_instance)
 
+func _on_button_click_area_pressed():
+	stats.area_click = upgrades.upgrade_area_click(stats.area_click)
+	print(stats.area_click)
 
 func _on_text_click_area_damage_pressed():
 	_pop_text_create()
@@ -108,7 +109,7 @@ func _on_text_click_area_damage_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Area Damage Increase", 
+		"Area Damage", 
 		"This upgrade increases the damage dealt by the player's active clicks Area.\n\nCurrent Area damage:\nDamage Next level:")
 	add_child(pop_text_instance)
 
@@ -117,7 +118,8 @@ func _on_button_click_area_damage_pressed():
 	stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
 
 
-#UNIDADES(Solo Arqueros por ahora)
+#UNIDADES
+
 func _on_text_unlock_archer_pressed():
 	_pop_text_create()
 	
@@ -135,7 +137,7 @@ func _on_text_archer_damage_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Archer Damage", 
+		"Damage", 
 		"This upgrade increases Archer's damage\n\nCurrent damage:\nDamage Next level:")
 	add_child(pop_text_instance)
 
@@ -150,9 +152,12 @@ func _on_text_archer_attack_speed_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Archer Attack Speed", 
+		"Attack Speed", 
 		"This upgrade increases Archer's attack speed\n\nCurrent attack speed:\nAttack speed Next level:")
 	add_child(pop_text_instance)
+
+func _on_button_archer_attack_speed_pressed():
+	pass # Replace with function body.
 
 
 func _on_text_archer_multi_shoot_pressed():
@@ -161,8 +166,31 @@ func _on_text_archer_multi_shoot_pressed():
 	pop_text_instance = _pop_text.instantiate()
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
-		"Archer Multishot", 
+		"Multishot", 
 		"This upgrade actives multishot for Archers\n\nCurrent arrows shooted:\nArrows Shooted Next level:")
 	add_child(pop_text_instance)
+
+func _on_button_archer_multi_shoot_pressed():
+	pass # Replace with function body.
+
+
+#DEFENSES
+
+func _on_text_max_life_pressed():
+	_pop_text_create()
+	
+	pop_text_instance = _pop_text.instantiate()
+	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.set_text(
+		"Max Life", 
+		"This upgrade increases Max Life of the castle\n\nCurrent Life:\nLife Next level:")
+	add_child(pop_text_instance)
+	
+func _on_button_max_life_pressed():
+	pass # Replace with function body.
+
+
+
+
 
 

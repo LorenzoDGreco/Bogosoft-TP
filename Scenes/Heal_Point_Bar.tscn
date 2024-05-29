@@ -39,6 +39,7 @@ vframes = 7
 frame = 5
 
 [node name="Life" type="Label" parent="."]
+layout_mode = 0
 offset_left = -13.0
 offset_right = 52.0
 offset_bottom = 20.0

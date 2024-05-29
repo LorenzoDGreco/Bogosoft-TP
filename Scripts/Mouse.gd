@@ -1,7 +1,9 @@
 extends AnimatedSprite2D
 
-var click = preload("res://Scenes/Click_Area.tscn")
-var click_instance
+var click_damage = preload("res://Scenes/Click_Damage.tscn")
+var click_area = preload("res://Scenes/Click_Area.tscn")
+var click_damage_instance
+var click_area_instance
 
 var stats : Stats
 
@@ -11,10 +13,20 @@ func _process(_delta):
 func _unhandled_input(event):
 	if (event is InputEventMouseButton && event.pressed):
 		self.play("on_click")
-		click_instance = click.instantiate()
-		click_instance.stats = stats
-		click_instance.global_position = get_global_mouse_position()
-		get_parent().add_child(click_instance)
+		click_damage_instance = click_damage.instantiate()
+		click_damage_instance.stats = stats
+		click_damage_instance.global_position = get_global_mouse_position()
+		get_parent().add_child(click_damage_instance)
+		
+		if stats.area_click != 0:
+			click_area_instance = click_area.instantiate()
+			click_area_instance.stats = stats
+			click_area_instance.global_position = get_global_mouse_position()
+			get_parent().add_child(click_area_instance)
+		
 	if (event is InputEventMouseButton && event.is_released()):
 		self.play("click")
-		click_instance.queue_free()
+		click_damage_instance.queue_free()
+		
+		if stats.area_click != 0:
+			click_area_instance.queue_free()
