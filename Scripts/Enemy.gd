@@ -26,8 +26,11 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "TileMap":
-		get_node("AnimatedSprite2D").play("default")
-		speed=0
+		if life <= 0:
+			get_node("AnimatedSprite2D").play("death")
+		else:
+			speed=0
+			get_node("AnimatedSprite2D").play("default")
 		#set_deferred("monitorable", false) #Soluciona el lag en gran medida (100 enemigos up) pero cuidado con las hitbox de las flechas
 
 func recibe_damage(damage:int):

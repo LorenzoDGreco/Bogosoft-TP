@@ -158,6 +158,7 @@ func _on_text_archer_attack_speed_pressed():
 
 func _on_button_archer_attack_speed_pressed():
 	stats.archer_speed = upgrades.upgrade_archer_speed(stats.archer_speed)
+	print(stats.archer_speed)
 
 
 func _on_text_archer_multi_shoot_pressed():

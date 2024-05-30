@@ -11,7 +11,7 @@ func _process(_delta):
 	Input.set_custom_mouse_cursor(sprite_frames.get_frame_texture(animation, frame), Input.CURSOR_ARROW, Vector2(sprite_frames.get_frame_texture(animation, frame).get_width(), sprite_frames.get_frame_texture(animation, frame).get_height()) / 2)
 
 func _unhandled_input(event):
-	if (event is InputEventMouseButton && event.pressed):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		self.play("on_click")
 		click_damage_instance = click_damage.instantiate()
 		click_damage_instance.stats = stats
@@ -24,9 +24,9 @@ func _unhandled_input(event):
 			click_area_instance.global_position = get_global_mouse_position()
 			get_parent().add_child(click_area_instance)
 		
-	if (event is InputEventMouseButton && event.is_released()):
+	if event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		self.play("click")
-		click_damage_instance.queue_free()
-		
-		if stats.area_click != 0:
-			click_area_instance.queue_free()
+		#click_damage_instance.queue_free()
+		#
+		#if stats.area_click != 0:
+			#click_area_instance.queue_free()
