@@ -45,6 +45,68 @@ func _on_tab_container_tab_changed(_tab):
 		pop_text_instance.close()
 
 
+
+func _pop_text_create():
+	if pop_text_instance != null:
+		pop_text_instance.close()
+		return
+	
+#MEJORAS CLICK
+func _on_text_click_damage_pressed():
+	_pop_text_create()
+	
+	pop_text_instance = _pop_text.instantiate()
+	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.set_text(
+		"Click Damage", 
+		"(Click or press Q to upgrade)\n\nThis upgrade increases the damage dealt by the player's active clicks.\n\nCurrent Click damage:\nDamage Next level:")
+	add_child(pop_text_instance)
+
+func _on_button_click_damage_pressed():
+	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
+
+func _on_text_click_area_pressed():
+	_pop_text_create()
+	
+	pop_text_instance = _pop_text.instantiate()
+	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.set_text(
+		"Click Area", 
+		"(Click or press W to upgrade)\n\nThis upgrade increases the area of ​​click damage.")
+	add_child(pop_text_instance)
+
+func _on_button_click_area_pressed():
+	stats.area_click = upgrades.upgrade_area_click(stats.area_click)
+	print(stats.area_click)
+
+func _on_text_click_area_damage_pressed():
+	_pop_text_create()
+	
+	pop_text_instance = _pop_text.instantiate()
+	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.set_text(
+		"Area Damage", 
+		"(Click or press E to upgrade)\n\nThis upgrade increases the damage dealt by the player's active clicks Area.\n\nCurrent Area damage:\nDamage Next level:")
+	add_child(pop_text_instance)
+
+
+func _on_button_click_area_damage_pressed():
+	stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
+
+
+#UNIDADES
+
+func _on_text_unlock_archer_pressed():
+	_pop_text_create()
+	
+	pop_text_instance = _pop_text.instantiate()
+	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.set_text(
+		"Archer", 
+		"(Click or press A to upgrade)\n\nThis unit attacks enemies automatically\n\nCurrent Archers(Max 4):")
+	add_child(pop_text_instance)
+
+
 func _on_button_unlock_archer_pressed():
 	#SPAWN ARCHER ON 
 	#if HAY PLATA O NO HAY PLATAAAAA
@@ -70,66 +132,6 @@ func _on_button_unlock_archer_pressed():
 	get_parent().get_parent().get_node("Defences").add_child(arch)
 
 
-func _pop_text_create():
-	if pop_text_instance != null:
-		pop_text_instance.close()
-		return
-	
-#MEJORAS CLICK
-func _on_text_click_damage_pressed():
-	_pop_text_create()
-	
-	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
-	pop_text_instance.set_text(
-		"Clck Damage", 
-		"This upgrade increases the damage dealt by the player's active clicks.\n\nCurrent Click damage:\nDamage Next level:")
-	add_child(pop_text_instance)
-
-func _on_button_click_damage_pressed():
-	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
-
-func _on_text_click_area_pressed():
-	_pop_text_create()
-	
-	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
-	pop_text_instance.set_text(
-		"Click Area", 
-		"This upgrade increases the area of ​​click damage.")
-	add_child(pop_text_instance)
-
-func _on_button_click_area_pressed():
-	stats.area_click = upgrades.upgrade_area_click(stats.area_click)
-	print(stats.area_click)
-
-func _on_text_click_area_damage_pressed():
-	_pop_text_create()
-	
-	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
-	pop_text_instance.set_text(
-		"Area Damage", 
-		"This upgrade increases the damage dealt by the player's active clicks Area.\n\nCurrent Area damage:\nDamage Next level:")
-	add_child(pop_text_instance)
-
-
-func _on_button_click_area_damage_pressed():
-	stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
-
-
-#UNIDADES
-
-func _on_text_unlock_archer_pressed():
-	_pop_text_create()
-	
-	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
-	pop_text_instance.set_text(
-		"Archer", 
-		"This unit attacks enemies automatically\n\nCurrent Archers(Max 4):")
-	add_child(pop_text_instance)
-
 	
 func _on_text_archer_damage_pressed():
 	_pop_text_create()
@@ -138,7 +140,7 @@ func _on_text_archer_damage_pressed():
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
 		"Damage", 
-		"This upgrade increases Archer's damage\n\nCurrent damage:\nDamage Next level:")
+		"(Click or press S to upgrade)\n\nThis upgrade increases Archer's damage\n\nCurrent damage:\nDamage Next level:")
 	add_child(pop_text_instance)
 
 
@@ -153,7 +155,7 @@ func _on_text_archer_attack_speed_pressed():
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
 		"Attack Speed", 
-		"This upgrade increases Archer's attack speed\n\nCurrent attack speed:\nAttack speed Next level:")
+		"(Click or press D to upgrade)\n\nThis upgrade increases Archer's attack speed\n\nCurrent attack speed:\nAttack speed Next level:")
 	add_child(pop_text_instance)
 
 func _on_button_archer_attack_speed_pressed():
@@ -168,7 +170,7 @@ func _on_text_archer_multi_shoot_pressed():
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
 		"Multishot", 
-		"This upgrade actives multishot for Archers\n\nCurrent arrows shooted:\nArrows Shooted Next level:")
+		"(Click or press F to upgrade)\n\nThis upgrade actives multishot for Archers\n\nCurrent arrows shooted:\nArrows Shooted Next level:")
 	add_child(pop_text_instance)
 
 func _on_button_archer_multi_shoot_pressed():
@@ -184,14 +186,33 @@ func _on_text_max_life_pressed():
 	pop_text_instance.position = Vector2(-80, -5)
 	pop_text_instance.set_text(
 		"Max Life", 
-		"This upgrade increases Max Life of the castle\n\nCurrent Life:\nLife Next level:")
+		"(Click or press Z to upgrade)\n\nThis upgrade increases Max Life of the castle\n\nCurrent Life:\nLife Next level:")
 	add_child(pop_text_instance)
 	
 func _on_button_max_life_pressed():
 	pass # Replace with function body.
 
 
-
+#KEY INPUTS
+#Ver si se puede dejar "mas lindo"
+func _unhandled_key_input (event):
+	if Input.is_action_just_pressed("upgclick"):
+		_on_button_click_damage_pressed()
+	elif Input.is_action_just_pressed("upgarea"):
+		_on_button_click_area_pressed()
+	elif Input.is_action_just_pressed("upgareadmg"):
+		_on_button_click_area_damage_pressed()
+	elif Input.is_action_just_pressed("unlockarcher"):
+		_on_button_unlock_archer_pressed()
+	elif Input.is_action_just_pressed("upgarchdmg"):
+		_on_button_archer_damage_pressed()
+	elif Input.is_action_just_pressed("upgarchas"):
+		_on_button_archer_attack_speed_pressed()
+	elif Input.is_action_just_pressed("upgarchmultishot"):
+		_on_button_archer_multi_shoot_pressed()
+	elif Input.is_action_just_pressed("upgmaxlife"):
+		_on_button_max_life_pressed()
+	
 
 
 
