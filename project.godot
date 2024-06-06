@@ -15,6 +15,12 @@ run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=854
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+
 [input]
 
 upgclick={
