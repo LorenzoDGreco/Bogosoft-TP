@@ -14,7 +14,7 @@ func _ready():
 	add_to_group("enemy")
 	set_monitorable(true)
 	
-	hp_bar_instance.position = Vector2(0, 13)
+	hp_bar_instance.position = Vector2(0, -25)
 	hp_bar_instance.set_life(life)
 	add_child(hp_bar_instance)
 	hp_bar_instance.visible = false

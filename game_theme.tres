@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://ng15dy8xte7k"]
+
+[resource]
+CategoryButton/base_type = &"Button"
+CategoryButton/colors/font_color = Color(1, 0, 0, 1)
+SliderButton/base_type = &"Button"
+SliderButton/colors/font_color = Color(0, 0.921569, 0, 1)

@@ -1,0 +1,247 @@
+[gd_scene load_steps=6 format=3 uid="uid://ukjwndvmc8wg"]
+
+[ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="1_u2iqp"]
+[ext_resource type="Texture2D" uid="uid://bpmdo0jfeqsra" path="res://cursor.png" id="2_g7uxa"]
+[ext_resource type="Texture2D" uid="uid://dfopvuyj0c7uj" path="res://coin.png" id="3_hqbkl"]
+[ext_resource type="Texture2D" uid="uid://cbwir5n7gb278" path="res://click_area.png" id="3_v4fyt"]
+[ext_resource type="Texture2D" uid="uid://dairdoane5eq1" path="res://click_area_damage.png" id="4_5xqi3"]
+
+[node name="UpgradesPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 31.0
+offset_right = 460.0
+offset_bottom = 141.0
+
+[node name="SliderButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_top = -31.0
+offset_right = 150.0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"SliderButton"
+text = "▼ Upgrades"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.45098, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuControls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 79.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="ClicksButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Clicks"
+
+[node name="UnitsButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Units"
+
+[node name="DefensesButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Defenses"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+tabs_visible = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ClicksPanel" type="Button" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+texture_normal = ExtResource("2_g7uxa")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "LV.123"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+text = "100"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+texture_normal = ExtResource("3_v4fyt")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "LV.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3.72K"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "+7.2"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+texture_normal = ExtResource("4_5xqi3")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "LV.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "999.99M"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "+7.54"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 7
+
+[node name="UnitsPanel" type="Button" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+
+[node name="DefensesPanel" type="Button" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")

@@ -25,13 +25,15 @@ func _ready():
 #posibilidad spawn del 30% de la oleada
 func _on_timer_timeout():
 	var n_s = normal_skeleton.instantiate()
-	n_s.global_position = Vector2(-10, randf_range(55,180))
+	#n_s.global_position = Vector2(-10, randf_range(55,180))
+	n_s.global_position = Vector2(-10, 50)
 	n_s.connect("enemy_death", spawn_coins)
 	n_s.stats = stats
 	get_node("Enemys").add_child(n_s)
 	
 	var w_s = warrior_skeleton.instantiate()
-	w_s.global_position = Vector2(-10, randf_range(55,180))
+	#w_s.global_position = Vector2(-10, randf_range(55,180))
+	w_s.global_position = Vector2(-10, 175)
 	w_s.connect("enemy_death", spawn_coins)
 	w_s.stats = stats
 	get_node("Enemys").add_child(w_s)
