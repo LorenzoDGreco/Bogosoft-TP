@@ -1766,6 +1766,11 @@ text = "0"
 label_settings = SubResource("LabelSettings_ieii3")
 metadata/_edit_use_anchors_ = true
 
+[node name="UpgradesPanel" parent="CanvasLayer" instance=ExtResource("24_6yj2v")]
+offset_top = 224.0
+offset_bottom = 334.0
+scale = Vector2(0.45, 0.45)
+
 [node name="Upgrades" type="TextureRect" parent="CanvasLayer"]
 z_index = 3
 z_as_relative = false
@@ -2206,11 +2211,6 @@ text = ">"
 position = Vector2(152, 107.5)
 shape = SubResource("RectangleShape2D_kbxuk")
 debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
-
-[node name="UpgradesPanel" parent="." instance=ExtResource("24_6yj2v")]
-offset_top = 174.0
-offset_bottom = 284.0
-scale = Vector2(0.45, 0.45)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]
