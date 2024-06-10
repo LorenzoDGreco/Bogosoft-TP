@@ -1767,6 +1767,7 @@ label_settings = SubResource("LabelSettings_ieii3")
 metadata/_edit_use_anchors_ = true
 
 [node name="UpgradesPanel" parent="CanvasLayer" instance=ExtResource("24_6yj2v")]
+z_index = 2
 offset_top = 224.0
 offset_bottom = 334.0
 scale = Vector2(0.45, 0.45)

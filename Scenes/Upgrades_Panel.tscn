@@ -471,7 +471,7 @@ custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
-tooltip_text = "Click Damage"
+tooltip_text = "Castle Repairs"
 texture_normal = ExtResource("11_jei7n")
 ignore_texture_size = true
 stretch_mode = 5
@@ -504,7 +504,7 @@ custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.52
-tooltip_text = "Click Area Size"
+tooltip_text = "Castle Max HP"
 texture_normal = ExtResource("11_jei7n")
 ignore_texture_size = true
 stretch_mode = 5
@@ -549,3 +549,22 @@ vertical_alignment = 1
 [connection signal="pressed" from="MenuControls/ClicksButton" to="." method="_on_clicks_button_pressed"]
 [connection signal="pressed" from="MenuControls/UnitsButton" to="." method="_on_units_button_pressed"]
 [connection signal="pressed" from="MenuControls/DefensesButton" to="." method="_on_defenses_button_pressed"]
+[connection signal="tab_changed" from="MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_click_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_click_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_click_area_size_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_click_area_size_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3/TextureButton" to="." method="_on_click_area_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3/UpgradeButton" to="." method="_on_click_area_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_number_archers_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_number_archers_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4/TextureButton" to="." method="_on_number_arrows_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4/UpgradeButton" to="." method="_on_number_arrows_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_arrow_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_arrow_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3/TextureButton" to="." method="_on_arrow_cooldown_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3/UpgradeButton" to="." method="_on_arrow_cooldown_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_castle_repairs_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_castle_repairs_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_castle_max_hp_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_castle_max_hp_upgrade_button_pressed"]

@@ -13,8 +13,13 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 @onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
 @onready var mouse_instance = mouse.instantiate()
 
+@onready var upgrades_panel = $CanvasLayer/UpgradesPanel
+
 func _ready():
 	hp_bar_ui.set_max_life(stats.max_life)
+	
+	upgrades_panel.upgrades = upgrades
+	upgrades_panel.stats = stats
 	
 	upgrades_menu.upgrades = upgrades
 	upgrades_menu.stats = stats
