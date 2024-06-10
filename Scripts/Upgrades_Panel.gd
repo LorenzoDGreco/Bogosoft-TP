@@ -12,20 +12,19 @@ var upgrades : Upgrades
 var stats : Stats
 
 func _ready():
-	# Should initialize all the labels and prices
+	# Should initialize all the labels and prices here
 	pass
 
 # Upgrades' pop text behavior ------------------------
-func _pop_text_create():
+func _close_preexisting_pop_text():
 	if pop_text_instance != null:
 		pop_text_instance.close()
 		return
 
+# Tab switching and sliding -------------------------------
 func _on_tab_container_tab_changed(_tab):
-	if pop_text_instance != null:
-		pop_text_instance.close()
+	_close_preexisting_pop_text()
 
-# Tab switching -----------------------------------------
 func _on_clicks_button_pressed():
 	tab_container.set_current_tab(0)
 
@@ -36,6 +35,8 @@ func _on_defenses_button_pressed():
 	tab_container.set_current_tab(2)
 
 func _on_slider_button_toggled(toggled_on):
+	_close_preexisting_pop_text()
+	
 	var slide_tween = get_tree().create_tween()
 	if toggled_on: 
 		slide_tween.tween_property(self, "position", Vector2(0, 224), 0.25)
@@ -48,10 +49,10 @@ func _on_slider_button_toggled(toggled_on):
 # CLICKS UPGRADES -----------------------------------------
 # Click Damage container ----------------------------------
 func _on_click_damage_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Click Damage [Q]", 
 		"Increases the damage dealt by the player's active clicks.")
@@ -62,10 +63,10 @@ func _on_click_damage_upgrade_button_pressed():
 
 # Click Area Size container -------------------------------
 func _on_click_area_size_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Click Area Size [W]", 
 		"Expands the size of the damaging area surrounding a ​​click.")
@@ -77,10 +78,10 @@ func _on_click_area_size_upgrade_button_pressed():
 
 # Click Area Damage container -----------------------------
 func _on_click_area_damage_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Click Area Damage [E]", 
 		"Increases the damage of the area surrounding a click.")
@@ -93,10 +94,10 @@ func _on_click_area_damage_upgrade_button_pressed():
 # UNITS UPGRADES ------------------------------------------
 # +1 Archer container -------------------------------------
 func _on_number_archers_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"+1 Archer [A]", 
 		"Places an additional archer, fires arrows automatically.")
@@ -120,15 +121,15 @@ func _on_number_archers_upgrade_button_pressed():
 	
 	# SWAP OUT ARCHERS FOR ARROWS IF MAX ARCHERS
 	if stats.archer == 4:
-		$MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer.set_visible(false)
-		$MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4.set_visible(true)
+		tab_container.get_node("UnitsPanel/VBoxContainer/HBoxContainer").set_visible(false)
+		tab_container.get_node("UnitsPanel/VBoxContainer/HBoxContainer4").set_visible(true)
 
 # Arrow Damage container ----------------------------------
 func _on_arrow_damage_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Arrow Damage [S]", 
 		"Increases the damage of a fired arrow.")
@@ -139,10 +140,10 @@ func _on_arrow_damage_upgrade_button_pressed():
 
 # Arrow Cooldown container --------------------------------
 func _on_arrow_cooldown_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Arrow Cooldown [D]", 
 		"Decreases the time between arrows fired.")
@@ -154,10 +155,10 @@ func _on_arrow_cooldown_upgrade_button_pressed():
 
 # +1 Arrow container --------------------------------------
 func _on_number_arrows_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"+1 Arrow [F]", 
 		"Fires an additional arrow per shot.")
@@ -170,10 +171,10 @@ func _on_number_arrows_upgrade_button_pressed():
 # DEFENSES UPGRADES ---------------------------------------
 # Castle Repairs container --------------------------------
 func _on_castle_repairs_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Castle Repairs [X]", 
 		"Instantly recovers a fixed amount of HP.")
@@ -184,10 +185,10 @@ func _on_castle_repairs_upgrade_button_pressed():
 
 # Castle Max HP container ---------------------------------
 func _on_castle_max_hp_texture_button_pressed():
-	_pop_text_create()
+	_close_preexisting_pop_text()
 	
 	pop_text_instance = _pop_text.instantiate()
-	pop_text_instance.position = Vector2(-80, -5)
+	pop_text_instance.position = Vector2(468, 5)
 	pop_text_instance.set_text(
 		"Castle Max HP [Z]", 
 		"Increases the castle's maximum health points.")
@@ -195,6 +196,7 @@ func _on_castle_max_hp_texture_button_pressed():
 	
 func _on_castle_max_hp_upgrade_button_pressed():
 	pass # Replace with function body.
+
 
 # Keyboard Inputs -----------------------------------------
 func _unhandled_key_input (event):
