@@ -1803,8 +1803,10 @@ theme_override_styles/tab_selected = SubResource("StyleBoxTexture_to786")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_wdbi2")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_2aqse")
 theme_override_styles/panel = SubResource("StyleBoxTexture_dn0vd")
+current_tab = 1
 
 [node name="Clicks" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_rqtsj")
 theme_override_fonts/font = ExtResource("7_5g5nk")
@@ -1945,7 +1947,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_trag5")
 vertical_icon_alignment = 2
 
 [node name="Unidades" type="Button" parent="CanvasLayer/Upgrades/TabContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("7_5g5nk")
