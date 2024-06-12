@@ -18,7 +18,7 @@ func _on_timer_timeout():
 
 func on_coin_pickUp():
 	var move_coin = get_tree().create_tween()
-	move_coin.tween_property(self, "position", Vector2(105, 25), 0.5)
+	move_coin.tween_property(self, "position", Vector2(112, 12), 0.5)
 	move_coin.connect("finished", on_move_coin_finished)
 	
 func on_move_coin_finished():
