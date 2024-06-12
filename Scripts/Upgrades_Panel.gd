@@ -13,6 +13,7 @@ var stats : Stats
 
 func _ready():
 	# Should initialize all the labels and prices here
+	#load_values(stats)
 	pass
 
 # Upgrades' pop text behavior ------------------------
@@ -59,7 +60,11 @@ func _on_click_damage_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_damage_upgrade_button_pressed():
-	stats.click_damage = upgrades.upgrade_damage_click(stats.click_damage)
+	upgrades.upgrade_click_damage()
+	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
+		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
+	)
+	update_upgrade_button_status()
 
 # Click Area Size container -------------------------------
 func _on_click_area_size_texture_button_pressed():
@@ -217,3 +222,31 @@ func _unhandled_key_input (event):
 	elif Input.is_action_just_pressed("upgmaxlife"):
 		_on_castle_max_hp_upgrade_button_pressed()
 	# ADD REPAIRS KEYBIND
+
+
+# Loading elements values ---------------------------------
+func load_starting_values():
+	# Loads initial values of every container at startup
+	# DONE: update values after upgrading!
+	# TODO: decrease coins after upgrading!
+	# TODO: apply to every upgrade container!
+	# TODO: apply modifications to specific upgrades (i.e. Archer LV0, Repairs, etc.)
+	# Clicks upgrades -------------------------------------
+	stats.click_damage_next = upgrades.generic_update(stats.click_damage_stat)
+	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
+		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
+	)
+	update_upgrade_button_status()
+
+func update_upgrade_button_status():
+	# Updates upgrade buttons state globally
+	# Runs at startup, then on every coin collected
+	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").update_button_status(
+		stats.total_coins < stats.click_damage_cost
+	)
+	
+func update_stats(name, level, stat, cost, next):
+	stats.upgrade_data[name].current_level += 1
+	stats.upgrade_data[name].current_stat = stats.upgrade_data[name].next_stat
+	stats.upgrade_date[name].upgrade_cost *= 2
+	stats.upgrade_data[name].next_stat = upgrades.generic_update(stat)

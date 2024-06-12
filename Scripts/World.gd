@@ -9,7 +9,6 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 @onready var upgrades = Upgrades.new()
 @onready var stats = Stats.new()
-@onready var upgrades_menu = get_node("CanvasLayer/Upgrades")
 @onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
 @onready var mouse_instance = mouse.instantiate()
 
@@ -20,9 +19,9 @@ func _ready():
 	
 	upgrades_panel.upgrades = upgrades
 	upgrades_panel.stats = stats
+	upgrades_panel.load_starting_values()
 	
-	upgrades_menu.upgrades = upgrades
-	upgrades_menu.stats = stats
+	upgrades.stats = stats
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -58,6 +57,9 @@ func _on_timer_timeout():
 func _on_coin_pick_up(coins):
 	stats.total_coins += coins
 	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(stats.total_coins)
+	
+	# UPDATE THE BUTTON STATE ON EVERY CONTAINER HERE
+	upgrades_panel.update_upgrade_button_status()
 
 func spawn_coins(position, _amount):
 	

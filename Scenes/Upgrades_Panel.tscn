@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ukjwndvmc8wg"]
+[gd_scene load_steps=13 format=3 uid="uid://ukjwndvmc8wg"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades_Panel.gd" id="1_0r61v"]
 [ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="1_u2iqp"]
 [ext_resource type="Texture2D" uid="uid://bpmdo0jfeqsra" path="res://cursor.png" id="2_g7uxa"]
+[ext_resource type="Script" path="res://Scripts/Upgrade_Container.gd" id="3_4ivte"]
 [ext_resource type="Texture2D" uid="uid://dfopvuyj0c7uj" path="res://coin.png" id="3_hqbkl"]
 [ext_resource type="Texture2D" uid="uid://cbwir5n7gb278" path="res://click_area.png" id="3_v4fyt"]
 [ext_resource type="Texture2D" uid="uid://dairdoane5eq1" path="res://click_area_damage.png" id="4_5xqi3"]
@@ -104,11 +105,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+[node name="ClickDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_4ivte")
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -117,7 +119,7 @@ tooltip_text = "Click Damage"
 texture_normal = ExtResource("2_g7uxa")
 stretch_mode = 0
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -125,7 +127,7 @@ text = "LV.123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -133,7 +135,7 @@ text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
@@ -141,21 +143,19 @@ text = "100"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "2.2"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 3.5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+[node name="ClickAreaSizeContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -164,7 +164,7 @@ tooltip_text = "Click Area Size"
 texture_normal = ExtResource("3_v4fyt")
 stretch_mode = 0
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -174,7 +174,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.75
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -184,7 +184,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 7.0
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -192,21 +192,19 @@ text = "3.72K"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 1.75
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+[node name="ClickAreaDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -215,7 +213,7 @@ tooltip_text = "Click Area Damage"
 texture_normal = ExtResource("4_5xqi3")
 stretch_mode = 0
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -225,7 +223,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.4
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -233,7 +231,7 @@ text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -241,15 +239,13 @@ text = "999.99M"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "3.0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 1.4
 
 [node name="UnitsPanel" type="Button" parent="MarginContainer/TabContainer"]
 visible = false
@@ -262,11 +258,11 @@ offset_right = 350.0
 offset_bottom = 100.0
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+[node name="NumberArchersContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -275,7 +271,7 @@ tooltip_text = "+1 Archer"
 texture_normal = ExtResource("7_mc7uc")
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -283,7 +279,7 @@ text = "LV.123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -291,7 +287,7 @@ text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
@@ -299,7 +295,7 @@ text = "100"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -307,12 +303,12 @@ text = "2.2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+[node name="NumberArrowsContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -321,7 +317,7 @@ tooltip_text = "+1 Arrow"
 texture_normal = ExtResource("8_qlru3")
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -331,7 +327,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.4
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -339,7 +335,7 @@ text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -347,7 +343,7 @@ text = "999.99M"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -355,11 +351,11 @@ text = "3.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+[node name="ArrowDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -368,7 +364,7 @@ tooltip_text = "Arrow Damage"
 texture_normal = ExtResource("9_vobm2")
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -378,7 +374,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.75
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -388,7 +384,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 7.0
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -396,7 +392,7 @@ text = "3.72K"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -404,11 +400,11 @@ text = "1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+[node name="ArrowCooldownContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -417,7 +413,7 @@ tooltip_text = "Arrow Cooldown"
 texture_normal = ExtResource("10_iea4h")
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -427,7 +423,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.4
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -435,7 +431,7 @@ text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -443,7 +439,7 @@ text = "999.99M"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -462,11 +458,11 @@ offset_right = 350.0
 offset_bottom = 100.0
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
+[node name="CastleRepairsContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -476,7 +472,7 @@ texture_normal = ExtResource("11_jei7n")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -485,7 +481,7 @@ text = "+25% HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
@@ -495,11 +491,11 @@ text = "100"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
+[node name="CastleMaxHPContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -509,7 +505,7 @@ texture_normal = ExtResource("11_jei7n")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -519,7 +515,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 1.75
 
-[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -529,7 +525,7 @@ vertical_alignment = 1
 visible_characters = 7
 visible_ratio = 7.0
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2"]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -537,7 +533,7 @@ text = "3.72K"
 icon = ExtResource("3_hqbkl")
 text_overrun_behavior = 1
 
-[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2"]
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -550,21 +546,21 @@ vertical_alignment = 1
 [connection signal="pressed" from="MenuControls/UnitsButton" to="." method="_on_units_button_pressed"]
 [connection signal="pressed" from="MenuControls/DefensesButton" to="." method="_on_defenses_button_pressed"]
 [connection signal="tab_changed" from="MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_click_damage_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_click_damage_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_click_area_size_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_click_area_size_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3/TextureButton" to="." method="_on_click_area_damage_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/HBoxContainer3/UpgradeButton" to="." method="_on_click_area_damage_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_number_archers_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_number_archers_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4/TextureButton" to="." method="_on_number_arrows_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer4/UpgradeButton" to="." method="_on_number_arrows_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_arrow_damage_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_arrow_damage_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3/TextureButton" to="." method="_on_arrow_cooldown_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/HBoxContainer3/UpgradeButton" to="." method="_on_arrow_cooldown_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_castle_repairs_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer/UpgradeButton" to="." method="_on_castle_repairs_upgrade_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_castle_max_hp_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/HBoxContainer2/UpgradeButton" to="." method="_on_castle_max_hp_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer/TextureButton" to="." method="_on_click_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer/UpgradeButton" to="." method="_on_click_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer/TextureButton" to="." method="_on_click_area_size_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer/UpgradeButton" to="." method="_on_click_area_size_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer/TextureButton" to="." method="_on_click_area_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer/UpgradeButton" to="." method="_on_click_area_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer/TextureButton" to="." method="_on_number_archers_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer/UpgradeButton" to="." method="_on_number_archers_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer/TextureButton" to="." method="_on_number_arrows_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer/UpgradeButton" to="." method="_on_number_arrows_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer/TextureButton" to="." method="_on_arrow_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer/UpgradeButton" to="." method="_on_arrow_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer/TextureButton" to="." method="_on_arrow_cooldown_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer/UpgradeButton" to="." method="_on_arrow_cooldown_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer/TextureButton" to="." method="_on_castle_repairs_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer/UpgradeButton" to="." method="_on_castle_repairs_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer/TextureButton" to="." method="_on_castle_max_hp_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer/UpgradeButton" to="." method="_on_castle_max_hp_upgrade_button_pressed"]
