@@ -1,8 +1,5 @@
 class_name Upgrades extends Node
 
-# Received from World
-var stats:Stats
-
 const damage_multiplier = 2  # Factor de multiplicación para el crecimiento exponencial reducido
 const max_increment = 100  # Valor máximo de incremento del daño
 
@@ -43,9 +40,3 @@ func upgrade_archer_speed(archer_speed):
 func upgrade_archer_multishoot():
 	pass
 
-
-func upgrade_click_damage():
-	stats.click_damage_level += 1
-	stats.click_damage_stat = stats.click_damage_next
-	stats.click_damage_cost *= 2 # REPLACE FOR PRICE INCREMENT FUNCTION EVENTUALLY
-	stats.click_damage_next = generic_update(stats.click_damage_stat)

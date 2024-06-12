@@ -1,5 +1,7 @@
 class_name Stats extends Node
 
+var upgrades:Upgrades = Upgrades.new()
+
 # Player Stats
 var wave_number:int = 0
 var total_coins:int = 0
@@ -67,3 +69,16 @@ var archer_speed : float = 3
 var archer_multishoot : int = 1
 var max_life : int = 100
 
+func _init():
+	# Initialize the 'next' values of every upgrade HERE
+	click_damage_next = upgrades.generic_update(click_damage_stat)
+	
+	
+
+func upgrade_click_damage():
+	total_coins -= click_damage_cost
+	
+	click_damage_level += 1
+	click_damage_stat = click_damage_next
+	click_damage_cost *= 2 # REPLACE FOR PRICE INCREMENT FUNCTION EVENTUALLY
+	click_damage_next = upgrades.generic_update(click_damage_stat)

@@ -1,6 +1,7 @@
 class_name UpgradesPanel extends Node
 
 @onready var tab_container = $MarginContainer/TabContainer
+var castle_ui
 
 # Importing external scripts and scenes
 var archer : PackedScene = preload("res://Scenes/Archer.tscn")
@@ -8,7 +9,6 @@ var archer : PackedScene = preload("res://Scenes/Archer.tscn")
 var pop_text_instance
 
 # Recieved from World
-var upgrades : Upgrades
 var stats : Stats
 
 func _ready():
@@ -60,7 +60,14 @@ func _on_click_damage_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_damage_upgrade_button_pressed():
-	upgrades.upgrade_click_damage()
+	# Extra check in case of KeyboardInput
+	if stats.total_coins < stats.click_damage_cost: return
+	
+	# Stats upgrades (coin, level, stat, etc.) DONE
+	stats.upgrade_click_damage()
+	
+	# UI updates (coins on topbar, upgrade_container, every upgrade_button) DONE
+	castle_ui.get_node("CoinsUI/Label").text = str(stats.total_coins)
 	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
 		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
 	)
@@ -78,8 +85,9 @@ func _on_click_area_size_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_area_size_upgrade_button_pressed():
-	stats.area_click = upgrades.upgrade_area_click(stats.area_click)
+	#stats.area_click = upgrades.upgrade_area_click(stats.area_click)
 	# print(stats.area_click)
+	pass
 
 # Click Area Damage container -----------------------------
 func _on_click_area_damage_texture_button_pressed():
@@ -93,7 +101,8 @@ func _on_click_area_damage_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_area_damage_upgrade_button_pressed():
-	stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
+	#stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
+	pass
 
 
 # UNITS UPGRADES ------------------------------------------
@@ -141,7 +150,8 @@ func _on_arrow_damage_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_arrow_damage_upgrade_button_pressed():
-	stats.archer_damage = upgrades.upgrade_archer_damage(stats.archer_damage)
+	#stats.archer_damage = upgrades.upgrade_archer_damage(stats.archer_damage)
+	pass
 
 # Arrow Cooldown container --------------------------------
 func _on_arrow_cooldown_texture_button_pressed():
@@ -155,8 +165,9 @@ func _on_arrow_cooldown_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_arrow_cooldown_upgrade_button_pressed():
-	stats.archer_speed = upgrades.upgrade_archer_speed(stats.archer_speed)
-	print(stats.archer_speed)
+	#stats.archer_speed = upgrades.upgrade_archer_speed(stats.archer_speed)
+	#print(stats.archer_speed)
+	pass
 
 # +1 Arrow container --------------------------------------
 func _on_number_arrows_texture_button_pressed():
@@ -228,11 +239,11 @@ func _unhandled_key_input (event):
 func load_starting_values():
 	# Loads initial values of every container at startup
 	# DONE: update values after upgrading!
-	# TODO: decrease coins after upgrading!
+	# DONE: decrease coins after upgrading!
 	# TODO: apply to every upgrade container!
 	# TODO: apply modifications to specific upgrades (i.e. Archer LV0, Repairs, etc.)
 	# Clicks upgrades -------------------------------------
-	stats.click_damage_next = upgrades.generic_update(stats.click_damage_stat)
+	#stats.click_damage_next = upgrades.generic_update(stats.click_damage_stat)
 	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
 		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
 	)
@@ -244,9 +255,3 @@ func update_upgrade_button_status():
 	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").update_button_status(
 		stats.total_coins < stats.click_damage_cost
 	)
-	
-func update_stats(name, level, stat, cost, next):
-	stats.upgrade_data[name].current_level += 1
-	stats.upgrade_data[name].current_stat = stats.upgrade_data[name].next_stat
-	stats.upgrade_date[name].upgrade_cost *= 2
-	stats.upgrade_data[name].next_stat = upgrades.generic_update(stat)

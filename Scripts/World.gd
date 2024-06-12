@@ -7,7 +7,6 @@ var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn
 var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
-@onready var upgrades = Upgrades.new()
 @onready var stats = Stats.new()
 @onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
 @onready var mouse_instance = mouse.instantiate()
@@ -16,12 +15,10 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 func _ready():
 	hp_bar_ui.set_max_life(stats.max_life)
-	
-	upgrades_panel.upgrades = upgrades
+
 	upgrades_panel.stats = stats
+	upgrades_panel.castle_ui = $CanvasLayer/CastleUI
 	upgrades_panel.load_starting_values()
-	
-	upgrades.stats = stats
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
