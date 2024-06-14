@@ -3,11 +3,11 @@ extends Area2D
 var stats : Stats
 
 func _ready():
-	$CollisionShape2D.shape.set("radius", stats.area_click)
+	$CollisionShape2D.shape.set("radius", stats.click_area_size_stat)
 
 func _draw():
 	var cen = Vector2(0, 0)
-	var rad = stats.area_click
+	var rad = stats.click_area_size_stat
 	var col = Color(1,1,1)
 	var line_length = 5
 	var gap_length = 3
@@ -29,7 +29,7 @@ func draw_dotted_circle(center: Vector2, radius: float, line_length: float, gap_
 
 func _on_area_entered(area):
 	if area.is_in_group("enemy"):
-		area.recibe_damage(stats.area_damage)
+		area.recibe_damage(stats.click_area_damage_stat)
 
 
 func _on_timer_timeout():

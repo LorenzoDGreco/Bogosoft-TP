@@ -12,13 +12,17 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 @onready var mouse_instance = mouse.instantiate()
 
 @onready var upgrades_panel = $CanvasLayer/UpgradesPanel
+@onready var top_panel = $CanvasLayer/TopPanel
 
 func _ready():
-	hp_bar_ui.set_max_life(stats.max_life)
-
+	# Initialize Top Panel
+	top_panel.stats = stats
+	top_panel.load_values()
+	
+	# Initialize Upgrades Panel (and link to Top Panel for updates)
 	upgrades_panel.stats = stats
-	upgrades_panel.castle_ui = $CanvasLayer/CastleUI
-	upgrades_panel.load_starting_values()
+	upgrades_panel.top_panel = top_panel
+	upgrades_panel.load_initial_values()
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -52,10 +56,11 @@ func _on_timer_timeout():
 	#daño += dificultad
 
 func _on_coin_pick_up(coins):
+	# Updates the internal total_coins stat
 	stats.total_coins += coins
-	$CanvasLayer/CastleUI/CoinsUI/Label.text = str(stats.total_coins)
-	
-	# UPDATE THE BUTTON STATE ON EVERY CONTAINER HERE
+	# Updates total coins on display
+	top_panel.update_player_coins()
+	# Updates every upgrade button state
 	upgrades_panel.update_upgrade_button_status()
 
 func spawn_coins(position, _amount):

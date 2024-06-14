@@ -1,20 +1,26 @@
 class_name UpgradesPanel extends Node
 
 @onready var tab_container = $MarginContainer/TabContainer
-var castle_ui
 
 # Importing external scripts and scenes
 var archer : PackedScene = preload("res://Scenes/Archer.tscn")
 @onready var _pop_text = preload("res://Scenes/pop_text.tscn")
 var pop_text_instance
 
-# Recieved from World
-var stats : Stats
+# Upgrade Container scenes
+@onready var click_damage = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer
+@onready var click_area_size = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer
+@onready var click_area_damage = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer
+@onready var number_archers = $MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer
+@onready var arrow_damage = $MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer
+@onready var arrow_cooldown = $MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer
+@onready var number_arrows = $MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer
+@onready var castle_repairs = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer
+@onready var castle_max_hp = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer
 
-func _ready():
-	# Should initialize all the labels and prices here
-	#load_values(stats)
-	pass
+# Recieved from World
+var stats:Stats
+var top_panel:TopPanel
 
 # Upgrades' pop text behavior ------------------------
 func _close_preexisting_pop_text():
@@ -63,14 +69,12 @@ func _on_click_damage_upgrade_button_pressed():
 	# Extra check in case of KeyboardInput
 	if stats.total_coins < stats.click_damage_cost: return
 	
-	# Stats upgrades (coin, level, stat, etc.) DONE
+	# Stats upgrades (coin, level, stat, etc.)
 	stats.upgrade_click_damage()
 	
-	# UI updates (coins on topbar, upgrade_container, every upgrade_button) DONE
-	castle_ui.get_node("CoinsUI/Label").text = str(stats.total_coins)
-	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
-		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
-	)
+	# UI updates (coins on topbar, upgrade_container, every upgrade_button)
+	top_panel.update_player_coins()
+	click_damage.load_values(stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next)
 	update_upgrade_button_status()
 
 # Click Area Size container -------------------------------
@@ -85,9 +89,19 @@ func _on_click_area_size_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_area_size_upgrade_button_pressed():
-	#stats.area_click = upgrades.upgrade_area_click(stats.area_click)
-	# print(stats.area_click)
-	pass
+	# Extra check in case of KeyboardInput
+	if stats.total_coins < stats.click_area_size_cost: return
+	
+	# Stats upgrades (coin, level, stat, etc.)
+	stats.upgrade_click_area_size()
+	
+	# UI updates (coins on topbar, upgrade_container, every upgrade_button)
+	top_panel.update_player_coins()
+	click_area_size.load_values(stats.click_area_size_level, stats.click_area_size_stat, stats.click_area_size_cost, stats.click_area_size_next)
+	update_upgrade_button_status()
+	
+	# If upgraded once, click_area_damage container appears
+	click_area_damage.set_visible(true)
 
 # Click Area Damage container -----------------------------
 func _on_click_area_damage_texture_button_pressed():
@@ -101,8 +115,17 @@ func _on_click_area_damage_texture_button_pressed():
 	add_child(pop_text_instance)
 
 func _on_click_area_damage_upgrade_button_pressed():
-	#stats.area_damage = upgrades.upgrade_area_damage(stats.area_damage)
-	pass
+	# Extra check in case of KeyboardInput
+	if stats.total_coins < stats.click_area_damage_cost or stats.click_area_size_stat == 0:
+		return
+	
+	# Stats upgrades (coin, level, stat, etc.)
+	stats.upgrade_click_area_damage()
+	
+	# UI updates (coins on topbar, upgrade_container, every upgrade_button)
+	top_panel.update_player_coins()
+	click_area_damage.load_values(stats.click_area_damage_level, stats.click_area_damage_stat, stats.click_area_damage_cost, stats.click_area_damage_next)
+	update_upgrade_button_status()
 
 
 # UNITS UPGRADES ------------------------------------------
@@ -135,8 +158,8 @@ func _on_number_archers_upgrade_button_pressed():
 	
 	# SWAP OUT ARCHERS FOR ARROWS IF MAX ARCHERS
 	if stats.archer == 4:
-		tab_container.get_node("UnitsPanel/VBoxContainer/HBoxContainer").set_visible(false)
-		tab_container.get_node("UnitsPanel/VBoxContainer/HBoxContainer4").set_visible(true)
+		number_archers.set_visible(false)
+		number_arrows.set_visible(true)
 
 # Arrow Damage container ----------------------------------
 func _on_arrow_damage_texture_button_pressed():
@@ -236,22 +259,22 @@ func _unhandled_key_input (event):
 
 
 # Loading elements values ---------------------------------
-func load_starting_values():
+func load_initial_values():
 	# Loads initial values of every container at startup
-	# DONE: update values after upgrading!
-	# DONE: decrease coins after upgrading!
+	# DONE: update values after upgrading (on upgrade event -> upgrade_panel)
+	# DONE: decrease coins after upgrading (on upgrade event -> top_panel)
 	# TODO: apply to every upgrade container!
 	# TODO: apply modifications to specific upgrades (i.e. Archer LV0, Repairs, etc.)
 	# Clicks upgrades -------------------------------------
-	#stats.click_damage_next = upgrades.generic_update(stats.click_damage_stat)
-	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").load_values(
-		stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next
-	)
+	click_damage.load_values(stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next)
+	click_area_size.load_values(stats.click_area_size_level, stats.click_area_size_stat, stats.click_area_size_cost, stats.click_area_size_next)
+	click_area_damage.load_values(stats.click_area_damage_level, stats.click_area_damage_stat, stats.click_area_damage_cost, stats.click_area_damage_next)
+	
 	update_upgrade_button_status()
 
 func update_upgrade_button_status():
-	# Updates upgrade buttons state globally
-	# Runs at startup, then on every coin collected
-	tab_container.get_node("ClicksPanel/VBoxContainer/ClickDamageContainer").update_button_status(
-		stats.total_coins < stats.click_damage_cost
-	)
+	# Runs at startup, after collecting a coin, and after buying an upgrade
+	click_damage.update_button_status(stats.total_coins < stats.click_damage_cost)
+	click_area_size.update_button_status(stats.total_coins < stats.click_area_size_cost)
+	click_area_damage.update_button_status(stats.total_coins < stats.click_area_damage_cost)
+	

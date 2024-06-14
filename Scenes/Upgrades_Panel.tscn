@@ -107,7 +107,6 @@ theme_override_constants/separation = 2
 
 [node name="ClickDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 script = ExtResource("3_4ivte")
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
@@ -117,7 +116,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.52
 tooltip_text = "Click Damage"
 texture_normal = ExtResource("2_g7uxa")
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 layout_mode = 2
@@ -126,6 +125,7 @@ size_flags_vertical = 1
 text = "LV.123"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
 
 [node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 layout_mode = 2
@@ -134,6 +134,8 @@ size_flags_vertical = 1
 text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
 clip_contents = true
@@ -150,10 +152,12 @@ size_flags_vertical = 1
 text = "2.2"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [node name="ClickAreaSizeContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+script = ExtResource("3_4ivte")
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 custom_minimum_size = Vector2(28, 28)
@@ -162,7 +166,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.52
 tooltip_text = "Click Area Size"
 texture_normal = ExtResource("3_v4fyt")
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 layout_mode = 2
@@ -171,8 +175,8 @@ size_flags_vertical = 1
 text = "LV.0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 1.75
+visible_characters = 6
+visible_ratio = 1.5
 
 [node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 layout_mode = 2
@@ -181,8 +185,8 @@ size_flags_vertical = 1
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 7.0
+visible_characters = 6
+visible_ratio = 6.0
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
 custom_minimum_size = Vector2(105, 0)
@@ -199,10 +203,13 @@ size_flags_vertical = 1
 text = "1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [node name="ClickAreaDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 3
+script = ExtResource("3_4ivte")
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 custom_minimum_size = Vector2(28, 28)
@@ -211,7 +218,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.52
 tooltip_text = "Click Area Damage"
 texture_normal = ExtResource("4_5xqi3")
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 layout_mode = 2
@@ -220,8 +227,8 @@ size_flags_vertical = 1
 text = "LV.30"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 1.4
+visible_characters = 6
+visible_ratio = 1.2
 
 [node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 layout_mode = 2
@@ -230,6 +237,8 @@ size_flags_vertical = 1
 text = "2.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
 custom_minimum_size = Vector2(105, 0)
@@ -246,6 +255,8 @@ size_flags_vertical = 1
 text = "3.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [node name="UnitsPanel" type="Button" parent="MarginContainer/TabContainer"]
 visible = false
