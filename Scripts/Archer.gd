@@ -4,17 +4,19 @@ var arrow:PackedScene = preload("res://Scenes/Arrow.tscn")
 var stats: Stats
 
 func _ready():
-	$Timer.wait_time = stats.archer_speed
+	$Timer.wait_time = stats.arrow_cooldown_stat
 
 func _on_timer_timeout():
-	$Timer.wait_time = stats.archer_speed
+	$Timer.wait_time = stats.arrow_cooldown_stat
 
 	var enemigos = get_tree().get_nodes_in_group("enemy")
 	
 	if enemigos.size() > 0:
-		# TODO: ITERAR POR MULTI SHOOT
-		var enemigo_aleatorio = enemigos[randi() % enemigos.size()]
-		disparar(enemigo_aleatorio)
+		# To shoot multiple arrows at once
+		for i in stats.number_arrows_stat:
+			var enemigo_aleatorio = enemigos[randi() % enemigos.size()]
+			disparar(enemigo_aleatorio)
+		
 
 func disparar(enemigo):
 	if is_instance_valid(enemigo):

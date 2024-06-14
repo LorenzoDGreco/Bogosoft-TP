@@ -25,9 +25,9 @@ var click_area_damage_cost:int = 400
 var click_area_damage_next
 
 # Units Upgrade Stats
-var number_archers_level:int = 1
+var number_archers_level:int = 0
 var number_archers_stat = 0
-var number_archers_cost:int = 100
+var number_archers_cost:int = 300
 var number_archers_next
 
 var arrow_damage_level:int = 1
@@ -42,7 +42,7 @@ var arrow_cooldown_next
 
 var number_arrows_level:int = 1
 var number_arrows_stat = 1
-var number_arrows_cost:int = 100
+var number_arrows_cost:int = 1000
 var number_arrows_next
 
 # Defenses Upgrade Stats
@@ -55,7 +55,7 @@ var castle_max_hp_next
 
 # Player Stats
 var wave_number:int = 0
-var total_coins:int = 5000
+var total_coins:int = 10000
 #var player_hp = castle_max_hp_stat
 var player_hp = 75
 
@@ -78,6 +78,11 @@ func _init():
 	click_damage_next = upgrades.generic_update(click_damage_stat)
 	click_area_size_next = upgrades.generic_update_float(click_area_size_stat, true)
 	click_area_damage_next = upgrades.generic_update(click_area_damage_stat)
+	
+	number_archers_next = number_archers_stat + 1
+	arrow_damage_next = upgrades.generic_update(arrow_damage_stat)
+	arrow_cooldown_next = upgrades.generic_update_float(arrow_cooldown_stat, false)
+	number_arrows_next = number_arrows_stat + 1
 
 func upgrade_click_damage():
 	total_coins -= click_damage_cost
@@ -102,3 +107,35 @@ func upgrade_click_area_damage():
 	click_area_damage_stat = click_area_damage_next
 	click_area_damage_cost *= 2
 	click_area_damage_next = upgrades.generic_update(click_area_damage_stat)
+
+func upgrade_number_archers():
+	total_coins -= number_archers_cost
+	
+	number_archers_level += 1
+	number_archers_stat = number_archers_next
+	number_archers_cost *= 2
+	number_archers_next = number_archers_stat + 1
+	
+func upgrade_arrow_damage():
+	total_coins -= arrow_damage_cost
+	
+	arrow_damage_level += 1
+	arrow_damage_stat = arrow_damage_next
+	arrow_damage_cost *= 2
+	arrow_damage_next = upgrades.generic_update(arrow_damage_stat)
+	
+func upgrade_arrow_cooldown():
+	total_coins -= arrow_cooldown_cost
+	
+	arrow_cooldown_level += 1
+	arrow_cooldown_stat = arrow_cooldown_next
+	arrow_cooldown_cost *= 2
+	arrow_cooldown_next = upgrades.generic_update_float(arrow_cooldown_stat, false)
+	
+func upgrade_number_arrows():
+	total_coins -= number_arrows_cost
+	
+	number_arrows_level += 1
+	number_arrows_stat = number_arrows_next
+	number_arrows_cost *= 2
+	number_arrows_next = number_arrows_stat + 1
