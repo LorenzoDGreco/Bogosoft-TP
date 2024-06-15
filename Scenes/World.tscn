@@ -1480,11 +1480,11 @@ pattern_6 = SubResource("TileMapPattern_8qn1f")
 pattern_7 = SubResource("TileMapPattern_3nd7s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbxuk"]
-size = Vector2(304, 125)
+size = Vector2(304, 120)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_g0f4n")
-metadata/_edit_horizontal_guides_ = [45.0, 170.0]
+metadata/_edit_horizontal_guides_ = [50.0, 170.0]
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -1525,7 +1525,7 @@ offset_bottom = 334.0
 scale = Vector2(0.45, 0.45)
 
 [node name="enemy paths" type="CollisionShape2D" parent="."]
-position = Vector2(152, 107.5)
+position = Vector2(152, 110)
 shape = SubResource("RectangleShape2D_kbxuk")
 debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
 

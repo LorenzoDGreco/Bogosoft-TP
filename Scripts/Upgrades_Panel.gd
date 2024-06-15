@@ -54,11 +54,11 @@ func _on_slider_button_toggled(toggled_on):
 	
 	var slide_tween = get_tree().create_tween()
 	if toggled_on: 
-		slide_tween.tween_property(self, "position", Vector2(0, 224), 0.25)
-		$SliderButton.set_text("▲ Upgrades")
-	else: 
 		slide_tween.tween_property(self, "position", Vector2(0, 174), 0.25)
 		$SliderButton.set_text("▼ Upgrades")
+	else: 
+		slide_tween.tween_property(self, "position", Vector2(0, 224), 0.25)
+		$SliderButton.set_text("▲ Upgrades")
 
 
 # CLICKS UPGRADES -----------------------------------------
@@ -229,10 +229,10 @@ func _on_castle_repairs_upgrade_button_pressed():
 	# Stats updates (coin, level, stat, etc.)
 	stats.upgrade_castle_repairs()
 	
-	# UI updates (coins AND HP on topbar, upgrade_container, every upgrade_button)
+	# UI updates (coins AND HP on topbar, upgrade_container not needed, every upgrade_button)
 	top_panel.update_player_coins()
 	top_panel.update_player_hp()
-	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	#castle_repairs.load_values(null, "Heal 25%HP", stats.castle_repairs_cost, null)
 	update_upgrade_button_status()
 
 # Castle Max HP container ---------------------------------
@@ -252,7 +252,7 @@ func _on_castle_max_hp_upgrade_button_pressed():
 	# UI updates (coins AND HP on topbar, repair AND max_hp containers, every upgrade_button)
 	top_panel.update_player_coins()
 	top_panel.update_player_hp()
-	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	castle_repairs.load_values(null, "Heal 25%HP", stats.castle_repairs_cost, null)
 	castle_max_hp.load_values(stats.castle_max_hp_level, stats.castle_max_hp_stat, stats.castle_max_hp_cost, stats.castle_max_hp_next)
 	update_upgrade_button_status()
 
@@ -294,7 +294,7 @@ func load_initial_values():
 	number_arrows.load_values(stats.number_arrows_level, stats.number_arrows_stat, stats.number_arrows_cost, stats.number_arrows_next)
 	
 	# Defenses upgrades
-	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	castle_repairs.load_values(null, "Heal 25%HP", stats.castle_repairs_cost, null)
 	castle_max_hp.load_values(stats.castle_max_hp_level, stats.castle_max_hp_stat, stats.castle_max_hp_cost, stats.castle_max_hp_next)
 	
 	# Buttons statuses
