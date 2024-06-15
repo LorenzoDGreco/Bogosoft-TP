@@ -8,7 +8,8 @@ var enemy_damage = 1
 var enemy_attack_speed = 1
 var coin_value : int = 10
 
-# Clicks Upgrade Stats
+# INITIAL STATS -------------------------------------------
+# Click Upgrades
 var click_damage_level:int = 1
 var click_damage_stat = 1
 var click_damage_cost:int = 100
@@ -24,7 +25,7 @@ var click_area_damage_stat = 1
 var click_area_damage_cost:int = 400
 var click_area_damage_next
 
-# Units Upgrade Stats
+# Unit Upgrades
 var number_archers_level:int = 0
 var number_archers_stat = 0
 var number_archers_cost:int = 300
@@ -45,33 +46,20 @@ var number_arrows_stat = 1
 var number_arrows_cost:int = 1000
 var number_arrows_next
 
-# Defenses Upgrade Stats
-var castle_repairs_cost:int = 1000
-
+# Defense Upgrades
 var castle_max_hp_level:int = 1
 var castle_max_hp_stat = 100
-var castle_max_hp_cost:int = 100
+var castle_max_hp_cost:int = 1000
 var castle_max_hp_next
 
-# Player Stats
+var castle_repairs_cost:int = castle_max_hp_cost / 4
+
+
+# PLAYER GAME STATS ---------------------------------------
 var wave_number:int = 0
-var total_coins:int = 10000
-#var player_hp = castle_max_hp_stat
-var player_hp = 75
+var total_coins:int = 5000
+var player_hp = 25
 
-
-# OLD STATS BELOW
-#Danio Click
-var click_damage : int = 1
-var area_click : float = 0
-var area_damage : int = 1
-
-#Defensas
-var archer : int = 0
-var archer_damage : int = 1
-var archer_speed : float = 3
-var archer_multishoot : int = 1
-var max_life : int = 100
 
 func _init():
 	# Initialize the 'next' values of every upgrade HERE
@@ -83,7 +71,11 @@ func _init():
 	arrow_damage_next = upgrades.generic_update(arrow_damage_stat)
 	arrow_cooldown_next = upgrades.generic_update_float(arrow_cooldown_stat, false)
 	number_arrows_next = number_arrows_stat + 1
+	
+	castle_max_hp_next = castle_max_hp_stat + 100
 
+
+# STAT UPGRADE FUNCTIONS ----------------------------------
 func upgrade_click_damage():
 	total_coins -= click_damage_cost
 	
@@ -93,7 +85,7 @@ func upgrade_click_damage():
 	click_damage_next = upgrades.generic_update(click_damage_stat)
 
 func upgrade_click_area_size():
-	total_coins -= click_damage_cost
+	total_coins -= click_area_size_cost
 	
 	click_area_size_level += 1
 	click_area_size_stat = click_area_size_next
@@ -139,3 +131,23 @@ func upgrade_number_arrows():
 	number_arrows_stat = number_arrows_next
 	number_arrows_cost *= 2
 	number_arrows_next = number_arrows_stat + 1
+
+func upgrade_castle_repairs():
+	total_coins -= castle_repairs_cost
+	
+	# Depending on player_hp, heals 25% or caps at max_hp
+	if (player_hp + castle_max_hp_stat / 4) > castle_max_hp_stat:
+		player_hp = castle_max_hp_stat
+	else: player_hp += castle_max_hp_stat / 4
+
+func upgrade_castle_max_hp():
+	total_coins -= castle_max_hp_cost
+	
+	castle_max_hp_level += 1
+	castle_max_hp_stat = castle_max_hp_next
+	castle_max_hp_cost *= 2
+	castle_max_hp_next = castle_max_hp_stat + 100
+	
+	# Also fully heals, and increases heal cost
+	player_hp = castle_max_hp_stat
+	castle_repairs_cost = castle_max_hp_cost / 4

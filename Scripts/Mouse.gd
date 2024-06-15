@@ -26,7 +26,3 @@ func _unhandled_input(event):
 		
 	if event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		self.play("click")
-		#click_damage_instance.queue_free()
-		#
-		#if stats.area_click != 0:
-			#click_area_instance.queue_free()

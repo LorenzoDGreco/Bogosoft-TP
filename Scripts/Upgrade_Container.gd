@@ -5,10 +5,10 @@ extends Node
 # 2. enable or disable the upgrade button, based on the total coins
 
 func load_values(level, stat, cost, next):
-	$CurrentLevel.text = "LV." + str(level)
+	if $CurrentLevel: $CurrentLevel.text = "LV." + str(level)
 	$CurrentStat.text = str(stat)
 	$UpgradeButton.text = price_format(cost)
-	$NextStat.text = str(next)
+	if $NextStat: $NextStat.text = str(next)
 
 func update_button_status(state):
 	$UpgradeButton.set_disabled(state)

@@ -489,6 +489,7 @@ theme_override_constants/separation = 2
 [node name="CastleRepairsContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_4ivte")
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 custom_minimum_size = Vector2(28, 28)
@@ -500,7 +501,7 @@ texture_normal = ExtResource("11_jei7n")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -508,6 +509,8 @@ size_flags_vertical = 1
 text = "+25% HP"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 0.857143
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
 clip_contents = true
@@ -522,6 +525,7 @@ text_overrun_behavior = 1
 [node name="CastleMaxHPContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("3_4ivte")
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 custom_minimum_size = Vector2(28, 28)
@@ -540,8 +544,8 @@ size_flags_vertical = 1
 text = "LV.0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 1.75
+visible_characters = 6
+visible_ratio = 1.5
 
 [node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 layout_mode = 2
@@ -550,8 +554,8 @@ size_flags_vertical = 1
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 7
-visible_ratio = 7.0
+visible_characters = 6
+visible_ratio = 6.0
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
 custom_minimum_size = Vector2(105, 0)
@@ -568,6 +572,8 @@ size_flags_vertical = 1
 text = "1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
 
 [connection signal="toggled" from="SliderButton" to="." method="_on_slider_button_toggled"]
 [connection signal="pressed" from="MenuControls/ClicksButton" to="." method="_on_clicks_button_pressed"]

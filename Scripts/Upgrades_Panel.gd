@@ -1,13 +1,19 @@
 class_name UpgradesPanel extends Node
 
-@onready var tab_container = $MarginContainer/TabContainer
-
-# Importing external scripts and scenes
+# Importing instantiable scenes
 var archer : PackedScene = preload("res://Scenes/Archer.tscn")
 @onready var _pop_text = preload("res://Scenes/pop_text.tscn")
 var pop_text_instance
 
+# Received from World
+var stats:Stats
+var top_panel:TopPanel
+
+# Archer Positions
+var archer_positions = [Vector2(361, 16), Vector2(361, 65), Vector2(361, 155), Vector2(361, 191)]
+
 # Upgrade Container scenes
+@onready var tab_container = $MarginContainer/TabContainer
 @onready var click_damage = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer
 @onready var click_area_size = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer
 @onready var click_area_damage = $MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer
@@ -17,13 +23,6 @@ var pop_text_instance
 @onready var number_arrows = $MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer
 @onready var castle_repairs = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer
 @onready var castle_max_hp = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer
-
-# Recieved from World
-var stats:Stats
-var top_panel:TopPanel
-
-# Archer Positions
-var archer_positions = [Vector2(361, 16), Vector2(361, 65), Vector2(361, 155), Vector2(361, 191)]
 
 # Upgrades' pop text behavior ------------------------
 func _close_preexisting_pop_text():
@@ -63,7 +62,7 @@ func _on_slider_button_toggled(toggled_on):
 
 
 # CLICKS UPGRADES -----------------------------------------
-# Click Damage container ----------------------------------
+# Click Damage container
 func _on_click_damage_texture_button_pressed():
 	_show_pop_text(
 		"Click Damage [Q]", 
@@ -81,7 +80,7 @@ func _on_click_damage_upgrade_button_pressed():
 	click_damage.load_values(stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next)
 	update_upgrade_button_status()
 
-# Click Area Size container -------------------------------
+# Click Area Size container
 func _on_click_area_size_texture_button_pressed():
 	_show_pop_text(
 		"Click Area Size [W]", 
@@ -100,9 +99,9 @@ func _on_click_area_size_upgrade_button_pressed():
 	update_upgrade_button_status()
 	
 	# If upgraded once, click_area_damage container appears
-	if stats.click_area_damage_level == 1: click_area_damage.set_visible(true)
+	if stats.click_area_damage_level >= 1: click_area_damage.set_visible(true)
 
-# Click Area Damage container -----------------------------
+# Click Area Damage container
 func _on_click_area_damage_texture_button_pressed():
 	_show_pop_text(
 		"Click Area Damage [E]", 
@@ -123,7 +122,7 @@ func _on_click_area_damage_upgrade_button_pressed():
 
 
 # UNITS UPGRADES ------------------------------------------
-# +1 Archer container -------------------------------------
+# +1 Archer container
 func _on_number_archers_texture_button_pressed():
 	_show_pop_text(
 		"+1 Archer [A]", 
@@ -223,7 +222,18 @@ func _on_castle_repairs_texture_button_pressed():
 		"Instantly recovers a fixed amount of HP.")
 	
 func _on_castle_repairs_upgrade_button_pressed():
-	pass # Replace with function body.
+	# Extra check in case of KeyboardInput
+	if stats.total_coins < stats.castle_repairs_cost or stats.player_hp == stats.castle_max_hp_stat:
+		return
+	
+	# Stats updates (coin, level, stat, etc.)
+	stats.upgrade_castle_repairs()
+	
+	# UI updates (coins AND HP on topbar, upgrade_container, every upgrade_button)
+	top_panel.update_player_coins()
+	top_panel.update_player_hp()
+	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	update_upgrade_button_status()
 
 # Castle Max HP container ---------------------------------
 func _on_castle_max_hp_texture_button_pressed():
@@ -232,7 +242,19 @@ func _on_castle_max_hp_texture_button_pressed():
 		"Increases the castle's maximum health points.")
 	
 func _on_castle_max_hp_upgrade_button_pressed():
-	pass # Replace with function body.
+	# Extra check in case of KeyboardInput
+	if stats.total_coins < stats.castle_max_hp_cost:
+		return
+	
+	# Stats updates (coin, level, stat, etc.)
+	stats.upgrade_castle_max_hp()
+	
+	# UI updates (coins AND HP on topbar, repair AND max_hp containers, every upgrade_button)
+	top_panel.update_player_coins()
+	top_panel.update_player_hp()
+	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	castle_max_hp.load_values(stats.castle_max_hp_level, stats.castle_max_hp_stat, stats.castle_max_hp_cost, stats.castle_max_hp_next)
+	update_upgrade_button_status()
 
 
 # Keyboard Inputs -----------------------------------------
@@ -251,29 +273,31 @@ func _unhandled_key_input (event):
 		_on_arrow_cooldown_upgrade_button_pressed()
 	elif Input.is_action_just_pressed("upgarchmultishot"):
 		_on_number_arrows_upgrade_button_pressed()
+	elif Input.is_action_just_pressed("upgheal"):
+		_on_castle_repairs_upgrade_button_pressed()
 	elif Input.is_action_just_pressed("upgmaxlife"):
 		_on_castle_max_hp_upgrade_button_pressed()
-	# ADD REPAIRS KEYBIND
 
 
-# Loading elements values ---------------------------------
+# VALUE LOADING AND UPDATING ------------------------------
 func load_initial_values():
-	# Loads initial values of every container at startup
-	# DONE: update values after upgrading (on upgrade event -> upgrade_panel)
-	# DONE: decrease coins after upgrading (on upgrade event -> top_panel)
-	# TODO: apply to every upgrade container!
-	# TODO: apply modifications to specific upgrades (i.e. Archer LV0, Repairs, etc.)
-	# Clicks upgrades -------------------------------------
+	# Loads initial values of containers and buttons at startup
+	# Clicks upgrades
 	click_damage.load_values(stats.click_damage_level, stats.click_damage_stat, stats.click_damage_cost, stats.click_damage_next)
 	click_area_size.load_values(stats.click_area_size_level, stats.click_area_size_stat, stats.click_area_size_cost, stats.click_area_size_next)
 	click_area_damage.load_values(stats.click_area_damage_level, stats.click_area_damage_stat, stats.click_area_damage_cost, stats.click_area_damage_next)
 	
-	# Archer upgrades
+	# Units upgrades
 	number_archers.load_values(stats.number_archers_level, stats.number_archers_stat, stats.number_archers_cost, stats.number_archers_next)
 	arrow_damage.load_values(stats.arrow_damage_level, stats.arrow_damage_stat, stats.arrow_damage_cost, stats.arrow_damage_next)
 	arrow_cooldown.load_values(stats.arrow_cooldown_level, stats.arrow_cooldown_stat, stats.arrow_cooldown_cost, stats.arrow_cooldown_next)
 	number_arrows.load_values(stats.number_arrows_level, stats.number_arrows_stat, stats.number_arrows_cost, stats.number_arrows_next)
 	
+	# Defenses upgrades
+	castle_repairs.load_values(null, "+25%HP", stats.castle_repairs_cost, null)
+	castle_max_hp.load_values(stats.castle_max_hp_level, stats.castle_max_hp_stat, stats.castle_max_hp_cost, stats.castle_max_hp_next)
+	
+	# Buttons statuses
 	update_upgrade_button_status()
 
 func update_upgrade_button_status():
@@ -281,8 +305,11 @@ func update_upgrade_button_status():
 	click_damage.update_button_status(stats.total_coins < stats.click_damage_cost)
 	click_area_size.update_button_status(stats.total_coins < stats.click_area_size_cost)
 	click_area_damage.update_button_status(stats.total_coins < stats.click_area_damage_cost)
+	
 	number_archers.update_button_status(stats.total_coins < stats.number_archers_cost)
 	arrow_damage.update_button_status(stats.total_coins < stats.arrow_damage_cost)
 	arrow_cooldown.update_button_status(stats.total_coins < stats.arrow_cooldown_cost)
 	number_arrows.update_button_status(stats.total_coins < stats.number_arrows_cost)
 	
+	castle_repairs.update_button_status(stats.total_coins < stats.castle_repairs_cost or stats.player_hp == stats.castle_max_hp_stat)
+	castle_max_hp.update_button_status(stats.total_coins < stats.castle_max_hp_cost)

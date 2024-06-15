@@ -8,7 +8,6 @@ var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 @onready var stats = Stats.new()
-@onready var hp_bar_ui = get_node("CanvasLayer/CastleUI/HpBarUI")
 @onready var mouse_instance = mouse.instantiate()
 
 @onready var upgrades_panel = $CanvasLayer/UpgradesPanel
@@ -75,5 +74,5 @@ func spawn_coins(position, _amount):
 	coin_instance.global_position = position
 	$CanvasLayer.add_child(coin_instance)
 
-func _on_hp_bar_ui_collapsed_castle():
-	print("You lose.")
+#func _on_hp_bar_ui_collapsed_castle():
+	#print("You lose.")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=21 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Texture/TX Tileset Grass.png" id="2_t5rep"]
@@ -6,13 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://hxllbmi1dsvr" path="res://Resources/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/Tiles.png" id="4_ws7dn"]
 [ext_resource type="PackedScene" uid="uid://c77t7dmwd146d" path="res://Scenes/Top_Panel.tscn" id="6_mn6wn"]
 [ext_resource type="PackedScene" uid="uid://rvuxybggqrsk" path="res://Scenes/Character.tscn" id="6_p6uki"]
-[ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="7_5g5nk"]
-[ext_resource type="Texture2D" uid="uid://cq25wf4qyrfgk" path="res://Resources/Texture/Contorno.png" id="7_r5v42"]
-[ext_resource type="Script" path="res://Scripts/HpBarUI.gd" id="8_bgbkc"]
-[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/hp_background.png" id="8_sqhrn"]
-[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/HpBar.png" id="9_7b5i4"]
-[ext_resource type="Texture2D" uid="uid://4r2akl384aql" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/rpg (2).png" id="10_de8aw"]
-[ext_resource type="Texture2D" uid="uid://cr67ql28321m1" path="res://Resources/Coins/coin_gold.png" id="11_5albb"]
 [ext_resource type="PackedScene" uid="uid://ukjwndvmc8wg" path="res://Scenes/Upgrades_Panel.tscn" id="24_6yj2v"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r0yjv"]
@@ -1486,79 +1479,6 @@ pattern_5 = SubResource("TileMapPattern_yqw7m")
 pattern_6 = SubResource("TileMapPattern_8qn1f")
 pattern_7 = SubResource("TileMapPattern_3nd7s")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhrsq"]
-texture = ExtResource("9_7b5i4")
-
-[sub_resource type="LabelSettings" id="LabelSettings_u1msr"]
-font = ExtResource("7_5g5nk")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77hs8"]
-atlas = ExtResource("11_5albb")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5aa1y"]
-atlas = ExtResource("11_5albb")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pm23"]
-atlas = ExtResource("11_5albb")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc1tu"]
-atlas = ExtResource("11_5albb")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymt8n"]
-atlas = ExtResource("11_5albb")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5retd"]
-atlas = ExtResource("11_5albb")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sycvl"]
-atlas = ExtResource("11_5albb")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hppcp"]
-atlas = ExtResource("11_5albb")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8pi30"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77hs8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5aa1y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pm23")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cc1tu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ymt8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5retd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sycvl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hppcp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ieii3"]
-font = ExtResource("7_5g5nk")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbxuk"]
 size = Vector2(304, 125)
 
@@ -1598,89 +1518,6 @@ follow_viewport_enabled = true
 
 [node name="TopPanel" parent="CanvasLayer" instance=ExtResource("6_mn6wn")]
 
-[node name="CastleUI" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_right = 169.0
-offset_bottom = 37.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Contorno" type="Sprite2D" parent="CanvasLayer/CastleUI"]
-position = Vector2(84, 8.00001)
-scale = Vector2(0.676, 0.560606)
-texture = ExtResource("7_r5v42")
-
-[node name="HpBarUI" type="TextureRect" parent="CanvasLayer/CastleUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.27027
-anchor_bottom = -0.27027
-offset_left = 1.0
-offset_top = 11.0
-offset_right = 92.0
-offset_bottom = 31.0
-script = ExtResource("8_bgbkc")
-metadata/_edit_use_anchors_ = true
-
-[node name="HpBackground" type="Sprite2D" parent="CanvasLayer/CastleUI/HpBarUI"]
-position = Vector2(46, 11)
-scale = Vector2(1.11508, 1.5125)
-texture = ExtResource("8_sqhrn")
-
-[node name="HpBar" type="Panel" parent="CanvasLayer/CastleUI/HpBarUI"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 7.0
-offset_right = 80.0
-offset_bottom = 15.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_yhrsq")
-metadata/_edit_use_anchors_ = true
-
-[node name="HpStyle" type="Sprite2D" parent="CanvasLayer/CastleUI/HpBarUI"]
-position = Vector2(45, 16)
-scale = Vector2(1.06724, 1.3)
-texture = ExtResource("10_de8aw")
-vframes = 7
-frame = 6
-
-[node name="Hp_Castle" type="Label" parent="CanvasLayer/CastleUI/HpBarUI"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 6.0
-offset_right = 184.0
-offset_bottom = 29.0
-scale = Vector2(0.388129, 0.405976)
-label_settings = SubResource("LabelSettings_u1msr")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="CoinsUI" type="TextureRect" parent="CanvasLayer/CastleUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.27027
-anchor_bottom = -0.27027
-offset_left = 92.0
-offset_top = 11.0
-offset_right = 160.0
-offset_bottom = 31.0
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/CastleUI/CoinsUI"]
-position = Vector2(11, 10)
-scale = Vector2(0.92969, 0.90625)
-sprite_frames = SubResource("SpriteFrames_8pi30")
-autoplay = "default"
-
-[node name="Label" type="Label" parent="CanvasLayer/CastleUI/CoinsUI"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 1.0
-offset_right = 67.0
-offset_bottom = 24.0
-scale = Vector2(0.8, 0.8)
-text = "0"
-label_settings = SubResource("LabelSettings_ieii3")
-metadata/_edit_use_anchors_ = true
-
 [node name="UpgradesPanel" parent="CanvasLayer" instance=ExtResource("24_6yj2v")]
 z_index = 2
 offset_top = 224.0
@@ -1693,4 +1530,3 @@ shape = SubResource("RectangleShape2D_kbxuk")
 debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="collapsed_castle" from="CanvasLayer/CastleUI/HpBarUI" to="." method="_on_hp_bar_ui_collapsed_castle"]

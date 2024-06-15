@@ -15,30 +15,8 @@ func generic_update(var_to_update): #Buscar un mejor escalado
 	return var_to_update
 
 func generic_update_float(var_to_update, increase):
-	if var_to_update == 0:
-		return 17
+	if var_to_update == 0: return 17 # First Area Size upgrade
+	
 	if increase: var_to_update *= (1 + delta_upgrade)
 	else: var_to_update *= (1 - delta_upgrade)
 	return var_to_update
-
-func upgrade_damage_click(damage_click):
-	return generic_update(damage_click)
-
-#func upgrade_area_click(area_click):
-	#return generic_update_float(area_click, area_increment)
-	
-func upgrade_area_damage(area_damage):
-	return generic_update(area_damage)
-	
-func unlock_archer():
-	pass
-	
-func upgrade_archer_damage(archer_damage):
-	return generic_update(archer_damage)
-	#
-#func upgrade_archer_speed(archer_speed):
-	#return generic_update_float(archer_speed, archer_speed_decrement)
-	
-func upgrade_archer_multishoot():
-	pass
-
