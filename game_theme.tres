@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ng15dy8xte7k"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://ng15dy8xte7k"]
 
 [ext_resource type="Texture2D" uid="uid://dj7s83kgyv730" path="res://Resources/Texture/mejoraspad.png" id="1_4vyfi"]
 [ext_resource type="FontFile" uid="uid://cv4anaorlbid1" path="res://EXEPixelPerfect.ttf" id="3_3estx"]
@@ -17,6 +17,18 @@ texture = ExtResource("1_4vyfi")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gm1oy"]
 texture = ExtResource("1_4vyfi")
 modulate_color = Color(0.566298, 0.566298, 0.566298, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tlxd"]
+bg_color = Color(0.197937, 0.197937, 0.197937, 0.701961)
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyefy"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.701961)
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu5mm"]
+bg_color = Color(0.197937, 0.197937, 0.197937, 0.701961)
+corner_radius_top_right = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmpkg"]
 
@@ -104,6 +116,9 @@ SliderButton/base_type = &"Button"
 SliderButton/colors/font_color = Color(0, 0.921569, 0, 1)
 SliderButton/font_sizes/font_size = 24
 SliderButton/fonts/font = ExtResource("3_3estx")
+SliderButton/styles/hover = SubResource("StyleBoxFlat_4tlxd")
+SliderButton/styles/normal = SubResource("StyleBoxFlat_lyefy")
+SliderButton/styles/pressed = SubResource("StyleBoxFlat_tu5mm")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_xmpkg")
 TabPanel/base_type = &"Button"
 TabPanel/styles/disabled = SubResource("StyleBoxEmpty_fxeih")

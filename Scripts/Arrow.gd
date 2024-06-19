@@ -4,7 +4,7 @@ var viewport_size = DisplayServer.window_get_size()
 var position_target : Vector2
 var direction : Vector2
 var stats : Stats
-var arrow_shot : bool = false
+var hit : bool = false
 
 func _ready():
 	direction = global_position.direction_to(position_target)
@@ -16,6 +16,7 @@ func _process(delta):
 		queue_free()
 
 func _on_area_entered(area):
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") and !hit:
 		area.recibe_damage(stats.arrow_damage_stat)
+		hit = true
 		queue_free()

@@ -24,6 +24,10 @@ var archer_positions = [Vector2(361, 16), Vector2(361, 65), Vector2(361, 155), V
 @onready var castle_repairs = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer
 @onready var castle_max_hp = $MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer
 
+func _ready():
+	# Focus on Clicks menu button at startup
+	$MenuControls/ClicksButton.grab_focus()
+
 # Upgrades' pop text behavior ------------------------
 func _close_preexisting_pop_text():
 	if pop_text_instance != null:
@@ -218,7 +222,7 @@ func _on_number_arrows_upgrade_button_pressed():
 # Castle Repairs container --------------------------------
 func _on_castle_repairs_texture_button_pressed():
 	_show_pop_text(
-		"Castle Repairs [X]", 
+		"Castle Repairs [Z]", 
 		"Instantly recovers a fixed amount of HP.")
 	
 func _on_castle_repairs_upgrade_button_pressed():
@@ -238,7 +242,7 @@ func _on_castle_repairs_upgrade_button_pressed():
 # Castle Max HP container ---------------------------------
 func _on_castle_max_hp_texture_button_pressed():
 	_show_pop_text(
-		"Castle Max HP [Z]", 
+		"Castle Max HP [X]", 
 		"Increases the castle's maximum health points.")
 	
 func _on_castle_max_hp_upgrade_button_pressed():
@@ -258,7 +262,7 @@ func _on_castle_max_hp_upgrade_button_pressed():
 
 
 # Keyboard Inputs -----------------------------------------
-func _unhandled_key_input (event):
+func _unhandled_key_input (_event):
 	if Input.is_action_just_pressed("upgclick"):
 		_on_click_damage_upgrade_button_pressed()
 	elif Input.is_action_just_pressed("upgarea"):
@@ -277,6 +281,8 @@ func _unhandled_key_input (event):
 		_on_castle_repairs_upgrade_button_pressed()
 	elif Input.is_action_just_pressed("upgmaxlife"):
 		_on_castle_max_hp_upgrade_button_pressed()
+	elif Input.is_action_just_pressed("openupgmenu"):
+		$SliderButton.set_pressed(!$SliderButton.is_pressed())
 
 
 # VALUE LOADING AND UPDATING ------------------------------

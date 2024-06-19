@@ -15,7 +15,7 @@ func generic_update(var_to_update): #Buscar un mejor escalado
 	return var_to_update
 
 func generic_update_float(var_to_update, increase):
-	if var_to_update == 0: return 17 # First Area Size upgrade
+	if var_to_update == 0: return 1 # First Area Size upgrade
 	
 	if increase: var_to_update *= (1 + delta_upgrade)
 	else: var_to_update *= (1 - delta_upgrade)
