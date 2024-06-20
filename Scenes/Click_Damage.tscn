@@ -1,33 +1,33 @@
 [gd_scene load_steps=11 format=3 uid="uid://8q4awfiipvj5"]
 
 [ext_resource type="Script" path="res://Scripts/Click_Damage.gd" id="1_o3mi4"]
-[ext_resource type="Texture2D" uid="uid://c8lx8n2jrar4" path="res://click_effect.png" id="2_w6vtu"]
+[ext_resource type="Texture2D" uid="uid://c8lx8n2jrar4" path="res://Resources/Sprites/cursor/click_effect.png" id="2_kxdgr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkqel"]
 radius = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcwky"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(19, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l375i"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(67, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_me0ud"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(115, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdwf0"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(163, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvo0u"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(211, 0, 47, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cv40y"]
-atlas = ExtResource("2_w6vtu")
+atlas = ExtResource("2_kxdgr")
 region = Rect2(259, 0, 47, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i0awl"]

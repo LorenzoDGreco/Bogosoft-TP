@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rvuxybggqrsk"]
 
-[ext_resource type="Texture2D" uid="uid://s6cmcnep4k5s" path="res://Resources/Base Character - Free/idle.png" id="1_y3va5"]
+[ext_resource type="Texture2D" uid="uid://s6cmcnep4k5s" path="res://Resources/Sprites/character/idle.png" id="1_y3va5"]
 
 [sub_resource type="Animation" id="Animation_xb7yl"]
 resource_name = "Idle"

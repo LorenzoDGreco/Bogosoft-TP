@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://c77t7dmwd146d"]
 
-[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/hp_background.png" id="1_6wc5s"]
-[ext_resource type="Texture2D" uid="uid://cr67ql28321m1" path="res://Resources/Coins/coin_gold.png" id="1_7w40k"]
-[ext_resource type="Texture2D" uid="uid://cn6wd2ex5mdm0" path="res://top_panel_bg.png" id="1_h23x1"]
+[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Textures/hp_background.png" id="1_6wc5s"]
+[ext_resource type="Texture2D" uid="uid://cr67ql28321m1" path="res://Resources/Sprites/coins/coin_gold.png" id="1_7w40k"]
+[ext_resource type="Texture2D" uid="uid://cn6wd2ex5mdm0" path="res://Resources/Textures/top_panel_bg.png" id="1_h23x1"]
 [ext_resource type="Script" path="res://Scripts/Top_Panel.gd" id="1_j2beb"]
 [ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="2_kse3f"]
-[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/HpBar.png" id="2_l6gkd"]
-[ext_resource type="Texture2D" uid="uid://c4blxhkew45vh" path="res://hp_bar.png" id="3_egiit"]
+[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Textures/HpBar.png" id="2_l6gkd"]
+[ext_resource type="Texture2D" uid="uid://c4blxhkew45vh" path="res://Resources/Textures/hp_bar.png" id="3_egiit"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ultth"]
 font_size = 13
