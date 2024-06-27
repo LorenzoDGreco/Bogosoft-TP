@@ -12,6 +12,7 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
 @onready var upgrades_panel = $CanvasLayer/UpgradesPanel
 @onready var top_panel = $CanvasLayer/TopPanel
+@onready var gameover_panel = $CanvasLayer/GameOverPanel
 
 var max_spawn_height = 170
 var min_spawn_height = 50
@@ -26,6 +27,11 @@ func _ready():
 	upgrades_panel.top_panel = top_panel
 	upgrades_panel.load_initial_values()
 	
+	# Initialize and connect GameOver Panel
+	gameover_panel.stats = stats
+	gameover_panel.connect("restart_game", _on_restart_button_pressed)
+	gameover_panel.connect("quit_game", _on_quit_button_pressed)
+	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
 
@@ -38,7 +44,7 @@ func _on_spawn_timer_timeout():
 		else: spawn_enemy(normal_skeleton.instantiate())
 
 func spawn_enemy(new_enemy):
-	new_enemy.global_position = Vector2(randf_range(-30,-10), randf_range(min_spawn_height, max_spawn_height))
+	new_enemy.global_position = Vector2(randf_range(-40,-10), randf_range(min_spawn_height, max_spawn_height))
 	new_enemy.connect("enemy_death", spawn_coins)
 	new_enemy.connect("enemy_attack", _on_castle_attacked)
 	new_enemy.stats = stats
@@ -88,12 +94,13 @@ func game_over():
 	for a in get_tree().get_nodes_in_group("archer"):
 		a.get_node("Timer").set_paused(true)
 	
-	# Hide upgrades and show GameOver element
-	$CanvasLayer/ColorRect.set_visible(true)
+	# Hide upgrades and show GameOver panel
 	upgrades_panel.set_visible(false)
-
+	gameover_panel.load_values()
+	gameover_panel.set_visible(true)
+	
 func _on_restart_button_pressed():
-	$CanvasLayer/ColorRect.set_visible(false)
+	gameover_panel.set_visible(false)
 	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed():

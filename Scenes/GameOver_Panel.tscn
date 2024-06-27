@@ -1,0 +1,319 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqvsu0nf0x1wq"]
+
+[ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="1_dthr1"]
+[ext_resource type="Script" path="res://Scripts/GameOver_Panel.gd" id="2_mcqlm"]
+[ext_resource type="Texture2D" uid="uid://bpmdo0jfeqsra" path="res://Resources/Sprites/icons/cursor.png" id="2_oiiu0"]
+[ext_resource type="Texture2D" uid="uid://d1v6dbvd6port" path="res://Resources/Sprites/icons/ArcherIcon.png" id="3_fvf1f"]
+[ext_resource type="Texture2D" uid="uid://cbwir5n7gb278" path="res://Resources/Sprites/icons/click_area.png" id="4_tdiuo"]
+[ext_resource type="Texture2D" uid="uid://bn6cldmygfc7y" path="res://Resources/Sprites/icons/ArrowMultishootWood.png" id="5_7hgkc"]
+[ext_resource type="Texture2D" uid="uid://dairdoane5eq1" path="res://Resources/Sprites/icons/click_area_damage.png" id="6_wmthp"]
+[ext_resource type="Texture2D" uid="uid://b8mmka6fyer1q" path="res://Resources/Sprites/icons/ArrowWood.png" id="7_vmke4"]
+[ext_resource type="Texture2D" uid="uid://dpncrh5wcag77" path="res://Resources/Sprites/icons/CastleIcon.png" id="8_uvk3f"]
+[ext_resource type="Texture2D" uid="uid://67m5xg8sqnxe" path="res://Resources/Sprites/icons/ArrowSpeedWood.png" id="9_rje0x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwsvu"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0qbv"]
+font_color = Color(0.886275, 0.886275, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameOverPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 384.0
+offset_bottom = 224.0
+theme = ExtResource("1_dthr1")
+script = ExtResource("2_mcqlm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dthr1")
+color = Color(0.0807833, 0.0807833, 0.0807833, 0.607843)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dthr1")
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_dthr1")
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_dthr1")
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_dthr1")
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_nwsvu")
+
+[node name="ClickControls" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ClickControls"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CategoryButton"
+theme_override_font_sizes/font_size = 22
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ClickControls"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CategoryButton"
+theme_override_font_sizes/font_size = 22
+text = "QUIT"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="ClickDamage" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/ClickDamage"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("2_oiiu0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/ClickDamage"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="NumberArchers" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/NumberArchers"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("3_fvf1f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/NumberArchers"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="ClickAreaSize" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/ClickAreaSize"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("4_tdiuo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/ClickAreaSize"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="NumberArrows" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/NumberArrows"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("5_7hgkc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/NumberArrows"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="ClickAreaDamage" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/ClickAreaDamage"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("6_wmthp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/ClickAreaDamage"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="ArrowDamage" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/ArrowDamage"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+texture = ExtResource("7_vmke4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/ArrowDamage"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="CastleMaxHP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/CastleMaxHP"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_dthr1")
+texture = ExtResource("8_uvk3f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/CastleMaxHP"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="ArrowCooldown" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GridContainer/ArrowCooldown"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("1_dthr1")
+texture = ExtResource("9_rje0x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/GridContainer/ArrowCooldown"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dthr1")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+label_settings = SubResource("LabelSettings_k0qbv")
+vertical_alignment = 1
+visible_characters = 6
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ClickControls/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ClickControls/QuitButton" to="." method="_on_quit_button_pressed"]

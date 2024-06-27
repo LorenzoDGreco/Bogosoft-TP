@@ -35,7 +35,7 @@ theme_type_variation = &"SliderButton"
 toggle_mode = true
 action_mode = 0
 keep_pressed_outside = true
-text = "▲ Upgrades"
+text = "▼ Upgrades"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

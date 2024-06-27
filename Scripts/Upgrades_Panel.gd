@@ -57,7 +57,7 @@ func _on_slider_button_toggled(toggled_on):
 	_close_preexisting_pop_text()
 	
 	var slide_tween = get_tree().create_tween()
-	if toggled_on: 
+	if !toggled_on: 
 		slide_tween.tween_property(self, "position", Vector2(0, 174), 0.25)
 		$SliderButton.set_text("▼ Upgrades")
 	else: 
