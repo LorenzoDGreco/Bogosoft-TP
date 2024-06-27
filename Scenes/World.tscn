@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Textures/TX Tileset Grass.png" id="2_t5rep"]
 [ext_resource type="Texture2D" uid="uid://6cgijgo5xho0" path="res://Resources/Textures/TX Plant.png" id="3_m0lnc"]
-[ext_resource type="Texture2D" uid="uid://hxllbmi1dsvr" path="res://Resources/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/Tiles.png" id="4_ws7dn"]
+[ext_resource type="Texture2D" uid="uid://hxllbmi1dsvr" path="res://Resources/Textures/Tiles.png" id="4_ws7dn"]
 [ext_resource type="PackedScene" uid="uid://c77t7dmwd146d" path="res://Scenes/Top_Panel.tscn" id="6_mn6wn"]
 [ext_resource type="PackedScene" uid="uid://rvuxybggqrsk" path="res://Scenes/Character.tscn" id="6_p6uki"]
 [ext_resource type="PackedScene" uid="uid://ukjwndvmc8wg" path="res://Scenes/Upgrades_Panel.tscn" id="24_6yj2v"]

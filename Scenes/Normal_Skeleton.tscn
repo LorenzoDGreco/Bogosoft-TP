@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://dslu4bkpcxxrc"]
 
 [ext_resource type="Script" path="res://Scripts/Normal_Skeleton.gd" id="1_tj1bc"]
-[ext_resource type="Texture2D" uid="uid://cfnv65irsdf0q" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="2_w8h1v"]
-[ext_resource type="Texture2D" uid="uid://butl2fo6y82qy" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="3_epdts"]
-[ext_resource type="Texture2D" uid="uid://cm8r1js63ymxt" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="4_7bi8x"]
-[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Pixel Crawler - FREE - 1.8/Weapons/Hands/Hands.png" id="5_gecig"]
+[ext_resource type="Texture2D" uid="uid://cfnv65irsdf0q" path="res://Resources/Sprites/enemies/skeleton/death.png" id="2_w8h1v"]
+[ext_resource type="Texture2D" uid="uid://butl2fo6y82qy" path="res://Resources/Sprites/enemies/skeleton/idle.png" id="3_epdts"]
+[ext_resource type="Texture2D" uid="uid://cm8r1js63ymxt" path="res://Resources/Sprites/enemies/skeleton/run.png" id="4_7bi8x"]
+[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Sprites/enemies/Hands.png" id="5_gecig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpo83"]
 atlas = ExtResource("2_w8h1v")

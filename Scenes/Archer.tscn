@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://csniynjpwb8qh"]
 
 [ext_resource type="Script" path="res://Scripts/Archer.gd" id="1_e83ei"]
-[ext_resource type="Texture2D" uid="uid://bcc5p2ck6fms8" path="res://Resources/Pixel Crawler - FREE - 1.8/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_la0ca"]
-[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Pixel Crawler - FREE - 1.8/Weapons/Hands/Hands.png" id="2_rq7m8"]
+[ext_resource type="Texture2D" uid="uid://bcc5p2ck6fms8" path="res://Resources/Sprites/archer/idle.png" id="1_la0ca"]
+[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Sprites/enemies/Hands.png" id="2_rq7m8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85glp"]
 atlas = ExtResource("1_la0ca")

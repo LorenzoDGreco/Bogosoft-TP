@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bqh810hsbpa82"]
 
-[ext_resource type="Texture2D" uid="uid://droq3yieh1owe" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Mage/Idle/Idle-Sheet.png" id="1_173e1"]
-[ext_resource type="Texture2D" uid="uid://dqw446qyx2b83" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Mage/Run/Run-Sheet.png" id="2_dllyt"]
-[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Pixel Crawler - FREE - 1.8/Weapons/Hands/Hands.png" id="3_k0xnl"]
+[ext_resource type="Texture2D" uid="uid://droq3yieh1owe" path="res://Resources/Sprites/enemies/mage/idle.png" id="1_173e1"]
+[ext_resource type="Texture2D" uid="uid://dqw446qyx2b83" path="res://Resources/Sprites/enemies/mage/run.png" id="2_dllyt"]
+[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Sprites/enemies/Hands.png" id="3_k0xnl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l46xq"]
 atlas = ExtResource("1_173e1")
