@@ -151,3 +151,9 @@ func upgrade_castle_max_hp():
 	# Also fully heals, and increases heal cost
 	player_hp = castle_max_hp_stat
 	castle_repairs_cost = castle_max_hp_cost / 4
+
+func take_damage(damage):
+	# Depending on player_hp, take damage amount or stop at zero
+	if (player_hp - damage) <= 0:
+		player_hp = 0
+	else: player_hp -= damage

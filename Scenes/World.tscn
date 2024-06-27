@@ -1486,7 +1486,8 @@ size = Vector2(304, 120)
 script = ExtResource("1_g0f4n")
 metadata/_edit_horizontal_guides_ = [50.0, 170.0]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1529,4 +1530,18 @@ position = Vector2(152, 110)
 shape = SubResource("RectangleShape2D_kbxuk")
 debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 14
+offset_left = 550.0
+offset_top = 252.0
+offset_right = 590.0
+offset_bottom = 292.0
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "game over"
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

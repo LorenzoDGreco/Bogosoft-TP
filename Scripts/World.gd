@@ -1,4 +1,4 @@
-class_name Mundo extends Node
+class_name World extends Node
 
 const offset_coin = 15
 
@@ -29,44 +29,22 @@ func _ready():
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
 
-#posibilidad spawn del 30% de la oleada
-func _on_timer_timeout():
-	var n_s = normal_skeleton.instantiate()
-	n_s.global_position = Vector2(-10, randf_range(min_spawn_height, max_spawn_height))
-	#n_s.global_position = Vector2(-10, 50)
-	n_s.connect("enemy_death", spawn_coins)
-	n_s.stats = stats
-	get_node("Enemys").add_child(n_s)
-	
-	var w_s = warrior_skeleton.instantiate()
-	w_s.global_position = Vector2(-10, randf_range(min_spawn_height, max_spawn_height))
-	#w_s.global_position = Vector2(-10, 175)
-	w_s.connect("enemy_death", spawn_coins)
-	w_s.stats = stats
-	get_node("Enemys").add_child(w_s)
-	
-	#dificultad = new 
-	#dificultad.calcular()
-	#if oleada > 1:
-		#oleada--
-		#random -> 1*3
-		#enemy = new
-		#enemy.setInicio(vida, asd, asd)
-	#elif oleada = 0:
-		#boss
-	#vida += dificultad
-	#daño += dificultad
+func _on_spawn_timer_timeout():
+	# Enemy spawning logic
+	var spawn_amount:int = randi_range(1, 4)
+	for i in spawn_amount:
+		var spawn_type:float = randf_range(0, 1)
+		if spawn_type > 0.7: spawn_enemy(warrior_skeleton.instantiate())
+		else: spawn_enemy(normal_skeleton.instantiate())
 
-func _on_coin_pick_up(coins):
-	# Updates the internal total_coins stat
-	stats.total_coins += coins
-	# Updates total coins on display
-	top_panel.update_player_coins()
-	# Updates every upgrade button state
-	upgrades_panel.update_upgrade_button_status()
+func spawn_enemy(new_enemy):
+	new_enemy.global_position = Vector2(randf_range(-30,-10), randf_range(min_spawn_height, max_spawn_height))
+	new_enemy.connect("enemy_death", spawn_coins)
+	new_enemy.connect("enemy_attack", _on_castle_attacked)
+	new_enemy.stats = stats
+	get_node("Enemys").add_child(new_enemy)
 
 func spawn_coins(position, _amount):
-	
 	position.y += offset_coin
 	
 	#for i in range(0, _amount):
@@ -77,5 +55,20 @@ func spawn_coins(position, _amount):
 	coin_instance.global_position = position
 	$CanvasLayer.add_child(coin_instance)
 
-#func _on_hp_bar_ui_collapsed_castle():
-	#print("You lose.")
+func _on_coin_pick_up(coins):
+	# Updates the internal total_coins stat
+	stats.total_coins += coins
+	# Updates total coins on display
+	top_panel.update_player_coins()
+	# Updates every upgrade button state
+	upgrades_panel.update_upgrade_button_status()
+
+func _on_castle_attacked(damage):
+	# Update values on Stats and on the HUD
+	stats.take_damage(damage)
+	top_panel.update_player_hp()
+	
+	if (stats.player_hp == 0): game_over()
+
+func game_over():
+	print("You lose.")
