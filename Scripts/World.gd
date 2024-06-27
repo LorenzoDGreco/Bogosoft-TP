@@ -42,7 +42,7 @@ func spawn_enemy(new_enemy):
 	new_enemy.connect("enemy_death", spawn_coins)
 	new_enemy.connect("enemy_attack", _on_castle_attacked)
 	new_enemy.stats = stats
-	get_node("Enemys").add_child(new_enemy)
+	get_node("Enemies").add_child(new_enemy)
 
 func spawn_coins(position, _amount):
 	position.y += offset_coin
@@ -53,7 +53,7 @@ func spawn_coins(position, _amount):
 	coin_instance.connect("coin_pickUp", _on_coin_pick_up)
 	coin_instance.value = stats.coin_value
 	coin_instance.global_position = position
-	$CanvasLayer.add_child(coin_instance)
+	get_node("Coins").add_child(coin_instance)
 
 func _on_coin_pick_up(coins):
 	# Updates the internal total_coins stat
@@ -68,7 +68,33 @@ func _on_castle_attacked(damage):
 	stats.take_damage(damage)
 	top_panel.update_player_hp()
 	
-	if (stats.player_hp == 0): game_over()
+	if (stats.player_hp <= 0): game_over()
 
 func game_over():
-	print("You lose.")
+	# Stop spawning new enemies
+	$SpawnTimer.set_paused(true)
+	
+	# Stop every enemy (except if mid-death)
+	for e in get_tree().get_nodes_in_group("enemy"):
+		if e.get_node("AnimatedSprite2D").get_animation() != "death":
+			e.get_node("AnimatedSprite2D").play("default")
+		e.speed = 0
+		
+	# Stop coin autocollect
+	for c in get_tree().get_nodes_in_group("coin"):
+		c.get_node("Timer").set_paused(true)
+		
+	# Stop archers from shooting
+	for a in get_tree().get_nodes_in_group("archer"):
+		a.get_node("Timer").set_paused(true)
+	
+	# Hide upgrades and show GameOver element
+	$CanvasLayer/ColorRect.set_visible(true)
+	upgrades_panel.set_visible(false)
+
+func _on_restart_button_pressed():
+	$CanvasLayer/ColorRect.set_visible(false)
+	get_tree().reload_current_scene()
+
+func _on_quit_button_pressed():
+	get_tree().quit()

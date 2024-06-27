@@ -4,6 +4,7 @@ var arrow:PackedScene = preload("res://Scenes/Arrow.tscn")
 var stats: Stats
 
 func _ready():
+	add_to_group("archer")
 	$Timer.wait_time = stats.arrow_cooldown_stat
 
 func _on_timer_timeout():

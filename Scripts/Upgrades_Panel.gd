@@ -263,6 +263,9 @@ func _on_castle_max_hp_upgrade_button_pressed():
 
 # Keyboard Inputs -----------------------------------------
 func _unhandled_key_input (_event):
+	# Disable inputs on game over
+	if stats.player_hp == 0: return
+	
 	if Input.is_action_just_pressed("upgclick"):
 		_on_click_damage_upgrade_button_pressed()
 	elif Input.is_action_just_pressed("upgarea"):

@@ -1509,13 +1509,46 @@ position = Vector2(375, 110)
 position = Vector2(192, 112)
 zoom = Vector2(2.225, 2.15)
 
-[node name="Enemys" type="Node2D" parent="."]
+[node name="Coins" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [node name="Defences" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
 follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 384.0
+offset_bottom = 224.0
+color = Color(0.0807833, 0.0807833, 0.0807833, 0.607843)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 98.0
+offset_right = 120.0
+offset_bottom = 121.0
+text = "game over"
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 131.0
+offset_right = 197.0
+offset_bottom = 162.0
+text = "restart"
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 131.0
+offset_right = 260.0
+offset_bottom = 162.0
+text = "quit"
 
 [node name="TopPanel" parent="CanvasLayer" instance=ExtResource("6_mn6wn")]
 
@@ -1530,18 +1563,6 @@ position = Vector2(152, 110)
 shape = SubResource("RectangleShape2D_kbxuk")
 debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = 14
-offset_left = 550.0
-offset_top = 252.0
-offset_right = 590.0
-offset_bottom = 292.0
-color = Color(0.255659, 0.255659, 0.255659, 1)
-
-[node name="Label" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "game over"
-
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_quit_button_pressed"]

@@ -79,6 +79,7 @@ animations = [{
 
 [node name="Node2D" type="Area2D"]
 visibility_layer = 64
+z_index = 1
 script = ExtResource("1_uppjm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

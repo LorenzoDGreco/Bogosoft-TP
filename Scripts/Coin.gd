@@ -4,6 +4,7 @@ signal coin_pickUp
 var value: int
 
 func _ready():
+	add_to_group("coin")
 	set_monitorable(false)
 
 func _on_mouse_exited():
