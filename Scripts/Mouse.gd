@@ -18,7 +18,7 @@ func _unhandled_input(event):
 		click_damage_instance.global_position = get_global_mouse_position()
 		get_parent().add_child(click_damage_instance)
 		
-		if stats.area_click != 0:
+		if stats.click_area_size_stat != 0:
 			click_area_instance = click_area.instantiate()
 			click_area_instance.stats = stats
 			click_area_instance.global_position = get_global_mouse_position()
@@ -26,7 +26,3 @@ func _unhandled_input(event):
 		
 	if event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		self.play("click")
-		#click_damage_instance.queue_free()
-		#
-		#if stats.area_click != 0:
-			#click_area_instance.queue_free()

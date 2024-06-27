@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3kno22nm8blp"]
 
 [ext_resource type="Script" path="res://Scripts/Heal_Point_Bar_Enemy.gd" id="1_kxl2k"]
-[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/hp_background.png" id="2_a0p6j"]
-[ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/lilliput-steps/Lilliput Steps.otf" id="2_kcdwc"]
-[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/HpBar.png" id="3_w3xll"]
-[ext_resource type="Texture2D" uid="uid://4r2akl384aql" path="res://Resources/Health Bar Asset Pack 2 by Adwit Rahman/rpg (2).png" id="4_rncuf"]
+[ext_resource type="Texture2D" uid="uid://d2coi3axj6nlv" path="res://Resources/Textures/hp_background.png" id="2_a0p6j"]
+[ext_resource type="FontFile" uid="uid://ce1xkualc3dln" path="res://Resources/Fonts/Lilliput Steps.otf" id="2_kcdwc"]
+[ext_resource type="Texture2D" uid="uid://nef4s2o586lx" path="res://Resources/Textures/HpBar.png" id="3_w3xll"]
+[ext_resource type="Texture2D" uid="uid://4r2akl384aql" path="res://Resources/Textures/rpg (2).png" id="4_rncuf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3g3nu"]
 line_spacing = 0.0
@@ -12,6 +12,7 @@ font = ExtResource("2_kcdwc")
 shadow_size = 0
 
 [node name="Barra_Vida" type="TextureRect"]
+z_index = 3
 anchors_preset = -1
 anchor_right = 0.031
 anchor_bottom = 0.014

@@ -1,0 +1,718 @@
+[gd_scene load_steps=14 format=3 uid="uid://ukjwndvmc8wg"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades_Panel.gd" id="1_0r61v"]
+[ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="1_u2iqp"]
+[ext_resource type="Texture2D" uid="uid://bpmdo0jfeqsra" path="res://Resources/Sprites/icons/cursor.png" id="2_g7uxa"]
+[ext_resource type="Script" path="res://Scripts/Upgrade_Container.gd" id="3_4ivte"]
+[ext_resource type="Texture2D" uid="uid://dfopvuyj0c7uj" path="res://Resources/Sprites/icons/coin.png" id="3_hqbkl"]
+[ext_resource type="Texture2D" uid="uid://bsr48jppateii" path="res://Resources/Textures/upg_panel_bg.png" id="3_k2a14"]
+[ext_resource type="Texture2D" uid="uid://cbwir5n7gb278" path="res://Resources/Sprites/icons/click_area.png" id="3_v4fyt"]
+[ext_resource type="Texture2D" uid="uid://dairdoane5eq1" path="res://Resources/Sprites/icons/click_area_damage.png" id="4_5xqi3"]
+[ext_resource type="Texture2D" uid="uid://d1v6dbvd6port" path="res://Resources/Sprites/icons/ArcherIcon.png" id="7_mc7uc"]
+[ext_resource type="Texture2D" uid="uid://bn6cldmygfc7y" path="res://Resources/Sprites/icons/ArrowMultishootWood.png" id="8_qlru3"]
+[ext_resource type="Texture2D" uid="uid://b8mmka6fyer1q" path="res://Resources/Sprites/icons/ArrowWood.png" id="9_vobm2"]
+[ext_resource type="Texture2D" uid="uid://67m5xg8sqnxe" path="res://Resources/Sprites/icons/ArrowSpeedWood.png" id="10_iea4h"]
+[ext_resource type="Texture2D" uid="uid://dpncrh5wcag77" path="res://Resources/Sprites/icons/CastleIcon.png" id="11_jei7n"]
+
+[node name="UpgradesPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 31.0
+offset_right = 460.0
+offset_bottom = 141.0
+theme = ExtResource("1_u2iqp")
+script = ExtResource("1_0r61v")
+
+[node name="SliderButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_top = -36.0
+offset_right = 150.0
+offset_bottom = 1.0
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"SliderButton"
+toggle_mode = true
+action_mode = 0
+keep_pressed_outside = true
+text = "▼ Upgrades"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u2iqp")
+texture = ExtResource("3_k2a14")
+flip_v = true
+
+[node name="MenuControls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 79.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_u2iqp")
+theme_override_constants/separation = 0
+
+[node name="ClicksButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Clicks"
+
+[node name="UnitsButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Units"
+
+[node name="DefensesButton" type="Button" parent="MenuControls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CategoryButton"
+text = "Defenses"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u2iqp")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+tabs_visible = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ClicksPanel" type="Button" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"TabPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u2iqp")
+theme_override_constants/separation = 2
+
+[node name="ClickDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Click Damage"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("2_g7uxa")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "100"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "2.2"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="ClickAreaSizeContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Click Area Size"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("3_v4fyt")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.5
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 6.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "3.72K"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="ClickAreaDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Click Area Damage"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("4_5xqi3")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.2
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "999.99M"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "3.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UnitsPanel" type="Button" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"TabPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u2iqp")
+theme_override_constants/separation = 2
+
+[node name="NumberArchersContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "+1 Archer"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("7_mc7uc")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.123"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "100"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "2.2"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="NumberArrowsContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "+1 Arrow"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("8_qlru3")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.2
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "999.99M"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "3.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="ArrowDamageContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Arrow Damage"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("9_vobm2")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.5
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 6.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "3.72K"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="ArrowCooldownContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Arrow Cooldown"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("10_iea4h")
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.2
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "2.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "999.99M"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "3.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[node name="DefensesPanel" type="Button" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"TabPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel"]
+layout_mode = 1
+offset_right = 350.0
+offset_bottom = 91.0
+theme = ExtResource("1_u2iqp")
+theme_override_constants/separation = 2
+
+[node name="CastleRepairsContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+tooltip_text = "Castle Repairs"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("11_jei7n")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "Heal 25%HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "100"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="CastleMaxHPContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_u2iqp")
+script = ExtResource("3_4ivte")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+tooltip_text = "Castle Max HP"
+theme = ExtResource("1_u2iqp")
+texture_normal = ExtResource("11_jei7n")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "LV.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 1.5
+
+[node name="CurrentStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"CurrentLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 6.0
+
+[node name="UpgradeButton" type="Button" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"UpgradeButton"
+text = "3.72K"
+icon = ExtResource("3_hqbkl")
+text_overrun_behavior = 1
+
+[node name="NextStat" type="Label" parent="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_u2iqp")
+theme_type_variation = &"NextLabel"
+text = "1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 6
+visible_ratio = 2.0
+
+[connection signal="toggled" from="SliderButton" to="." method="_on_slider_button_toggled"]
+[connection signal="pressed" from="MenuControls/ClicksButton" to="." method="_on_clicks_button_pressed"]
+[connection signal="pressed" from="MenuControls/UnitsButton" to="." method="_on_units_button_pressed"]
+[connection signal="pressed" from="MenuControls/DefensesButton" to="." method="_on_defenses_button_pressed"]
+[connection signal="tab_changed" from="MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer/TextureButton" to="." method="_on_click_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickDamageContainer/UpgradeButton" to="." method="_on_click_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer/TextureButton" to="." method="_on_click_area_size_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaSizeContainer/UpgradeButton" to="." method="_on_click_area_size_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer/TextureButton" to="." method="_on_click_area_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/ClicksPanel/VBoxContainer/ClickAreaDamageContainer/UpgradeButton" to="." method="_on_click_area_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer/TextureButton" to="." method="_on_number_archers_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArchersContainer/UpgradeButton" to="." method="_on_number_archers_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer/TextureButton" to="." method="_on_number_arrows_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/NumberArrowsContainer/UpgradeButton" to="." method="_on_number_arrows_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer/TextureButton" to="." method="_on_arrow_damage_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowDamageContainer/UpgradeButton" to="." method="_on_arrow_damage_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer/TextureButton" to="." method="_on_arrow_cooldown_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/UnitsPanel/VBoxContainer/ArrowCooldownContainer/UpgradeButton" to="." method="_on_arrow_cooldown_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer/TextureButton" to="." method="_on_castle_repairs_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleRepairsContainer/UpgradeButton" to="." method="_on_castle_repairs_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer/TextureButton" to="." method="_on_castle_max_hp_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/DefensesPanel/VBoxContainer/CastleMaxHPContainer/UpgradeButton" to="." method="_on_castle_max_hp_upgrade_button_pressed"]

@@ -1,73 +1,73 @@
 [gd_scene load_steps=24 format=3 uid="uid://c0dc8db2ewd8h"]
 
 [ext_resource type="Script" path="res://Scripts/Warrior_Skeleton.gd" id="1_5j8jq"]
-[ext_resource type="Texture2D" uid="uid://dmh16vv7qmhnf" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Idle/Idle-Sheet.png" id="2_hhr0y"]
-[ext_resource type="Texture2D" uid="uid://dvysexbio8jbw" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Death/Death-Sheet.png" id="2_ijx5u"]
-[ext_resource type="Texture2D" uid="uid://b68verjdpvenw" path="res://Resources/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Run/Run-Sheet.png" id="3_31qso"]
-[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Pixel Crawler - FREE - 1.8/Weapons/Hands/Hands.png" id="4_arvhw"]
+[ext_resource type="Texture2D" uid="uid://dvysexbio8jbw" path="res://Resources/Sprites/enemies/warrior/death.png" id="2_7cnd2"]
+[ext_resource type="Texture2D" uid="uid://dmh16vv7qmhnf" path="res://Resources/Sprites/enemies/warrior/idle.png" id="3_f688d"]
+[ext_resource type="Texture2D" uid="uid://b68verjdpvenw" path="res://Resources/Sprites/enemies/warrior/run.png" id="4_8ripl"]
+[ext_resource type="Texture2D" uid="uid://d0ft6wxgn05vu" path="res://Resources/Sprites/enemies/Hands.png" id="5_qr254"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjx54"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(0, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50v7s"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(64, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkida"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(128, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hpb0"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(192, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i5nm"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(256, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hishc"]
-atlas = ExtResource("2_ijx5u")
+atlas = ExtResource("2_7cnd2")
 region = Rect2(320, 2, 64, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51dw2"]
-atlas = ExtResource("2_hhr0y")
+atlas = ExtResource("3_f688d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2ifq"]
-atlas = ExtResource("2_hhr0y")
+atlas = ExtResource("3_f688d")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thcho"]
-atlas = ExtResource("2_hhr0y")
+atlas = ExtResource("3_f688d")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bo6sa"]
-atlas = ExtResource("2_hhr0y")
+atlas = ExtResource("3_f688d")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8x85"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(0, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0anod"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(64, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvntk"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(128, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfrdf"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(192, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rp38"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(256, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ay54m"]
-atlas = ExtResource("3_31qso")
+atlas = ExtResource("4_8ripl")
 region = Rect2(320, 32, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_em4uy"]
@@ -152,7 +152,7 @@ autoplay = "walk"
 
 [node name="Manos" type="Sprite2D" parent="."]
 position = Vector2(-1, 6)
-texture = ExtResource("4_arvhw")
+texture = ExtResource("5_qr254")
 vframes = 4
 frame = 2
 
