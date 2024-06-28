@@ -13,6 +13,7 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 @onready var upgrades_panel = $CanvasLayer/UpgradesPanel
 @onready var top_panel = $CanvasLayer/TopPanel
 @onready var gameover_panel = $CanvasLayer/GameOverPanel
+@onready var timer_panel = $CanvasLayer/TimerPanel
 
 var max_spawn_height = 170
 var min_spawn_height = 50
@@ -31,6 +32,9 @@ func _ready():
 	gameover_panel.stats = stats
 	gameover_panel.connect("restart_game", _on_restart_button_pressed)
 	gameover_panel.connect("quit_game", _on_quit_button_pressed)
+	
+	# Initialize Timer & Score
+	timer_panel.stats = stats
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -79,6 +83,9 @@ func _on_castle_attacked(damage):
 func game_over():
 	# Stop spawning new enemies
 	$SpawnTimer.set_paused(true)
+	
+	# Stop increasing time & score
+	timer_panel.stop_timer()
 	
 	# Stop every enemy (except if mid-death)
 	for e in get_tree().get_nodes_in_group("enemy"):

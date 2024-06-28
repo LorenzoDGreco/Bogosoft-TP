@@ -7,6 +7,7 @@ var speed:int
 var life:int
 var atk_power:int
 var atk_speed:int = 3
+var enemy_score:int
 
 var hp_bar : PackedScene  = load("res://Scenes/Heal_Point_Bar.tscn")
 var hp_bar_instance = hp_bar.instantiate()
@@ -72,6 +73,7 @@ func recibe_damage(damage:int):
 			hp_bar_instance.set_life(life)
 
 func _on_animated_sprite_2d_animation_finished():
+	stats.score += enemy_score
 	enemy_death.emit(global_position, 1)
 	queue_free()
 

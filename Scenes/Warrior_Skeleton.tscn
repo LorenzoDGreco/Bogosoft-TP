@@ -139,7 +139,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mwnc"]
 radius = 16.0
 
-[node name="Node2D" type="Area2D"]
+[node name="Warrior_Skeleton" type="Area2D"]
 z_index = 2
 position = Vector2(14, -14)
 script = ExtResource("1_5j8jq")
