@@ -150,8 +150,8 @@ sprite_frames = SubResource("SpriteFrames_em4uy")
 animation = &"death"
 autoplay = "walk"
 
-[node name="Manos" type="Sprite2D" parent="."]
-position = Vector2(-1, 6)
+[node name="Manos" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(-1, 8)
 texture = ExtResource("5_qr254")
 vframes = 4
 frame = 2

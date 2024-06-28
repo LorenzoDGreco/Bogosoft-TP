@@ -12,6 +12,7 @@ var hp_bar : PackedScene  = load("res://Scenes/Heal_Point_Bar.tscn")
 var hp_bar_instance = hp_bar.instantiate()
 
 var atk_timer = Timer.new()
+var rotate_tween = null
 
 # Signals sent back to World
 signal enemy_death
@@ -58,11 +59,13 @@ func recibe_damage(damage:int):
 		life -= damage 
 		
 		if life <= 0:
+			atk_timer.queue_free()
+			if rotate_tween: rotate_tween.stop()
+			get_node("AnimatedSprite2D").set_rotation_degrees(0)
 			get_node("AnimatedSprite2D").play("death")
 			get_node("CollisionShape2D").queue_free()
-			get_node("Manos").queue_free()
+			get_node("AnimatedSprite2D/Manos").queue_free()
 			hp_bar_instance.queue_free()
-			atk_timer.queue_free()
 			position.y -= 8
 			speed = 0
 		else:
@@ -74,4 +77,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 func attack_castle():
 	# Show a little hit particle on the castle
+	rotate_tween = get_tree().create_tween()
+	rotate_tween.tween_property(self.get_node("AnimatedSprite2D"), "rotation_degrees", 45, 0.1)
+	rotate_tween.tween_property(self.get_node("AnimatedSprite2D"), "rotation_degrees", 0, atk_speed - 0.1)
 	enemy_attack.emit(atk_power)
