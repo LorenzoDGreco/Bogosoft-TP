@@ -60,7 +60,7 @@ var wave_number:int = 0
 var time_elapsed:int = 0
 var enemies_killed:int = 0
 var total_coins:int = 10000
-var player_hp = 1
+var player_hp = 50
 
 
 func _init():
