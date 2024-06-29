@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccpejsvg1bu6p"]
+
+[ext_resource type="Texture2D" uid="uid://y15jwg2mxbyc" path="res://Resources/Sprites/icons/time.png" id="1_qepff"]
+[ext_resource type="Theme" uid="uid://ng15dy8xte7k" path="res://game_theme.tres" id="1_xa5v1"]
+[ext_resource type="Script" path="res://Scripts/Score_Panel.gd" id="2_e5v2x"]
+[ext_resource type="Texture2D" uid="uid://d11i7iignplvi" path="res://Resources/Sprites/icons/score2.png" id="3_ijg2s"]
+
+[node name="ScorePanel" type="Control"]
+custom_minimum_size = Vector2(122, 16)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_xa5v1")
+script = ExtResource("2_e5v2x")
+
+[node name="BGColor" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xa5v1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 16.0
+theme = ExtResource("1_xa5v1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_xa5v1")
+theme_override_constants/separation = 0
+
+[node name="TimeContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme = ExtResource("1_xa5v1")
+theme_override_constants/separation = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/TimeContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_xa5v1")
+texture = ExtResource("1_qepff")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/TimeContainer"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_xa5v1")
+text = "01:23:45"
+vertical_alignment = 1
+
+[node name="ScoreContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_xa5v1")
+theme_override_constants/separation = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/ScoreContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_xa5v1")
+texture = ExtResource("3_ijg2s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_xa5v1")
+text = "100000000"
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

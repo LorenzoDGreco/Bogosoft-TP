@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=22 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Textures/TX Tileset Grass.png" id="2_t5rep"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c77t7dmwd146d" path="res://Scenes/Top_Panel.tscn" id="6_mn6wn"]
 [ext_resource type="PackedScene" uid="uid://rvuxybggqrsk" path="res://Scenes/Character.tscn" id="6_p6uki"]
 [ext_resource type="PackedScene" uid="uid://cqvsu0nf0x1wq" path="res://Scenes/GameOver_Panel.tscn" id="6_tlf83"]
-[ext_resource type="PackedScene" uid="uid://2kqcbkpr35t0" path="res://Scenes/Timer_Panel.tscn" id="9_evvo7"]
+[ext_resource type="PackedScene" uid="uid://ccpejsvg1bu6p" path="res://Scenes/Score_Panel.tscn" id="9_nla6v"]
 [ext_resource type="PackedScene" uid="uid://ukjwndvmc8wg" path="res://Scenes/Upgrades_Panel.tscn" id="24_6yj2v"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_r0yjv"]
@@ -2481,9 +2481,6 @@ pattern_5 = SubResource("TileMapPattern_yqw7m")
 pattern_6 = SubResource("TileMapPattern_8qn1f")
 pattern_7 = SubResource("TileMapPattern_3nd7s")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbxuk"]
-size = Vector2(303, 120)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_g0f4n")
 metadata/_edit_horizontal_guides_ = [50.0, 170.0]
@@ -2533,14 +2530,10 @@ offset_top = 174.0
 offset_bottom = 284.0
 scale = Vector2(0.45, 0.45)
 
-[node name="TimerPanel" parent="CanvasLayer" instance=ExtResource("9_evvo7")]
-offset_left = 198.0
-offset_right = -656.0
-
-[node name="enemy paths" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(151.5, 110)
-shape = SubResource("RectangleShape2D_kbxuk")
-debug_color = Color(0.556393, 0.526449, 0.539691, 0.42)
+[node name="ScorePanel" parent="CanvasLayer" instance=ExtResource("9_nla6v")]
+offset_left = 179.0
+offset_top = 3.0
+offset_right = 301.0
+offset_bottom = 19.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

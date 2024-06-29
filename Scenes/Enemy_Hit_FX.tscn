@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://c20hpic55tv4e"]
+
+[ext_resource type="Texture2D" uid="uid://3fjxgo4w221w" path="res://Resources/Sprites/enemies/hit_effect.png" id="1_8pmxd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krcp6"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scknu"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrwvu"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxj6m"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n1an"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmbhh"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1s3k"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv17j"]
+atlas = ExtResource("1_8pmxd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qechr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krcp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scknu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrwvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxj6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n1an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmbhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1s3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv17j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="EnemyHitFX" type="AnimatedSprite2D"]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_qechr")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0

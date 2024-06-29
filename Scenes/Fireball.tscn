@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cdmwb23wtxmql"]
+[gd_scene load_steps=77 format=3 uid="uid://cq01w78cks6go"]
 
 [ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_3y7c7"]
 [ext_resource type="Texture2D" uid="uid://bobc5wkhxyygr" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/1.png" id="1_j8n64"]
