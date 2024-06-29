@@ -54,7 +54,6 @@ var castle_max_hp_next
 
 var castle_repairs_cost:int = castle_max_hp_cost / 4
 
-
 # PLAYER GAME STATS ---------------------------------------
 var wave_number:int = 0
 var total_coins:int = 10000

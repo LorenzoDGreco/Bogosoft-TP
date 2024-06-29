@@ -40,6 +40,7 @@ func _add_new_fireball(new_fireball):
 # Corrects the extra steps for regular attacks
 func _on_body_entered(body):
 	position.x -= 10
+	hands.set_flip_v(true)
 	super(body)
 
 func fireball_dmg(damage):
@@ -48,5 +49,5 @@ func fireball_dmg(damage):
 func animate_attack():
 	# Hand movement tween
 	var hands_tween = get_tree().create_tween()
-	hands_tween.tween_property(hands, "position", Vector2(hands.position.x, hands.position.y - 10), 0.1)
+	hands_tween.tween_property(hands, "position", Vector2(hands.position.x, hands.position.y - 15), 0.1)
 	hands_tween.tween_property(hands, "position", Vector2(hands.position.x, hands.position.y), atk_speed - 0.1)

@@ -79,8 +79,11 @@ func recibe_damage(damage:int):
 		position.y -= 8
 		speed = 0
 
+func _on_animated_sprite_2d_animation_changed():
+	if self.get_node("AnimatedSprite2D").get_animation() == "death":
+		stats.score += enemy_score
+
 func _on_animated_sprite_2d_animation_finished():
-	stats.score += enemy_score
 	enemy_death.emit(global_position, 1)
 	queue_free()
 

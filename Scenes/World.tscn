@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpmr8unujd4jw"]
+[gd_scene load_steps=22 format=3 uid="uid://dpmr8unujd4jw"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_g0f4n"]
 [ext_resource type="Texture2D" uid="uid://djdqwmqefxm35" path="res://Resources/Textures/TX Tileset Grass.png" id="2_t5rep"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c77t7dmwd146d" path="res://Scenes/Top_Panel.tscn" id="6_mn6wn"]
 [ext_resource type="PackedScene" uid="uid://rvuxybggqrsk" path="res://Scenes/Character.tscn" id="6_p6uki"]
 [ext_resource type="PackedScene" uid="uid://cqvsu0nf0x1wq" path="res://Scenes/GameOver_Panel.tscn" id="6_tlf83"]
-[ext_resource type="PackedScene" uid="uid://dr72p2w2g3j5f" path="res://Scenes/Timer_Panel.tscn" id="9_evvo7"]
 [ext_resource type="PackedScene" uid="uid://ccpejsvg1bu6p" path="res://Scenes/Score_Panel.tscn" id="9_nla6v"]
 [ext_resource type="PackedScene" uid="uid://ukjwndvmc8wg" path="res://Scenes/Upgrades_Panel.tscn" id="24_6yj2v"]
 
@@ -2532,16 +2531,9 @@ offset_bottom = 284.0
 scale = Vector2(0.45, 0.45)
 
 [node name="ScorePanel" parent="CanvasLayer" instance=ExtResource("9_nla6v")]
-visible = false
 offset_left = 179.0
 offset_top = 3.0
 offset_right = 301.0
 offset_bottom = 19.0
-
-[node name="TimerPanel" parent="CanvasLayer" instance=ExtResource("9_evvo7")]
-offset_left = 210.0
-offset_top = 4.0
-offset_right = -568.0
-offset_bottom = -464.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
