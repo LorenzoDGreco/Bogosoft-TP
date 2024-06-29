@@ -162,6 +162,7 @@ script = ExtResource("1_tj1bc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_em4uy")
+animation = &"death"
 autoplay = "walk"
 
 [node name="Manos" type="Sprite2D" parent="AnimatedSprite2D"]
