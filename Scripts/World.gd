@@ -23,11 +23,6 @@ var max_spawn_width = -10 # keep under zero!
 var max_spawn_height = 170
 var min_spawn_height = 50
 
-# Enemy unlocks, ideally should be in Stats or in a dedicated EnemyManager
-var spawn_warriors:bool = false
-var spawn_mages:bool = false
-var spawn_rogues:bool = false
-
 # PANELS AND CONNECTIONS ----------------------------------
 func _ready():
 	# Initialize Top Panel
@@ -48,9 +43,6 @@ func _ready():
 	score_panel.stats = stats
 	score_panel.load_values()
 	score_panel.connect("spawn_boss", spawn_boss)
-	score_panel.connect("unlock_warriors", unlock_warriors)
-	score_panel.connect("unlock_mages", unlock_mages)
-	score_panel.connect("unlock_rogues", unlock_rogues)
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -77,13 +69,14 @@ func _on_coin_pick_up(coins):
 
 # ENEMIES -------------------------------------------------
 func _on_spawn_timer_timeout():
+	$SpawnTimer.wait_time = stats.enemy_spawn_rate
 	# Enemy spawning logic
-	var spawn_amount:int = randi_range(1, 4)
+	var spawn_amount:int = randi_range(1, stats.enemy_max_spawn_amount)
 	for i in spawn_amount:
 		var spawn_type:float = randf_range(0, 1)
-		if spawn_type > 0.9 and spawn_rogues: spawn_enemy(rogue_skeleton.instantiate())
-		elif spawn_type > 0.6 and spawn_warriors: spawn_enemy(warrior_skeleton.instantiate())
-		elif spawn_type > 0.4 and spawn_mages: spawn_enemy(mage_skeleton.instantiate())
+		if spawn_type > 0.9 and stats.unlock_rogues: spawn_enemy(rogue_skeleton.instantiate())
+		elif spawn_type > 0.6 and stats.unlock_warriors: spawn_enemy(warrior_skeleton.instantiate())
+		elif spawn_type > 0.4 and stats.unlock_mages: spawn_enemy(mage_skeleton.instantiate())
 		else: spawn_enemy(normal_skeleton.instantiate())
 
 func spawn_enemy(new_enemy):
@@ -104,9 +97,9 @@ func _on_castle_attacked(damage):
 func spawn_boss():
 	var spawn_type:float = randf_range(0, 1)
 	var new_boss
-	if spawn_type > 0.9 and spawn_rogues: new_boss = rogue_skeleton.instantiate()
-	elif spawn_type > 0.6 and spawn_warriors: new_boss = warrior_skeleton.instantiate()
-	elif spawn_type > 0.4 and spawn_mages: new_boss = mage_skeleton.instantiate()
+	if spawn_type > 0.9 and stats.unlock_rogues: new_boss = rogue_skeleton.instantiate()
+	elif spawn_type > 0.6 and stats.unlock_warriors: new_boss = warrior_skeleton.instantiate()
+	elif spawn_type > 0.4 and stats.unlock_mages: new_boss = mage_skeleton.instantiate()
 	else: new_boss = normal_skeleton.instantiate()
 	
 	new_boss.global_position = Vector2(randf_range(min_spawn_width, max_spawn_width), (max_spawn_height + min_spawn_height)/2)
@@ -116,10 +109,6 @@ func spawn_boss():
 	new_boss.is_boss = true
 	new_boss.apply_scale(Vector2(1.5, 1.5))
 	get_node("Enemies").add_child(new_boss)
-
-func unlock_warriors(): spawn_warriors = true
-func unlock_mages(): spawn_mages = true
-func unlock_rogues(): spawn_rogues = true
 
 # ENDING --------------------------------------------------
 func game_over():

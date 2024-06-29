@@ -7,9 +7,6 @@ var stats:Stats
 
 # Signals sent to World
 signal spawn_boss
-signal unlock_warriors
-signal unlock_mages
-signal unlock_rogues
 
 func _on_timer_timeout():
 	stats.time += 1
@@ -34,12 +31,17 @@ func manage_game_events():
 	# (starts checking from second 1)
 	
 	# Boss Enemy every minute
-	if stats.time % 60 == 0: spawn_boss.emit()
+	if stats.time % 60 == 0: 
+		spawn_boss.emit()
+		stats.increase_coin_multiplier()
+		
+	# Difficulty increase every 2 minutes
+	if stats.time % 120 == 0: stats.increase_difficulty()
 	
 	# Unlock more enemy types
-	if stats.time == 60: unlock_warriors.emit()
-	if stats.time == 120 : unlock_mages.emit()
-	if stats.time == 180 : unlock_rogues.emit()
+	if stats.time == 60: stats.unlock_warriors = true
+	if stats.time == 180 : stats.unlock_mages = true
+	if stats.time == 300 : stats.unlock_rogues = true
 
 func stop_timer():
 	$Timer.stop()
