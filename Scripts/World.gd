@@ -4,7 +4,7 @@ const offset_coin = 15
 
 var normal_skeleton : PackedScene = preload("res://Scenes/Normal_Skeleton.tscn")
 var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn")
-var mague_skeleton : PackedScene = preload("res://Scenes/Mague_Skeleton.tscn")
+var mage_skeleton : PackedScene = preload("res://Scenes/Mage_Skeleton.tscn")
 var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
@@ -47,7 +47,7 @@ func _on_spawn_timer_timeout():
 	for i in spawn_amount:
 		var spawn_type:float = randf_range(0, 1)
 		if spawn_type > 0.7: spawn_enemy(warrior_skeleton.instantiate())
-		elif spawn_type > 0.4: spawn_enemy(mague_skeleton.instantiate())
+		elif spawn_type > 0.4: spawn_enemy(mage_skeleton.instantiate())
 		else: spawn_enemy(normal_skeleton.instantiate())
 
 
@@ -62,7 +62,7 @@ func spawn_boss():
 	var spawn_type:float = randf_range(0, 1)
 	var new_boss
 	if spawn_type > 0.7: new_boss = warrior_skeleton.instantiate()
-	elif spawn_type > 0.4: new_boss = mague_skeleton.instantiate()
+	elif spawn_type > 0.4: new_boss = mage_skeleton.instantiate()
 	else: new_boss = normal_skeleton.instantiate()
 	
 	new_boss.global_position = Vector2(randf_range(-40,-10), (max_spawn_height - min_spawn_height)/2)

@@ -33,7 +33,7 @@ func _ready():
 	
 	# Attack Timer setup
 	add_child(atk_timer)
-	atk_timer.connect("timeout", _attack_castle)
+	atk_timer.connect("timeout", attack_castle)
 
 func _process(delta):
 	position.x += speed * delta
@@ -48,7 +48,7 @@ func _on_body_entered(body):
 			position.x += 10
 			get_node("AnimatedSprite2D").play("default")
 			# Attack once, then automate with timer
-			_attack_castle()
+			attack_castle()
 			atk_timer.start(atk_speed)
 
 func recibe_damage(damage:int):
@@ -84,7 +84,7 @@ func _on_animated_sprite_2d_animation_finished():
 	enemy_death.emit(global_position, 1)
 	queue_free()
 
-func _attack_castle():
+func attack_castle():
 	# Create a single attack motion, and show a hit particle on the castle
 	animate_attack()
 	# Signal to World to decrease HP
