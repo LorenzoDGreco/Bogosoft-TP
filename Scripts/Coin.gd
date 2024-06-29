@@ -1,7 +1,7 @@
-extends Area2D
+class_name Coin extends Area2D
 
 signal coin_pickUp
-var value: int
+var value
 
 func _ready():
 	add_to_group("coin")

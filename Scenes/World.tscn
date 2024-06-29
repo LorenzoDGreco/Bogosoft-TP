@@ -2486,7 +2486,7 @@ script = ExtResource("1_g0f4n")
 metadata/_edit_horizontal_guides_ = [50.0, 170.0]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.5
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]

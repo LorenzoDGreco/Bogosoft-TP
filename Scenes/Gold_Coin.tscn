@@ -1,38 +1,38 @@
 [gd_scene load_steps=13 format=3 uid="uid://dugugkxk0g71p"]
 
-[ext_resource type="Script" path="res://Scripts/Coin.gd" id="1_vpsgy"]
-[ext_resource type="Texture2D" uid="uid://cr67ql28321m1" path="res://Resources/Sprites/coins/coin_gold.png" id="2_rqtg4"]
+[ext_resource type="Script" path="res://Scripts/Gold_Coin.gd" id="1_556ed"]
+[ext_resource type="Texture2D" uid="uid://cr67ql28321m1" path="res://Resources/Sprites/coins/coin_gold.png" id="2_vhhjd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tu0bg"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqwtl"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8rtb"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nt6b2"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxe76"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22qcq"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpxb0"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7w00i"]
-atlas = ExtResource("2_rqtg4")
+atlas = ExtResource("2_vhhjd")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tin8y"]
@@ -70,13 +70,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr0po"]
 radius = 15.0
 
-[node name="Coin" type="Area2D"]
+[node name="GoldCoin" type="Area2D"]
 light_mask = 8
 z_index = 1
 z_as_relative = false
 monitoring = false
 monitorable = false
-script = ExtResource("1_vpsgy")
+script = ExtResource("1_556ed")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tin8y")
