@@ -3,19 +3,17 @@ class_name Mage_Skeleton extends Enemy
 var fireball:PackedScene = preload("res://Scenes/Fireball.tscn")
 @onready var hands = $AnimatedSprite2D/Manos
 
-const hp_base = 10
-const atk_base = 5
 const spd_base = 25
 const score = 40
 
 func _ready():
-	life = hp_base
-	atk_power = atk_base
+	life = stats.mage_hp
+	atk_power = stats.mage_atk
 	speed = spd_base
 	enemy_score = score
 	if is_boss : 
-		life *= 3
-		atk_power *= 3
+		life *= 10
+		atk_power *= 5
 		speed *= 0.8
 		enemy_score = 1000
 	super()

@@ -3,9 +3,27 @@ class_name Stats extends Node
 var upgrades:Upgrades = Upgrades.new()
 
 # Difficulty Stats Multipliers
-var enemy_life = 1
-var enemy_damage = 1
-var enemy_attack_speed = 1
+var enemy_life_multiplier = 1
+var enemy_damage_multiplier = 1
+var enemy_max_spawn_amount = 4
+var enemy_spawn_rate:float = 3
+
+# Enemy initial stats
+var normal_hp = 2
+var normal_atk = 1
+var warrior_hp = 5
+var warrior_atk = 2
+var mage_hp = 4
+var mage_atk = 5
+var rogue_hp = 4
+var rogue_atk = 1
+
+
+# Enemy unlocks, ideally should be in Stats or in a dedicated EnemyManager
+var unlock_warriors:bool = false
+var unlock_mages:bool = false
+var unlock_rogues:bool = false
+
 var coin_value : int = 10
 
 # INITIAL STATS -------------------------------------------
@@ -28,35 +46,35 @@ var click_area_damage_next
 # Unit Upgrades
 var number_archers_level:int = 0
 var number_archers_stat = 0
-var number_archers_cost:int = 300
+var number_archers_cost:int = 2500
 var number_archers_next
 
 var arrow_damage_level:int = 1
 var arrow_damage_stat = 1
-var arrow_damage_cost:int = 100
+var arrow_damage_cost:int = 1000
 var arrow_damage_next
 
 var arrow_cooldown_level:int = 1
 var arrow_cooldown_stat = 3
-var arrow_cooldown_cost:int = 100
+var arrow_cooldown_cost:int = 2500
 var arrow_cooldown_next
 
 var number_arrows_level:int = 1
 var number_arrows_stat = 1
-var number_arrows_cost:int = 1000
+var number_arrows_cost:int = 30000
 var number_arrows_next
 
 # Defense Upgrades
 var castle_max_hp_level:int = 1
 var castle_max_hp_stat = 100
-var castle_max_hp_cost:int = 1000
+var castle_max_hp_cost:int = 500
 var castle_max_hp_next
 
 var castle_repairs_cost:int = castle_max_hp_cost / 4
 
 # PLAYER GAME STATS ---------------------------------------
 var wave_number:int = 0
-var total_coins:int = 10000
+var total_coins:int = 0
 var player_hp = 100
 var time: int = 0
 var score: int = 0
@@ -72,7 +90,7 @@ func _init():
 	arrow_cooldown_next = upgrades.generic_update_float(arrow_cooldown_stat, false)
 	number_arrows_next = number_arrows_stat + 1
 	
-	castle_max_hp_next = castle_max_hp_stat + 100
+	castle_max_hp_next = castle_max_hp_stat * 2
 
 
 # STAT UPGRADE FUNCTIONS ----------------------------------
@@ -146,7 +164,7 @@ func upgrade_castle_max_hp():
 	castle_max_hp_level += 1
 	castle_max_hp_stat = castle_max_hp_next
 	castle_max_hp_cost *= 2
-	castle_max_hp_next = castle_max_hp_stat + 100
+	castle_max_hp_next = castle_max_hp_stat * 2
 	
 	# Also fully heals, and increases heal cost
 	player_hp = castle_max_hp_stat
@@ -157,3 +175,22 @@ func take_damage(damage):
 	if (player_hp - damage) <= 0:
 		player_hp = 0
 	else: player_hp -= damage
+	
+func increase_coin_multiplier():
+	coin_value *= 1.7
+
+func increase_difficulty():
+	enemy_life_multiplier += 1
+	enemy_damage_multiplier += 0.5
+	enemy_max_spawn_amount += 1
+	
+	normal_hp *= enemy_life_multiplier
+	normal_atk *= enemy_damage_multiplier
+	warrior_hp *= enemy_life_multiplier
+	warrior_atk *= enemy_damage_multiplier
+	mage_hp *= enemy_life_multiplier
+	mage_atk *= enemy_damage_multiplier
+	rogue_hp *= enemy_life_multiplier
+	rogue_atk *= enemy_damage_multiplier
+
+	enemy_spawn_rate = upgrades.generic_update_float(enemy_spawn_rate, false)

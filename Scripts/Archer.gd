@@ -20,7 +20,7 @@ func _on_timer_timeout():
 		
 
 func disparar(enemigo):
-	if is_instance_valid(enemigo):
+	if is_instance_valid(enemigo) and enemigo.position.x >= 0:
 		var pos_enemigo = enemigo.global_position
 		var new_arrow = arrow.instantiate()
 		new_arrow.position_target = pos_enemigo

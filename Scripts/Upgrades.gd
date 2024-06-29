@@ -1,20 +1,19 @@
 class_name Upgrades extends Node
 
-const damage_multiplier = 2  # Factor de multiplicación para el crecimiento exponencial reducido
-const max_increment = 100  # Valor máximo de incremento del daño
+# For generic_update
+const multiplier = 2 
+const max_increment = 100
 
-#const area_increment = 1.2
-#const archer_speed_decrement = 0.8
+# For generic_update_float
 const delta_upgrade = 0.2
 
-var max_hp_castle : int = 100 
-
-func generic_update(var_to_update): #Buscar un mejor escalado
-	if var_to_update < max_increment: var_to_update = int(var_to_update * damage_multiplier)
+func generic_update(var_to_update):
+	if var_to_update < max_increment: var_to_update = int(var_to_update * multiplier)
 	else: var_to_update += max_increment
 	return var_to_update
 
 func generic_update_float(var_to_update, increase):
+	if !increase and var_to_update <= 0.5: return 0.5
 	if var_to_update == 0: return 1 # First Area Size upgrade
 	
 	if increase: var_to_update *= (1 + delta_upgrade)
