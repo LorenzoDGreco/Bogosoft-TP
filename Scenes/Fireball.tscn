@@ -1,0 +1,358 @@
+[gd_scene load_steps=77 format=3 uid="uid://cdmwb23wtxmql"]
+
+[ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_3y7c7"]
+[ext_resource type="Texture2D" uid="uid://bobc5wkhxyygr" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/1.png" id="1_j8n64"]
+[ext_resource type="Texture2D" uid="uid://boewukfu1nsxf" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/2.png" id="2_jpa8c"]
+[ext_resource type="Texture2D" uid="uid://squaq8bmosym" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/3.png" id="3_l4cj7"]
+[ext_resource type="Texture2D" uid="uid://bdu2yo58ab5cf" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/4.png" id="4_iir1l"]
+[ext_resource type="Texture2D" uid="uid://brfm28ko6i2eq" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/5.png" id="5_6f1oa"]
+[ext_resource type="Texture2D" uid="uid://bl4jshlqh5udk" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/6.png" id="6_f4ene"]
+[ext_resource type="Texture2D" uid="uid://uquat0sh1key" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/7.png" id="7_48aeq"]
+[ext_resource type="Texture2D" uid="uid://dl4mg8dtqtvvq" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/8.png" id="8_hcbxq"]
+[ext_resource type="Texture2D" uid="uid://bhxlf8t2nw5bq" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/9.png" id="9_w2vpd"]
+[ext_resource type="Texture2D" uid="uid://cuctw8dm2ya38" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/10.png" id="10_tuifc"]
+[ext_resource type="Texture2D" uid="uid://b3b8u05tjirhg" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/11.png" id="11_nwkuk"]
+[ext_resource type="Texture2D" uid="uid://dlk5bypohkcf6" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/12.png" id="12_jfbc6"]
+[ext_resource type="Texture2D" uid="uid://boolhqr7mqb4g" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/13.png" id="13_llwqa"]
+[ext_resource type="Texture2D" uid="uid://di3mxggi653tm" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/14.png" id="14_1i26p"]
+[ext_resource type="Texture2D" uid="uid://sf2ft836mtgd" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/15.png" id="15_b553n"]
+[ext_resource type="Texture2D" uid="uid://bmem72d40jnn1" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/16.png" id="16_q73dx"]
+[ext_resource type="Texture2D" uid="uid://ceguljayk8430" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/17.png" id="17_0d4ow"]
+[ext_resource type="Texture2D" uid="uid://hracseuefh8d" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/18.png" id="18_lirce"]
+[ext_resource type="Texture2D" uid="uid://cnnmugxitrel1" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/19.png" id="19_4mayv"]
+[ext_resource type="Texture2D" uid="uid://ditkrt1koly20" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/20.png" id="20_swxod"]
+[ext_resource type="Texture2D" uid="uid://dcaoxhl33ysp" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/21.png" id="21_tdabq"]
+[ext_resource type="Texture2D" uid="uid://l0e5jrwbdyr0" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/22.png" id="22_xdn8t"]
+[ext_resource type="Texture2D" uid="uid://dnq1uy2m54bn5" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/23.png" id="23_1qlt7"]
+[ext_resource type="Texture2D" uid="uid://beh1opqva2gb2" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/24.png" id="24_q3ir7"]
+[ext_resource type="Texture2D" uid="uid://cf2ib03ltk5hd" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/25.png" id="25_38pm7"]
+[ext_resource type="Texture2D" uid="uid://vfpdqkkm4s6" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/26.png" id="26_r23kx"]
+[ext_resource type="Texture2D" uid="uid://dflt6lporh87r" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/27.png" id="27_m1agd"]
+[ext_resource type="Texture2D" uid="uid://787qp7lyauvp" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/28.png" id="28_8u6mq"]
+[ext_resource type="Texture2D" uid="uid://le3xlawqgm7j" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/29.png" id="29_pihlp"]
+[ext_resource type="Texture2D" uid="uid://bsapsyo8mgkbq" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/30.png" id="30_bruys"]
+[ext_resource type="Texture2D" uid="uid://uu16gabfiww3" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/31.png" id="31_gxj8j"]
+[ext_resource type="Texture2D" uid="uid://4f4skwibcnrd" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/32.png" id="32_520gb"]
+[ext_resource type="Texture2D" uid="uid://bcrpee1jv8a1o" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/33.png" id="33_nhl5w"]
+[ext_resource type="Texture2D" uid="uid://cqfgtflqonvvv" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/34.png" id="34_gk24o"]
+[ext_resource type="Texture2D" uid="uid://0lwcij8ytoki" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/35.png" id="35_7bvwt"]
+[ext_resource type="Texture2D" uid="uid://dwb8uf2745jxm" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/36.png" id="36_nmlxd"]
+[ext_resource type="Texture2D" uid="uid://c70wucjk6bia1" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/37.png" id="37_fvml7"]
+[ext_resource type="Texture2D" uid="uid://ct8uy8cc8p8s" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/38.png" id="38_em8y5"]
+[ext_resource type="Texture2D" uid="uid://btarg1qhq87ct" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/39.png" id="39_c3etg"]
+[ext_resource type="Texture2D" uid="uid://ubwutyrmfpsy" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/40.png" id="40_jpxkg"]
+[ext_resource type="Texture2D" uid="uid://c6p6r4dubc6d1" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/41.png" id="41_ixhit"]
+[ext_resource type="Texture2D" uid="uid://ckbssmfau4w7y" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/42.png" id="42_m4pwo"]
+[ext_resource type="Texture2D" uid="uid://qvrltjp205cf" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/43.png" id="43_q2gei"]
+[ext_resource type="Texture2D" uid="uid://i8xqc35o1vqm" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/44.png" id="44_h3gre"]
+[ext_resource type="Texture2D" uid="uid://d0ejss32ngood" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/45.png" id="45_uo3bw"]
+[ext_resource type="Texture2D" uid="uid://b16ms7rpvdrbb" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/46.png" id="46_jpk1w"]
+[ext_resource type="Texture2D" uid="uid://br4j082wdvytk" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/47.png" id="47_k4jis"]
+[ext_resource type="Texture2D" uid="uid://bcbwk14j1jirn" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/48.png" id="48_y572b"]
+[ext_resource type="Texture2D" uid="uid://dvfvwonhds02a" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/49.png" id="49_13c4w"]
+[ext_resource type="Texture2D" uid="uid://o32chj4m6hk3" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/50.png" id="50_3wdti"]
+[ext_resource type="Texture2D" uid="uid://blpalnbj4byyd" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/51.png" id="51_yi15j"]
+[ext_resource type="Texture2D" uid="uid://cnhfljgjtm1mr" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/52.png" id="52_nl6wx"]
+[ext_resource type="Texture2D" uid="uid://bl6n58vu1vrod" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/53.png" id="53_m5wb0"]
+[ext_resource type="Texture2D" uid="uid://vcieu6j1puj" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/54.png" id="54_67x1m"]
+[ext_resource type="Texture2D" uid="uid://d2t4mmpn7roq2" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/55.png" id="55_j5h1f"]
+[ext_resource type="Texture2D" uid="uid://clof3mi4uy6uk" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/56.png" id="56_l464u"]
+[ext_resource type="Texture2D" uid="uid://c3vkfm1ua056i" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/57.png" id="57_0xa7q"]
+[ext_resource type="Texture2D" uid="uid://bfgqwi4oucl8r" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/58.png" id="58_5pw8w"]
+[ext_resource type="Texture2D" uid="uid://cmi8t755athk2" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/59.png" id="59_rc42h"]
+[ext_resource type="Texture2D" uid="uid://caaa7bdw1k4cl" path="res://Resources/Sprites/enemies/fireball/FXpack13/Effect2/60.png" id="60_tpx6p"]
+[ext_resource type="Texture2D" uid="uid://fk4t5i3wx43y" path="res://Resources/Sprites/enemies/fireball/03.png" id="61_0fx3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekqjm"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1imu"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7yht"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2t6"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aklo"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcqb3"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43smr"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpu4k"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bklv0"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo88x"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw0xe"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tendf"]
+atlas = ExtResource("61_0fx3r")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqk0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j8n64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jpa8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l4cj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iir1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6f1oa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f4ene")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_48aeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hcbxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w2vpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tuifc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nwkuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jfbc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_llwqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1i26p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_b553n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_q73dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0d4ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lirce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4mayv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_swxod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tdabq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xdn8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1qlt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_q3ir7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_38pm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r23kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m1agd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_8u6mq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pihlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_bruys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_gxj8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_520gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_nhl5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_gk24o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_7bvwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_nmlxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fvml7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_em8y5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_c3etg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_jpxkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ixhit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_m4pwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_q2gei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_h3gre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_uo3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_jpk1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_k4jis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_y572b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_13c4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_3wdti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_yi15j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_nl6wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_m5wb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_67x1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_j5h1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_l464u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_0xa7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_5pw8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_rc42h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_tpx6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekqjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1imu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7yht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aklo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcqb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43smr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpu4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bklv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo88x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw0xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tendf")
+}],
+"loop": false,
+"name": &"explotion",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqrhk"]
+radius = 2.0
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_3y7c7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cqk0f")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gqrhk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

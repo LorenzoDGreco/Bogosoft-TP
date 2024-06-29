@@ -10,4 +10,9 @@ func _ready():
 	atk_power = atk_base
 	speed = spd_base
 	enemy_score = score
+	if is_boss : 
+		life *= 3
+		atk_power *= 3
+		speed *= 0.8
+		enemy_score = 1000
 	super()

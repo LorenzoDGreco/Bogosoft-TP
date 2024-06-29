@@ -4,6 +4,7 @@ const offset_coin = 15
 
 var normal_skeleton : PackedScene = preload("res://Scenes/Normal_Skeleton.tscn")
 var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn")
+var mague_skeleton : PackedScene = preload("res://Scenes/Mague_Skeleton.tscn")
 var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
@@ -35,6 +36,7 @@ func _ready():
 	
 	# Initialize Timer & Score
 	timer_panel.stats = stats
+	timer_panel.connect("spawn_boss", spawn_boss)
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -45,7 +47,9 @@ func _on_spawn_timer_timeout():
 	for i in spawn_amount:
 		var spawn_type:float = randf_range(0, 1)
 		if spawn_type > 0.7: spawn_enemy(warrior_skeleton.instantiate())
+		elif spawn_type > 0.4: spawn_enemy(mague_skeleton.instantiate())
 		else: spawn_enemy(normal_skeleton.instantiate())
+
 
 func spawn_enemy(new_enemy):
 	new_enemy.global_position = Vector2(randf_range(-40,-10), randf_range(min_spawn_height, max_spawn_height))
@@ -53,6 +57,22 @@ func spawn_enemy(new_enemy):
 	new_enemy.connect("enemy_attack", _on_castle_attacked)
 	new_enemy.stats = stats
 	get_node("Enemies").add_child(new_enemy)
+
+func spawn_boss():
+	var spawn_type:float = randf_range(0, 1)
+	var new_boss
+	if spawn_type > 0.7: new_boss = warrior_skeleton.instantiate()
+	elif spawn_type > 0.4: new_boss = mague_skeleton.instantiate()
+	else: new_boss = normal_skeleton.instantiate()
+	
+	new_boss.global_position = Vector2(randf_range(-40,-10), (max_spawn_height - min_spawn_height)/2)
+	new_boss.connect("enemy_death", spawn_coins)
+	new_boss.connect("enemy_attack", _on_castle_attacked)
+	new_boss.stats = stats
+	new_boss.is_boss = true
+	new_boss.apply_scale(Vector2(1.5, 1.5))
+	get_node("Enemies").add_child(new_boss)
+
 
 func spawn_coins(position, _amount):
 	position.y += offset_coin
@@ -79,6 +99,7 @@ func _on_castle_attacked(damage):
 	top_panel.update_player_hp()
 	
 	if (stats.player_hp <= 0): game_over()
+
 
 func game_over():
 	# Stop spawning new enemies

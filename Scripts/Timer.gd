@@ -7,11 +7,7 @@ var stats:Stats
 
 var formatted_time:String
 
-func _ready():
-	pass 
-
-func _process(delta):
-	pass
+signal spawn_boss
 
 func _on_timer_timeout():
 	stats.time += 1
@@ -29,6 +25,8 @@ func get_time():
 	
 	if hours < 1 :	formatted_time = "%02d:%02d" % [minutes, seconds]
 	else:	formatted_time = "%02d:%02d:%02d" % [hours, minutes, seconds]
+	
+	if seconds == 10 : spawn_boss.emit()
 
 func stop_timer():
 	$Timer.stop()
