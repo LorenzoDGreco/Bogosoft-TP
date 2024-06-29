@@ -9,6 +9,7 @@ var stats:Stats
 signal spawn_boss
 signal unlock_warriors
 signal unlock_mages
+signal unlock_rogues
 
 func _on_timer_timeout():
 	stats.time += 1
@@ -38,6 +39,7 @@ func manage_game_events():
 	# Unlock more enemy types
 	if stats.time == 60: unlock_warriors.emit()
 	if stats.time == 120 : unlock_mages.emit()
+	if stats.time == 180 : unlock_rogues.emit()
 
 func stop_timer():
 	$Timer.stop()

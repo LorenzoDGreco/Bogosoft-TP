@@ -5,6 +5,7 @@ const offset_coin = 15
 var normal_skeleton : PackedScene = preload("res://Scenes/Normal_Skeleton.tscn")
 var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn")
 var mage_skeleton : PackedScene = preload("res://Scenes/Mage_Skeleton.tscn")
+var rogue_skeleton : PackedScene = preload("res://Scenes/Rogue_Skeleton.tscn")
 var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
 var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 
@@ -25,6 +26,7 @@ var min_spawn_height = 50
 # Enemy unlocks, ideally should be in Stats or in a dedicated EnemyManager
 var spawn_warriors:bool = false
 var spawn_mages:bool = false
+var spawn_rogues:bool = false
 
 # PANELS AND CONNECTIONS ----------------------------------
 func _ready():
@@ -48,6 +50,7 @@ func _ready():
 	score_panel.connect("spawn_boss", spawn_boss)
 	score_panel.connect("unlock_warriors", unlock_warriors)
 	score_panel.connect("unlock_mages", unlock_mages)
+	score_panel.connect("unlock_rogues", unlock_rogues)
 	
 	mouse_instance.stats = stats
 	add_child(mouse_instance)
@@ -78,7 +81,8 @@ func _on_spawn_timer_timeout():
 	var spawn_amount:int = randi_range(1, 4)
 	for i in spawn_amount:
 		var spawn_type:float = randf_range(0, 1)
-		if spawn_type > 0.7 and spawn_warriors: spawn_enemy(warrior_skeleton.instantiate())
+		if spawn_type > 0.9 and spawn_rogues: spawn_enemy(rogue_skeleton.instantiate())
+		elif spawn_type > 0.6 and spawn_warriors: spawn_enemy(warrior_skeleton.instantiate())
 		elif spawn_type > 0.4 and spawn_mages: spawn_enemy(mage_skeleton.instantiate())
 		else: spawn_enemy(normal_skeleton.instantiate())
 
@@ -100,7 +104,8 @@ func _on_castle_attacked(damage):
 func spawn_boss():
 	var spawn_type:float = randf_range(0, 1)
 	var new_boss
-	if spawn_type > 0.7 and spawn_warriors: new_boss = warrior_skeleton.instantiate()
+	if spawn_type > 0.9 and spawn_rogues: new_boss = rogue_skeleton.instantiate()
+	elif spawn_type > 0.6 and spawn_warriors: new_boss = warrior_skeleton.instantiate()
 	elif spawn_type > 0.4 and spawn_mages: new_boss = mage_skeleton.instantiate()
 	else: new_boss = normal_skeleton.instantiate()
 	
@@ -114,6 +119,7 @@ func spawn_boss():
 
 func unlock_warriors(): spawn_warriors = true
 func unlock_mages(): spawn_mages = true
+func unlock_rogues(): spawn_rogues = true
 
 # ENDING --------------------------------------------------
 func game_over():
