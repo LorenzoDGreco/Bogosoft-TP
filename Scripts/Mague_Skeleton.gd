@@ -24,7 +24,7 @@ func _ready():
 func attack_castle():
 	var new_fireball = fireball.instantiate()
 	new_fireball.position = position
-	new_fireball.position.y = position.y + 25 
+	new_fireball.position.y = position.y + 5 
 	new_fireball.damage = atk_power
 	new_fireball.connect("proyectile_hit", fireball_dmg)
 	if is_boss : new_fireball.apply_scale(Vector2(1.5, 1.5))
