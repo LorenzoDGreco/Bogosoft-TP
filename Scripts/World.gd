@@ -7,7 +7,8 @@ var warrior_skeleton : PackedScene = preload("res://Scenes/Warrior_Skeleton.tscn
 var mage_skeleton : PackedScene = preload("res://Scenes/Mage_Skeleton.tscn")
 var rogue_skeleton : PackedScene = preload("res://Scenes/Rogue_Skeleton.tscn")
 var mouse : PackedScene = preload("res://Scenes/Mouse.tscn")
-var coin : PackedScene = preload("res://Scenes/Coin.tscn")
+var gold_coin : PackedScene = preload("res://Scenes/Gold_Coin.tscn")
+var silver_coin : PackedScene = preload("res://Scenes/Silver_Coin.tscn")
 
 @onready var stats = Stats.new()
 @onready var mouse_instance = mouse.instantiate()
@@ -20,7 +21,7 @@ var coin : PackedScene = preload("res://Scenes/Coin.tscn")
 # Enemy spawning area
 var min_spawn_width = -100
 var max_spawn_width = -10 # keep under zero!
-var max_spawn_height = 170
+var max_spawn_height = 160
 var min_spawn_height = 50
 
 # PANELS AND CONNECTIONS ----------------------------------
@@ -51,17 +52,29 @@ func _ready():
 func spawn_coins(position, _amount):
 	position.y += offset_coin
 	
-	#for i in range(0, _amount):
-		#value_coin randf_range(1,2) Para spawnear monedas de plata u oro 
-	var coin_instance =  coin.instantiate()
-	coin_instance.connect("coin_pickUp", _on_coin_pick_up)
-	coin_instance.value = stats.coin_value
-	coin_instance.global_position = position
-	get_node("Coins").add_child(coin_instance)
+	# Offset for multiple coin spawn
+	var spawn_radius = 20
+	var spawn_offset = Vector2(0, 0)
+	
+	# Signal from Enemy, regular enemy spawns a single coin, bosses spawn 5
+	var coin_instance
+	for i in _amount:
+		# Chance to spawn silver coin instead
+		var spawn_type = randf_range(0, 1)
+		if spawn_type > 0.95: coin_instance = silver_coin.instantiate()
+		else: coin_instance = gold_coin.instantiate()
+		
+		# Connect and add to scene
+		coin_instance.connect("coin_pickUp", _on_coin_pick_up)
+		coin_instance.global_position = position + spawn_offset
+		get_node("Coins").add_child(coin_instance)
+		
+		# Randomize next coin position (if boss)
+		spawn_offset = Vector2(randf_range(-spawn_radius, spawn_radius), randf_range(-spawn_radius, spawn_radius))
 
 func _on_coin_pick_up(coins):
 	# Updates the internal total_coins stat
-	stats.total_coins += coins
+	stats.total_coins += coins * stats.coin_value_multiplier
 	# Updates total coins on display
 	top_panel.update_player_coins()
 	# Updates every upgrade button state

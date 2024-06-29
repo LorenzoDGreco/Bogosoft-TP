@@ -84,7 +84,8 @@ func _on_animated_sprite_2d_animation_changed():
 		stats.score += enemy_score
 
 func _on_animated_sprite_2d_animation_finished():
-	enemy_death.emit(global_position, 1)
+	if is_boss: enemy_death.emit(global_position, 5)
+	else: enemy_death.emit(global_position, 1)
 	queue_free()
 
 func attack_castle():

@@ -7,6 +7,7 @@ var enemy_life_multiplier = 1
 var enemy_damage_multiplier = 1
 var enemy_max_spawn_amount = 4
 var enemy_spawn_rate:float = 3
+var coin_value_multiplier: float = 1
 
 # Enemy initial stats
 var normal_hp = 2
@@ -18,13 +19,10 @@ var mage_atk = 5
 var rogue_hp = 4
 var rogue_atk = 1
 
-
 # Enemy unlocks, ideally should be in Stats or in a dedicated EnemyManager
 var unlock_warriors:bool = false
 var unlock_mages:bool = false
 var unlock_rogues:bool = false
-
-var coin_value : int = 10
 
 # INITIAL STATS -------------------------------------------
 # Click Upgrades
@@ -73,7 +71,7 @@ var castle_max_hp_next
 var castle_repairs_cost:int = castle_max_hp_cost / 4
 
 # PLAYER GAME STATS ---------------------------------------
-var wave_number:int = 0
+#var wave_number:int = 0
 var total_coins:int = 0
 var player_hp = 100
 var time: int = 0
@@ -177,7 +175,7 @@ func take_damage(damage):
 	else: player_hp -= damage
 	
 func increase_coin_multiplier():
-	coin_value *= 1.7
+	coin_value_multiplier *= 1.7
 
 func increase_difficulty():
 	enemy_life_multiplier += 1
