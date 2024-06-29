@@ -17,7 +17,6 @@ func _on_body_entered(body):
 	if body.name == "TileMap": 
 		proyectile_speed = 0
 		proyectile_hit.emit(damage)
-		print(damage)
 		get_node("AnimatedSprite2D").play("explotion")
 
 

@@ -33,5 +33,4 @@ func attack_castle():
 
 func fireball_dmg(damage):
 	enemy_attack.emit(damage)
-	print("hola")
 

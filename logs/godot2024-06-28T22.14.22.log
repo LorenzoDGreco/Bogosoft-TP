@@ -4,13 +4,9 @@ Vulkan API 1.3.260 - Forward+ - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce 
 USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
    at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
 hola
-15
+5
 USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
    at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
-USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
-   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
-hola
-15
 hola
 5
 hola
@@ -18,28 +14,92 @@ hola
 USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
    at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
 hola
-15
+5
+hola
+5
+hola
+5
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
 hola
 5
 5
 hola
 5
 hola
-15
+5
 hola
-15
+5
 hola
-15
-ERROR: 1 RID allocations of type 'P11GodotArea2D' were leaked at exit.
-ERROR: 2 RID allocations of type 'P12GodotShape2D' were leaked at exit.
-USER WARNING: 9 RIDs of type "CanvasItem" were leaked.
-   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2178)
-ERROR: 71 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.
+5
+hola
+5
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+hola
+5
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+hola
+5
+ERROR: 1 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.
 USER ERROR: Parameter "RenderingServer::get_singleton()" is null.
    at: ~CompressedTexture2D (scene/resources/compressed_texture.cpp:464)
-USER WARNING: 140 RIDs of type "Texture" were leaked.
-   at: finalize (drivers/vulkan/rendering_device_vulkan.cpp:9655)
-ERROR: 2 RID allocations of type 'PN18TextServerAdvanced22ShapedTextDataAdvancedE' were leaked at exit.
-ERROR: 2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
-USER WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
-   at: cleanup (core/object/object.cpp:2209)
