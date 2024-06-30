@@ -24,6 +24,8 @@ var max_spawn_width = -10 # keep under zero!
 var max_spawn_height = 160
 var min_spawn_height = 50
 
+var game_finished:bool = false
+
 # PANELS AND CONNECTIONS ----------------------------------
 func _ready():
 	# Initialize Top Panel
@@ -104,7 +106,7 @@ func _on_castle_attacked(damage):
 	stats.take_damage(damage)
 	top_panel.update_player_hp()
 	
-	if (stats.player_hp <= 0): game_over()
+	if (stats.player_hp <= 0 and !game_finished): game_over()
 
 # SPECIAL ENEMIES -----------------------------------------
 func spawn_boss():
@@ -125,6 +127,7 @@ func spawn_boss():
 
 # ENDING --------------------------------------------------
 func game_over():
+	game_finished = true
 	# Stop spawning new enemies
 	$SpawnTimer.set_paused(true)
 	
