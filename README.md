@@ -35,8 +35,8 @@ El jugador debe defender su castillo de las hordas de esqueletos que intentan in
 <img src="https://github.com/LorenzoDGreco/Bogosoft-TP/assets/56140791/70c2c614-fba7-4650-bfa4-016123dfe495" alt="Screenshot3" width="640" height="360">
 
 
-<!-- ## Para usuarios
-La última versión estable puede hallarse en la sección [releases](). -->
+## Para usuarios
+La última versión estable puede hallarse en la sección [releases](https://github.com/LorenzoDGreco/Bogosoft-TP/releases).
 
 ## Para desarrolladores
 
